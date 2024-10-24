@@ -1,0 +1,76 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f5f0;
+}
+
+.sidebar {
+    background-color: #fff;
+    border-right: 1px solid #ddd;
+    height: 100vh;
+    padding-top: 20px;
+}
+
+.sidebar .nav-link {
+    color: #5a2d0c;
+    font-weight: bold;
+}
+
+.sidebar .nav-link:hover {
+    background-color: #f8f5f0;
+}
+
+.sidebar .nav-link.active {
+    background-color: #5a2d0c;
+    color: #fff;
+}
+
+.sidebar .nav-link i {
+    margin-right: 10px;
+}
+
+.sidebar .logout {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+}
+
+.content {
+    padding: 20px;
+}
+
+.header {
+    background-color: #5a2d0c;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.profile-card {
+    text-align: center;
+    margin: 20px;
+}
+
+.profile-card img {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 5px;
+    width: 100px;
+    height: 100px;
+}
+
+.profile-card .name {
+    font-weight: bold;
+    color: #5a2d0c;
+}
+
+.profile-card .phone {
+    color: #5a2d0c;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 20px;
+    color: #5a2d0c;
+}

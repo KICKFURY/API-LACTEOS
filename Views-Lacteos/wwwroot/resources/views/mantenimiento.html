@@ -1,0 +1,100 @@
+<html>
+
+<head>
+    <title>
+        Mantenimiento
+    </title>
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/resources/public/css/mantenimiento/mantenimiento.css">
+</head>
+
+<body>
+    <div class="d-flex">
+        <div class="sidebar p-3">
+            <img alt="Company Logo" height="100"
+                src="https://storage.googleapis.com/a1aa/image/7UO4OiBGfwwOIyahsJLMoMvogsUY4iB9cpvDqjKMcotx4A1JA.jpg"
+                width="100" />
+            <nav class="nav flex-column">
+                <a class="nav-link" href="#">
+                    <i class="fas fa-truck">
+                    </i>
+                    Gestión de Proveedores
+                </a>
+                <a class="nav-link" href="#">
+                    <i class="fas fa-users">
+                    </i>
+                    Gestión de Clientes
+                </a>
+                <a class="nav-link" href="#">
+                    <i class="fas fa-user-cog">
+                    </i>
+                    Gestión de Usuarios
+                </a>
+                <a class="nav-link" href="#">
+                    <i class="fas fa-chart-bar">
+                    </i>
+                    Reportes
+                </a>
+                <a class="nav-link active" href="#">
+                    <i class="fas fa-cogs">
+                    </i>
+                    Mantenimiento
+                </a>
+                <a class="nav-link" href="#">
+                    <i class="fas fa-info-circle">
+                    </i>
+                    Acerca de
+                </a>
+            </nav>
+            <a class="nav-link logout" href="#">
+                <i class="fas fa-sign-out-alt">
+                </i>
+                Cerrar Sesión
+            </a>
+        </div>
+        <div class="content flex-grow-1">
+            <div class="content-header d-flex align-items-center">
+                <h1>
+                    Mantenimiento
+                </h1>
+                <img alt="Company Logo" height="50"
+                    src="https://storage.googleapis.com/a1aa/image/7UO4OiBGfwwOIyahsJLMoMvogsUY4iB9cpvDqjKMcotx4A1JA.jpg"
+                    width="50" />
+                <i class="fas fa-question-circle">
+                </i>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    Respaldo de la Base de Datos
+                </div>
+                <div class="card-body">
+                    <input class="form-control" placeholder="Ruta de respaldo" type="text" />
+                    <button>
+                        Buscar
+                    </button>
+                    <button>
+                        Respaldar
+                    </button>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    Restaurar Base de Datos
+                </div>
+                <div class="card-body">
+                    <input class="form-control" placeholder="Ruta de restauración" type="text" />
+                    <button>
+                        Buscar
+                    </button>
+                    <button>
+                        Restaurar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
