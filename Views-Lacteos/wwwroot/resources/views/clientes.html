@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Clientes</title>
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/resources/public/css/cliente/clientes.css">
+    <link rel="shortcut icon" href="/resources/public/img/logo.png" type="image/x-icon">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="sidebar">
+                <div>
+                    <a href="/resources/views/home.html">
+                        <img alt="Company Logo" height="200" src="/resources/public/img/logo.png" width="200" />
+                    </a>
+                </div>
+                <a href="/resources/views/Proveedores.html">
+                    <i class="fas fa-truck">
+                    </i>
+                    Gestión de proveedores
+                </a>
+                <a href="/resources/views/clientes.html">
+                    <i class="fas fa-users">
+                    </i>
+                    Gestión de Clientes
+                </a>
+                <a href="/resources/views/usuarios.html">
+                    <i class="fas fa-user-cog">
+                    </i>
+                    Gestión de Usuarios
+                </a>
+                <a href="#">
+                    <i class="fas fa-flag">
+                    </i>
+                    Reportes
+                </a>
+                <a href="#">
+                    <i class="fas fa-tools">
+                    </i>
+                    Mantenimiento
+                </a>
+                <a href="#">
+                    <i class="fas fa-info-circle">
+                    </i>
+                    Acerca de
+                </a>
+                <a href="/index.html">
+                    <i class="fas fa-sign-out-alt">
+                    </i>
+                    Cerrar sesión
+                </a>
+            </div>
+            <div class="col-10 content">
+                <div class="header">                    
+                    <a>
+                        <i class="fas fa-users">
+                        </i>
+                        Gestión de Clientes
+                    </a>
+                    <i class="fas fa-question-circle">
+                    </i>
+                </div>
+                <div class="mt-4">
+                    <form>
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label>
+                                    Nombre:
+                                </label>
+                                <input id="txtNombre" class="form-control" type="text" />
+                            </div>
+                            <div class="col">
+                                <label>
+                                    Apellido:
+                                </label>
+                                <input id="txtApellido" class="form-control" type="text" />
+                            </div>
+                            <div class="col">
+                                <label>
+                                    Cédula:
+                                </label>
+                                <input id="txtRUC" maxlength="14" class="form-control" type="text" />
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label>
+                                    Teléfono:
+                                </label>
+                                <input id="txtTelefono" class="form-control" type="text" />
+                            </div>
+                            <div class="col">
+                                <label>
+                                    Dirección:
+                                </label>
+                                <input id="txtDireccion" class="form-control" type="text" />
+                            </div>
+                            <div class="col">
+                                <div>
+                                    <input checked="" id="crear" name="registro" type="radio" />
+                                    <label for="crear">
+                                        Crear
+                                    </label>
+                                    <input id="editar" name="registro" type="radio" />
+                                    <label for="editar">
+                                        Editar
+                                    </label>
+                                    <input id="eliminar" name="registro" type="radio" />
+                                    <label for="eliminar">
+                                        Eliminar
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button id="btnCrear" class="btn" type="button">
+                                Registrar
+                            </button>
+                            <button id="btnEditar" class="btn" type="button">
+                                Modificar
+                            </button>
+                            <button id="btnEliminar" class="btn" type="button">
+                                Eliminar
+                            </button>
+                            <button id="btnCancelar" class="btn" type="button">
+                                Cancelar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="mt-4">
+                    <div class="row mb-3">
+                        <div class="col">
+                            <label>
+                                Búsqueda por:
+                            </label>
+                            <input class="form-control" type="text" />
+                        </div>
+                        <div class="col">
+                            <button class="btn mt-4" type="button">
+                                Buscar
+                            </button>
+                            <button class="btn mt-4" type="button">
+                                Actualizar
+                            </button>
+                        </div>
+                    </div>
+                    <table id="tablaClientes" class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Nombre
+                                </th>
+                                <th>
+                                    Apellido
+                                </th>
+                                <th>
+                                    RUC
+                                </th>
+                                <th>
+                                    Direccion
+                                </th>
+                                <th>
+                                    Telefono
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="/resources/public/js/cliente/cliente.js"></script>
+</body>
+
+</html>

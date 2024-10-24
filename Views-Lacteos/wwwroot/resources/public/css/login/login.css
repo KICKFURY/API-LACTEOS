@@ -1,0 +1,70 @@
+body {
+    background-color: #FFF8E1;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 20px;
+}
+
+.login-box {
+    background-color: #FFFFFF;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+}
+
+.login-box .input-group {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.login-box .input-group i {
+    color: #8B0000;
+    margin-right: 10px;
+}
+
+.login-box input {
+    width: 200px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.login-box button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #8B0000;
+    color: #FFFFFF;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.login-box button.cancel {
+    background-color: #5D4037;
+}
+
+.login-box a {
+    color: #8B0000;
+    text-decoration: none;
+    font-size: 14px;
+}

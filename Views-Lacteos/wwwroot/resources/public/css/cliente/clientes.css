@@ -1,0 +1,60 @@
+@import '../menu.css';
+@import '../header.css';
+@import '../content.css';
+@import '../colores.css';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #F8F5EC;
+}
+
+/* .container-fluid {
+    display:flex;
+    flex-wrap:inherit;
+    align-items:center;
+    justify-content:space-between
+} */
+
+.content {
+    width: 800px;
+}
+
+.form-control,
+.btn {
+    margin-bottom: 10px;
+}
+
+.btn {
+    background-color: #4A0D0D;
+    color: white;
+}
+
+.btn:hover {
+    background-color: #6E1E1E;
+    color: var(--color-white);
+}
+
+.table {
+    margin-top: 20px;
+}
+
+.table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th, 
+.table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px soli #ccc;
+}
+
+.table th {
+    background-color: #D3D3D3;
+}

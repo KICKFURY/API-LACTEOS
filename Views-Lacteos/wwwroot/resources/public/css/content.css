@@ -1,0 +1,7 @@
+.content {
+    margin-left: 250px;
+    padding: 5px;
+    flex-grow: 1;
+    background-color: var(--color-yellow);
+    color: var(--color-brown);
+}

@@ -1,0 +1,49 @@
+@import '../menu.css';
+@import '../header.css';
+@import '../content.css';
+@import '../colores.css';
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #F5F5DC;
+}
+
+.form-container {
+    background-color: #FAFAD2;
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid #8B0000;
+}
+
+.form-container input,
+.form-container select {
+    margin-bottom: 10px;
+}
+
+.form-container .btn {
+    background-color: #8B0000;
+    color: white;
+    border: none;
+}
+
+.form-container .btn:hover {
+    background-color: #A52A2A;
+}
+
+.table-container {
+    margin-top: 20px;
+}
+
+.table thead {
+    background-color: #8B0000;
+    color: white;
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: #F5F5F5;
+}
+
+.table tbody tr:nth-child(odd) {
+    background-color: #FFFFFF;
+}

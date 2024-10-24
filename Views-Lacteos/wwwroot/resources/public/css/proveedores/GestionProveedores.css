@@ -1,0 +1,149 @@
+@import '../menu.css';
+@import '../header.css';
+@import '../content.css';
+@import '../colores.css';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #F5F5DC;
+    font-size: 18px;
+}
+
+.container {
+    display: flex;
+}
+
+.content {
+    margin-left: 250px;
+    padding: 5px;
+    flex-grow: 1;
+    background-color: var(--color-yellow);
+    color: var(--color-brown);
+}
+
+.form-container {
+    background-color: var(--color-yellow);
+    padding: 20px;
+    border-radius: 5px;
+    margin: 10px;
+    border: 1px solid #000;
+    display: flex;
+    align-items: center;
+}
+
+.forms {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}
+
+.forms > div {
+    display: flex;
+    align-items: center;
+}
+
+.forms > div > label  {
+    width: 16ch;
+}
+
+
+.forms > div > input, 
+.forms > div > select {
+    margin-left: 15px;
+}
+
+.container-radio-and-buttons {
+    width: 500px;
+    margin-left: 0px;
+}
+
+.buscadorRUC {
+    margin: 35px 0;
+}
+
+.radio-group {
+    display: flex;
+}
+
+.radio-group > div {
+    display: flex;
+    align-items: center;
+}
+
+.radio-group > div > input {
+    margin-right: 5px;
+}
+
+input[type=text], select {
+    width: 120px;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.buttons button {
+    width: 100px;
+}
+
+.buttons button:disabled:hover {
+    cursor: not-allowed;
+}
+
+.form-container .radio-group label {
+    margin-right: 20px;
+}
+
+.form-container .buttons button,
+.search-container button {
+    background-color: var(--color-red);
+    color: var(--color-white);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.form-container .buttons button:hover,
+.search-container button:hover {
+    background-color: var(--color-hover);
+}
+
+.table-container {
+    margin-top: 20px;
+}
+
+.table-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-container th, 
+.table-container td {
+    padding: 10px;
+    text-align: left;
+    border: 1px soli #ccc;
+}
+
+.table-container th {
+    background-color: #D3D3D3;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.search-container input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}   

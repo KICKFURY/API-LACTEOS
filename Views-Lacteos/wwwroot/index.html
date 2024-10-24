@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/resources/public/css/login/login.css">
+    <link rel="shortcut icon" href="/resources/public/img/logo.png" type="image/x-icon">
+</head>
+
+<body>
+    <div class="container">
+        <center>
+            <img alt="Logo of a farm with cows and a barn" class="logo" height="150"
+            src="/resources/public/img/logo.png"
+            width="150" />
+        </center>
+        <div class="login-box">
+            <div class="input-group">
+                <i class="fas fa-user">
+                </i>
+                <input id="txtUsername" placeholder="Usuario" type="text" />
+            </div>
+            <div class="input-group">
+                <i class="fas fa-lock">
+                </i>
+                <input id="txtPassword" placeholder="Contraseña" type="password" />
+            </div>
+            <button id="btnIniciar">
+                Iniciar
+            </button>
+            <button class="cancel">
+                Cancelar
+            </button>
+            <a href="#">
+                ¿Olvidaste la Contraseña?
+            </a>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.js"></script>
+    <script type="module" src="/resources/public/js/login/login.js"></script>
+</body>
+
+</html>

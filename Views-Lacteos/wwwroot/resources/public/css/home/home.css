@@ -1,0 +1,48 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #fdf8f2;
+}
+.sidebar {
+    width: 250px;
+    background-color: #fdf8f2;
+    position: fixed;
+    height: 100%;
+    padding-top: 20px;
+    border-right: 1px solid #d3c4b7;
+}
+.sidebar img {
+    display: block;
+    margin: 0 auto;
+    width: 150px;
+    height: 150px;
+}
+.sidebar a {
+    display: block;
+    color: #6b2c1a;
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 18px;
+}
+.sidebar > a:hover {
+    background-color: #e6dcd5;
+}
+.sidebar a i {
+    margin-right: 10px;
+}
+.content {
+    margin-left: 250px;
+    padding: 20px;
+}
+.content .header {
+    background-color: #d3c4b7;
+    padding: 10px;
+    font-size: 24px;
+    color: #6b2c1a;
+}
+.content img {
+    display: block;
+    margin: 50px auto;
+    width: 300px;
+    height: 300px;
+}

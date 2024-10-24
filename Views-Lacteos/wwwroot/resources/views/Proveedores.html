@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion de Proveedores</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/resources/public/css/proveedores/GestionProveedores.css">
+    <link rel="shortcut icon" href="/resources/public/img/logo.png" type="image/x-icon">
+</head>
+
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div>
+                <a href="/resources/views/home.html">
+                    <img alt="Company Logo" height="200" src="/resources/public/img/logo.png" width="200" />
+                </a>
+            </div>
+            <a href="#">
+                <i class="fas fa-truck">
+                </i>
+                Gestión de proveedores
+            </a>
+            <a href="/resources/views/clientes.html">
+                <i class="fas fa-users">
+                </i>
+                Gestión de Clientes
+            </a>
+            <a href="/resources/views/usuarios.html">
+                <i class="fas fa-user-cog">
+                </i>
+                Gestión de Usuarios
+            </a>
+            <a href="#">
+                <i class="fas fa-flag">
+                </i>
+                Reportes
+            </a>
+            <a href="#">
+                <i class="fas fa-tools">
+                </i>
+                Mantenimiento
+            </a>
+            <a href="#">
+                <i class="fas fa-info-circle">
+                </i>
+                Acerca de
+            </a>
+            <a href="#">
+                <i class="fas fa-sign-out-alt">
+                </i>
+                Cerrar sesión
+            </a>
+        </div>
+        <div class="content">
+            <div class="header">
+                <a>
+                    <i class="fas fa-truck">
+                    </i>
+                    Gestión de proveedores
+                </a>
+                <i class="fas fa-question-circle">
+                </i>
+            </div>
+            <div class="form-container">
+                <div class="forms">
+                    <div>
+                        <label for="fecha">
+                            Fecha de Registro:
+                        </label>
+                        <input id="fecha" name="fecha" type="date" value="2024-09-15" />
+                    </div>
+                    <div>
+                        <label for="nombre">
+                            Nombre:
+                        </label>
+                        <input id="nombre" name="nombre" type="text" />
+                    </div>
+                    <div>
+                        <label for="cedula">
+                            Cédula:
+                        </label>
+                        <input id="cedula" placeholder="4411111111111G" name="cedula" type="text" />
+                    </div>
+                    <div>
+                        <label for="telefono">
+                            Teléfono:
+                        </label>
+                        <input id="telefono" maxlength="8" placeholder="55555555" name="telefono" type="text" />
+                    </div>
+                    <div>
+                        <label for="estado">
+                            Estado:
+                        </label>
+                        <select id="estado" name="estado">
+                            <option value="Activo">
+                                Activo
+                            </option>
+                            <option value="Inactivo">
+                                Inactivo
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="container-radio-and-buttons">
+                    <div class="radio-group">
+                        <div>
+                            <input checked="" id="rdaCrear" name="action" type="radio" value="crear" />
+                            <label for="rdaCrear">
+                                Crear
+                            </label>
+                        </div>
+                        <div>
+                            <input id="rdaEditar" name="action" type="radio" value="editar" />
+                            <label for="rdaEditar">
+                                Editar
+                            </label>
+                        </div>
+                        <div>
+                            <input id="rdaEliminar" name="action" type="radio" value="eliminar" />
+                            <label for="rdaEliminar">
+                                Eliminar
+                            </label>
+                        </div>
+                    </div>
+                    <div class="buscadorRUC">
+                        <label for="Busquedacedula" id="lbaBuscador">
+                            Cédula:
+                        </label>
+                        <input id="Busquedacedula" maxlength="14" placeholder="4411111111111G" name="Busquedacedula" type="text" />
+                    </div>
+                    <div class="buttons">
+                        <button id="btnCrear">
+                            Registrar
+                        </button>
+                        <button id="btnEditar" disabled>
+                            Editar
+                        </button>
+                        <button id="btnEliminar" disabled>
+                            Eliminar
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="search-container">
+                <label for="ruc">
+                    Ingrese el RUC del Proveedor:
+                </label>
+                <input id="ruc" name="ruc" type="text" />
+                <button id="btnCargar">
+                    Cargar Tabla
+                </button>
+            </div>
+            <div class="table-container">
+                <table id="idProveedoresTabla">
+                    <thead>
+                        <tr>
+                            <th>
+                                Nombre
+                            </th>
+                            <th>
+                                Teléfono
+                            </th>
+                            <th>
+                                RUC
+                            </th>
+                            <th>
+                                Estado
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="/resources/public/js/proveedores/proveedor.js"></script>
+</body>
+</html>
