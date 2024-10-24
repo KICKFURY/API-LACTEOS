@@ -1,141 +1,123 @@
-﻿//using API_LACTEOS.Models;
-//using Microsoft.AspNetCore.Http;
-//using Microsoft.AspNetCore.Mvc;
-//using Microsoft.EntityFrameworkCore;
+﻿using API_LACTEOS.Models;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
-//namespace API_LACTEOS.Controllers
-//{
-//    [Route("api/[controller]")]
-//    [ApiController]
-//    public class ProductoController : ControllerBase
-//    {
-//        public readonly LacteosLaGranja1Context _dbcontext;
+namespace API_LACTEOS.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class ProductoController : ControllerBase
+    {
+        public readonly LacteosBdContext _dbcontext;
 
-//        public ProductoController(LacteosLaGranja1Context _context)
-//        {
-//            _dbcontext = _context;
-//        }
+        public ProductoController(LacteosBdContext _context)
+        {
+            _dbcontext = _context;
+        }
 
-//        [HttpGet]
-//        [Route("Lista")]
-//        public IActionResult Lista()
-//        {
+        [HttpGet]
+        [Route("Lista")]
+        public IActionResult Lista()
+        {
+            List<Producto> lista = new();
+            try
+            {
+                lista = _dbcontext.Productos.ToList();
+                return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok", response = lista });
 
-//            List<Producto> lista = new();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status200OK, new { mensaje = ex.Message, response = lista });
+            }
+        }
 
-//            try
-//            {
-//                lista = _dbcontext.Productos.ToList();
+        [HttpGet]
+        [Route("Obtener/{nombreProducto}")]
+        public IActionResult Obtener(string nombreProducto)
+        {
+            Producto oProducto = new Producto();
+            try
+            {
+                oProducto = _dbcontext.Productos.Where(p => p.NombreProducto == nombreProducto).FirstOrDefault();
+                return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok", response = oProducto });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new { mensaje = ex.Message, response = oProducto });
+            }
+        }
 
-//                return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok", response = lista });
+        [HttpPost]
+        [Route("Guardar/{nombre}&{descripcion}&{precio}&{cantidad}&{idTipoProducto}&{minimoStock}&{idUnidadMedida}&{fechaExpiracion}")]
+        public IActionResult Guardar(string nombre, string descripcion, int precio, int cantidad, int idTipoProducto, int minimoStock, int idUnidadMedida, DateTime fechaExpiracion)
+        {
+            Producto producto = new Producto();
+            try
+            {
+                producto.NombreProducto = nombre;
+                producto.DescripcionProducto = descripcion;
+                producto.PrecioProducto = precio;
+                producto.CantidadProducto = cantidad;
+                producto.IdTipoProducto = idTipoProducto;
+                producto.MinimoStockProducto = minimoStock;
+                producto.IdUnidadMedida = idUnidadMedida;
+                producto.FechaExpiracionProducto = fechaExpiracion;
+                _dbcontext.Productos.Add(producto);
+                _dbcontext.SaveChanges();
 
-//            }
-//            catch (Exception ex)
-//            {
+                return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok" });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new { mensaje = ex.Message });
+            }
+        }
 
-//                return StatusCode(StatusCodes.Status200OK, new { mensaje = ex.Message, response = lista });
-//            }
+        [HttpPut]
+        [Route("Editar/{nombre}&{descripcion}&{precio}&{cantidad}&{idTipoProducto}&{minimoStock}&{idUnidadMedida}&{fechaExpiracion}")]
+        public IActionResult Editar(string nombre, string descripcion, int precio, int cantidad, int idTipoProducto, int minimoStock, int idUnidadMedida, DateTime fechaExpiracion)
+        {
+            Producto producto = new Producto();
+            try
+            {
+                producto = _dbcontext.Productos.Where(p => p.NombreProducto == nombre).FirstOrDefault();
+                producto.NombreProducto = nombre;
+                producto.DescripcionProducto = descripcion;
+                producto.PrecioProducto = precio;
+                producto.CantidadProducto = cantidad;
+                producto.IdTipoProducto = idTipoProducto;
+                producto.MinimoStockProducto = minimoStock;
+                producto.IdUnidadMedida = idUnidadMedida;
+                producto.FechaExpiracionProducto = fechaExpiracion;
+                _dbcontext.Productos.Update(producto);
+                _dbcontext.SaveChanges();
+                return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok" });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new { mensaje = ex.Message });
+            }
+        }
 
-//        }
+        [HttpDelete]
+        [Route("Eliminar/{nombreProducto}")]
+        public IActionResult Eliminar(string nombreProducto)
+        {
+            Producto oProducto = new Producto();
 
-//        [HttpGet]
-//        [Route("Obtener/{idProducto:int}")]
-//        public IActionResult Obtener(int idProducto)
-//        {
-//            Producto oProducto = _dbcontext.Productos.Find(idProducto);
-
-//            if (oProducto == null)
-//            {
-//                return BadRequest("Producto no encontrado");
-//            }
-
-//            try
-//            {
-//                oProducto = _dbcontext.Productos.Where(p => p.Id == idProducto).FirstOrDefault();
-
-//                return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok", response = oProducto });
-//            }
-//            catch (Exception ex)
-//            {
-//                return StatusCode(StatusCodes.Status500InternalServerError, new { mensaje = ex.Message, response = oProducto });
-//            }
-//        }
-
-//        [HttpPost]
-//        [Route("Guardar")]
-//        public IActionResult Guardar([FromBody] Producto objeto)
-//        {
-//            try
-//            {
-//                _dbcontext.Productos.Add(objeto);
-//                _dbcontext.SaveChanges();
-
-//                return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok" });
-//            }
-//            catch (Exception ex)
-//            {
-//                return StatusCode(StatusCodes.Status500InternalServerError, new { mensaje = ex.Message });
-//            }
-//        }
-
-//        [HttpPut]
-//        [Route("Editar")]
-//        public IActionResult Editar([FromBody] Producto objeto)
-//        {
-//            Producto oProducto = _dbcontext.Productos.Find(objeto.Id);
-
-//            if (oProducto == null)
-//            {
-//                return BadRequest("Producto no encontrado");
-//            }
-//            try
-//            {
-//                oProducto.NombreProducto = objeto.NombreProducto is null ? oProducto.NombreProducto : objeto.NombreProducto;
-//                oProducto.DescripcionProducto = objeto.DescripcionProducto is null ? oProducto.DescripcionProducto : objeto.DescripcionProducto;
-//                oProducto.PrecioProducto = objeto.PrecioProducto;
-//                oProducto.CantidadProducto = objeto.CantidadProducto;
-//                oProducto.MinimoStockProducto = objeto.MinimoStockProducto;
-//                oProducto.FechaExpiracionProducto = objeto.FechaExpiracionProducto != default ? objeto.FechaExpiracionProducto : DateTime.MinValue;
-
-
-//                _dbcontext.Productos.Update(oProducto);
-//                _dbcontext.SaveChanges();
-
-//                return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok" });
-
-
-//            }
-//            catch (Exception ex)
-//            {
-//                return StatusCode(StatusCodes.Status500InternalServerError, new { mensaje = ex.Message });
-//            }
-
-
-
-//        }
-
-//        [HttpDelete]
-//        [Route("Eliminar/{id:int}")]
-//        public IActionResult Eliminar(int Id)
-//        {
-//            Producto oProducto = _dbcontext.Productos.Find(Id);
-
-//            if (oProducto == null)
-//            {
-//                return BadRequest("Producto no encontrado");
-//            }
-
-//            try
-//            {
-//                _dbcontext.Productos.Remove(oProducto);
-//                _dbcontext.SaveChanges();
-
-//                return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok" });
-//            }
-//            catch (Exception ex)
-//            {
-//                return StatusCode(StatusCodes.Status500InternalServerError, new { mensaje = ex.Message });
-//            }
-//        }
-//    }
-//}
+            try
+            {
+                oProducto = _dbcontext.Productos.Where(p => p.NombreProducto == nombreProducto).FirstOrDefault();
+                _dbcontext.Productos.Remove(oProducto);
+                _dbcontext.SaveChanges();
+                return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok" });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new { mensaje = ex.Message });
+            }
+        }
+    }
+}
