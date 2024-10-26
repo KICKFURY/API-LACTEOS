@@ -7,7 +7,7 @@ function GET(url, mensageError, callback) {
         .catch(error => console.log(mensageError, error))
 }
 
-function GETTABLARUC(url,  mensageError, callback) {
+function GETTABLARUC(url, mensageError, callback) {
     fetch(url)
     .then(response => response.json())
     .then(data => {
@@ -17,7 +17,7 @@ function GETTABLARUC(url,  mensageError, callback) {
 }
 
 function POST(url, mensageOK, mensageError, callback) {
-    fetch(`${url}`,
+    fetch(url,
         {
             method: 'POST',
             headers: {

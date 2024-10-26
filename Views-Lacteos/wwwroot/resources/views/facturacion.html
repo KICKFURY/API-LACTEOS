@@ -57,10 +57,10 @@
             <form>
                 <div class="row mb-3">
                     <div class="col-md-4">
-                        <label class="form-label" for="vendedor">
+                        <label class="form-label" for="txtVendedor">
                             Vendedor:
                         </label>
-                        <input class="form-control" id="vendedor" type="text" />
+                        <input class="form-control" id="txtVendedor" type="text" />
                     </div>
                     <div class="col-md-4">
                         <label class="form-label" for="fechaVenta">
@@ -69,10 +69,10 @@
                         <input class="form-control" id="fechaVenta" type="date" value="2024-09-15" />
                     </div>
                     <div class="col-md-4">
-                        <label class="form-label" for="no">
+                        <label class="form-label" for="txtNumeroFactura">
                             No:
                         </label>
-                        <input class="form-control" id="no" type="text" />
+                        <input class="form-control" id="txtNumeroFactura" type="text" />
                     </div>
                 </div>
                 <div class="row mb-3">
@@ -84,10 +84,10 @@
                                     Cliente
                                 </label>
                             </div>
-                            <label class="form-label" for="cedulaCliente">
+                            <label class="form-label" for="txtCedulaCliente">
                                 Cédula del Cliente:
                             </label>
-                            <input class="form-control" id="cedulaCliente" type="text" />
+                            <input class="form-control" id="txtCedulaCliente" type="text" />
                             <label class="form-label" for="nombreCliente">
                                 Nombre del Cliente:
                             </label>
@@ -102,37 +102,37 @@
                                     Producto
                                 </label>
                             </div>
-                            <label class="form-label" for="producto">
+                            <label class="form-label" for="txtProducto">
                                 Producto:
                             </label>
-                            <input class="form-control" id="producto" type="text" />
-                            <label class="form-label" for="stock">
+                            <input class="form-control" id="txtProducto" type="text" />
+                            <label class="form-label" for="txtStock">
                                 Stock:
                             </label>
-                            <input class="form-control" id="stock" type="text" />
-                            <label class="form-label" for="precio">
+                            <input class="form-control" id="txtStock" type="text" />
+                            <label class="form-label" for="txtPrecio">
                                 Precio:
                             </label>
-                            <input class="form-control" id="precio" type="text" />
-                            <label class="form-label" for="tipoPago">
+                            <input class="form-control" id="txtPrecio" type="text" />
+                            <label class="form-label" for="cmbTipoPago">
                                 Tipo de Pago:
                             </label>
-                            <select class="form-select" id="tipoPago">
-                                <option>
+                            <select class="form-select" id="cmbTipoPago">
+                                <option value="Contado">
                                     Contado
                                 </option>
-                                <option>
+                                <option value="Crédito">
                                     Crédito
                                 </option>
                             </select>
-                            <label class="form-label" for="cantidad">
+                            <label class="form-label" for="txtCantidad">
                                 Cantidad:
                             </label>
-                            <input class="form-control" id="cantidad" type="text" />
+                            <input class="form-control" id="txtCantidad" type="text" />
                         </div>
                     </div>
                 </div>
-                <button class="btn btn-custom mb-3" type="button">
+                <button id="btnAgregar" class="btn btn-custom mb-3" type="button">
                     Agregar
                 </button>
                 <table class="table table-bordered">
@@ -159,65 +159,26 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>
-                                Cell 1
-                            </td>
-                            <td>
-                                Cell 2
-                            </td>
-                            <td>
-                                Cell 3
-                            </td>
-                            <td>
-                                Cell 4
-                            </td>
-                            <td>
-                                Cell 5
-                            </td>
-                            <td>
-                                Cell 6
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Cell 7
-                            </td>
-                            <td>
-                                Cell 8
-                            </td>
-                            <td>
-                                Cell 9
-                            </td>
-                            <td>
-                                Cell 10
-                            </td>
-                            <td>
-                                Cell 11
-                            </td>
-                            <td>
-                                Cell 12
-                            </td>
-                        </tr>
                     </tbody>
                 </table>
                 <div class="d-flex justify-content-between">
-                    <button class="btn btn-custom" type="button">
+                    <button id="btnFacturar" class="btn btn-custom" type="button">
                         Facturar
                     </button>
                     <button class="btn btn-custom" type="button">
                         Cancelar
                     </button>
                     <div>
-                        <label class="form-label" for="total">
+                        <label class="form-label" for="txtTotal">
                             Total:
                         </label>
-                        <input class="form-control d-inline-block" id="total" style="width: 100px;" type="text" />
+                        <input class="form-control d-inline-block" id="txtTotal" style="width: 100px;" type="text" />
                     </div>
                 </div>
             </form>
         </div>
     </div>
+    <script type="module" src="/resources/public/js/facturacion/facturacion.js"></script>
 </body>
 
 </html>
