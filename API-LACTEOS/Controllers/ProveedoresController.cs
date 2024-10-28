@@ -96,7 +96,7 @@ namespace API_LACTEOS.Controllers
 
         [HttpDelete]
         [Route("Eliminar/{ruc}")]
-        public IActionResult Eliminar1(string ruc) 
+        public IActionResult Eliminar1(string ruc)
         {
             Proveedore oProveedore = new Proveedore();
             try

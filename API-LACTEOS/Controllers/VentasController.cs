@@ -117,7 +117,7 @@ namespace API_LACTEOS.Controllers
                         _dbcontext.Ventas.Add(venta);
                         _dbcontext.SaveChanges();
                     }
-                    
+
                     var producto = _dbcontext.Productos.FirstOrDefault(p => p.NombreProducto == nombreProducto);
                     if (producto == null)
                     {

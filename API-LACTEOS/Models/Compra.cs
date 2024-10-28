@@ -15,6 +15,8 @@ public partial class Compra
 
     public DateTime FechaCompra { get; set; }
 
+    public string NumeroFacutura { get; set; } = null!;
+
     public virtual ICollection<DetallesCompra> DetallesCompras { get; set; } = new List<DetallesCompra>();
 
     public virtual Proveedore IdProveedorNavigation { get; set; } = null!;
