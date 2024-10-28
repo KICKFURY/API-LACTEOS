@@ -9,9 +9,9 @@
 //    [ApiController]
 //    public class DetallesPagoController : ControllerBase
 //    {
-//        public readonly LacteosLaGranja1Context _dbcontext;
+//        public readonly LacteosBdContext _dbcontext;
 
-//        public DetallesPagoController(LacteosLaGranja1Context _context)
+//        public DetallesPagoController(LacteosBdContext _context)
 //        {
 //            _dbcontext = _context;
 //        }

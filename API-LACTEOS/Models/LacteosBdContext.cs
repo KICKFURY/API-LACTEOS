@@ -58,9 +58,9 @@ public partial class LacteosBdContext : DbContext
     {
         modelBuilder.Entity<Cliente>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Clientes__3213E83F2E28FE7B");
+            entity.HasKey(e => e.Id).HasName("PK__Clientes__3213E83FEA89A469");
 
-            entity.HasIndex(e => e.Ruc, "UQ__Clientes__C2B74E613EB4A826").IsUnique();
+            entity.HasIndex(e => e.Ruc, "UQ__Clientes__C2B74E61AE9DC574").IsUnique();
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.ApellidoCliente)
@@ -90,7 +90,9 @@ public partial class LacteosBdContext : DbContext
 
         modelBuilder.Entity<Compra>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Compras__3213E83F87F1DBDE");
+            entity.HasKey(e => e.Id).HasName("PK__Compras__3213E83F1AE91C6E");
+
+            entity.HasIndex(e => e.NumeroFacutura, "UQ__Compras__B387EDB9AF399323").IsUnique();
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.FechaCompra)
@@ -98,6 +100,10 @@ public partial class LacteosBdContext : DbContext
                 .HasColumnName("fechaCompra");
             entity.Property(e => e.IdProveedor).HasColumnName("idProveedor");
             entity.Property(e => e.IdUsuario).HasColumnName("idUsuario");
+            entity.Property(e => e.NumeroFacutura)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("numeroFacutura");
             entity.Property(e => e.TotalCompra)
                 .HasColumnType("decimal(8, 2)")
                 .HasColumnName("totalCompra");
@@ -105,17 +111,17 @@ public partial class LacteosBdContext : DbContext
             entity.HasOne(d => d.IdProveedorNavigation).WithMany(p => p.Compras)
                 .HasForeignKey(d => d.IdProveedor)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Compras__idProve__45F365D3");
+                .HasConstraintName("FK__Compras__idProve__48CFD27E");
 
             entity.HasOne(d => d.IdUsuarioNavigation).WithMany(p => p.Compras)
                 .HasForeignKey(d => d.IdUsuario)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Compras__idUsuar__46E78A0C");
+                .HasConstraintName("FK__Compras__idUsuar__49C3F6B7");
         });
 
         modelBuilder.Entity<DetallesCompra>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Detalles__3213E83F9120B645");
+            entity.HasKey(e => e.Id).HasName("PK__Detalles__3213E83F369DE147");
 
             entity.ToTable("DetallesCompra");
 
@@ -129,17 +135,17 @@ public partial class LacteosBdContext : DbContext
 
             entity.HasOne(d => d.IdCompraNavigation).WithMany(p => p.DetallesCompras)
                 .HasForeignKey(d => d.IdCompra)
-                .HasConstraintName("FK__DetallesC__idCom__4BAC3F29");
+                .HasConstraintName("FK__DetallesC__idCom__4E88ABD4");
 
             entity.HasOne(d => d.IdProductoNavigation).WithMany(p => p.DetallesCompras)
                 .HasForeignKey(d => d.IdProducto)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__DetallesC__idPro__4CA06362");
+                .HasConstraintName("FK__DetallesC__idPro__4F7CD00D");
         });
 
         modelBuilder.Entity<DetallesVentum>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Detalles__3213E83F1B69B9C3");
+            entity.HasKey(e => e.Id).HasName("PK__Detalles__3213E83F1521C407");
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.CantidadVendida).HasColumnName("cantidadVendida");
@@ -152,16 +158,16 @@ public partial class LacteosBdContext : DbContext
             entity.HasOne(d => d.IdProductoNavigation).WithMany(p => p.DetallesVenta)
                 .HasForeignKey(d => d.IdProducto)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__DetallesV__idPro__59063A47");
+                .HasConstraintName("FK__DetallesV__idPro__5BE2A6F2");
 
             entity.HasOne(d => d.IdVentaNavigation).WithMany(p => p.DetallesVenta)
                 .HasForeignKey(d => d.IdVenta)
-                .HasConstraintName("FK__DetallesV__idVen__5812160E");
+                .HasConstraintName("FK__DetallesV__idVen__5AEE82B9");
         });
 
         modelBuilder.Entity<Devolucione>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Devoluci__3213E83FA4C4A10A");
+            entity.HasKey(e => e.Id).HasName("PK__Devoluci__3213E83FEFF72305");
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.CantidadDevuelta).HasColumnName("cantidadDevuelta");
@@ -175,16 +181,16 @@ public partial class LacteosBdContext : DbContext
             entity.HasOne(d => d.IdProductoNavigation).WithMany(p => p.Devoluciones)
                 .HasForeignKey(d => d.IdProducto)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Devolucio__idPro__619B8048");
+                .HasConstraintName("FK__Devolucio__idPro__6477ECF3");
 
             entity.HasOne(d => d.IdVentaNavigation).WithMany(p => p.Devoluciones)
                 .HasForeignKey(d => d.IdVenta)
-                .HasConstraintName("FK__Devolucio__idVen__60A75C0F");
+                .HasConstraintName("FK__Devolucio__idVen__6383C8BA");
         });
 
         modelBuilder.Entity<Estado>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Estado__3213E83FC029EDBA");
+            entity.HasKey(e => e.Id).HasName("PK__Estado__3213E83FB95ABDA9");
 
             entity.ToTable("Estado");
 
@@ -197,7 +203,7 @@ public partial class LacteosBdContext : DbContext
 
         modelBuilder.Entity<Pago>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Pagos__3213E83FEEA2E990");
+            entity.HasKey(e => e.Id).HasName("PK__Pagos__3213E83F2D764D75");
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.FechaPago)
@@ -212,12 +218,12 @@ public partial class LacteosBdContext : DbContext
             entity.HasOne(d => d.IdVentaNavigation).WithMany(p => p.Pagos)
                 .HasForeignKey(d => d.IdVenta)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Pagos__idVenta__5CD6CB2B");
+                .HasConstraintName("FK__Pagos__idVenta__5FB337D6");
         });
 
         modelBuilder.Entity<Perdida>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Perdidas__3213E83F35563940");
+            entity.HasKey(e => e.Id).HasName("PK__Perdidas__3213E83F92582D86");
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.CantidadPerdida).HasColumnName("cantidadPerdida");
@@ -233,12 +239,12 @@ public partial class LacteosBdContext : DbContext
             entity.HasOne(d => d.IdProductoNavigation).WithMany(p => p.Perdida)
                 .HasForeignKey(d => d.IdProducto)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Perdidas__idProd__656C112C");
+                .HasConstraintName("FK__Perdidas__idProd__68487DD7");
         });
 
         modelBuilder.Entity<Producto>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Producto__3213E83F4412F642");
+            entity.HasKey(e => e.Id).HasName("PK__Producto__3213E83F65165FC9");
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.CantidadProducto).HasColumnName("cantidadProducto");
@@ -263,17 +269,17 @@ public partial class LacteosBdContext : DbContext
             entity.HasOne(d => d.IdTipoProductoNavigation).WithMany(p => p.Productos)
                 .HasForeignKey(d => d.IdTipoProducto)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Productos__idTip__3D5E1FD2");
+                .HasConstraintName("FK__Productos__idTip__3F466844");
 
             entity.HasOne(d => d.IdUnidadMedidaNavigation).WithMany(p => p.Productos)
                 .HasForeignKey(d => d.IdUnidadMedida)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Productos__idUni__3E52440B");
+                .HasConstraintName("FK__Productos__idUni__403A8C7D");
         });
 
         modelBuilder.Entity<ProductosProveedore>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Producto__3213E83FF0373DE0");
+            entity.HasKey(e => e.Id).HasName("PK__Producto__3213E83F897C9883");
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.IdProducto).HasColumnName("idProducto");
@@ -281,16 +287,16 @@ public partial class LacteosBdContext : DbContext
 
             entity.HasOne(d => d.IdProductoNavigation).WithMany(p => p.ProductosProveedores)
                 .HasForeignKey(d => d.IdProducto)
-                .HasConstraintName("FK__Productos__idPro__4222D4EF");
+                .HasConstraintName("FK__Productos__idPro__440B1D61");
 
             entity.HasOne(d => d.IdProveedorNavigation).WithMany(p => p.ProductosProveedores)
                 .HasForeignKey(d => d.IdProveedor)
-                .HasConstraintName("FK__Productos__idPro__412EB0B6");
+                .HasConstraintName("FK__Productos__idPro__4316F928");
         });
 
         modelBuilder.Entity<Progreso>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Progreso__3213E83FC91FB373");
+            entity.HasKey(e => e.Id).HasName("PK__Progreso__3213E83F87C5CACB");
 
             entity.ToTable("Progreso");
 
@@ -303,9 +309,9 @@ public partial class LacteosBdContext : DbContext
 
         modelBuilder.Entity<Proveedore>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Proveedo__3213E83F05D9C4CB");
+            entity.HasKey(e => e.Id).HasName("PK__Proveedo__3213E83F0D5CF67F");
 
-            entity.HasIndex(e => e.RucProveedor, "UQ__Proveedo__0CBBF3D03E46ABA6").IsUnique();
+            entity.HasIndex(e => e.RucProveedor, "UQ__Proveedo__0CBBF3D0C0C165E8").IsUnique();
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.FechaCreacion)
@@ -330,12 +336,12 @@ public partial class LacteosBdContext : DbContext
             entity.HasOne(d => d.IdEstadoNavigation).WithMany(p => p.Proveedores)
                 .HasForeignKey(d => d.IdEstado)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Proveedor__idEst__38996AB5");
+                .HasConstraintName("FK__Proveedor__idEst__3A81B327");
         });
 
         modelBuilder.Entity<Role>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Roles__3213E83F5F9F4867");
+            entity.HasKey(e => e.Id).HasName("PK__Roles__3213E83F9FFCBA08");
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.NombreRol)
@@ -346,7 +352,7 @@ public partial class LacteosBdContext : DbContext
 
         modelBuilder.Entity<TipoProducto>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__TipoProd__3213E83FA3D0B912");
+            entity.HasKey(e => e.Id).HasName("PK__TipoProd__3213E83F1EBAAC52");
 
             entity.ToTable("TipoProducto");
 
@@ -359,7 +365,7 @@ public partial class LacteosBdContext : DbContext
 
         modelBuilder.Entity<UnidadesMedida>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Unidades__3213E83FBF574D97");
+            entity.HasKey(e => e.Id).HasName("PK__Unidades__3213E83F16CB73F2");
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.DescripcionUnidadMedida)
@@ -374,11 +380,11 @@ public partial class LacteosBdContext : DbContext
 
         modelBuilder.Entity<Usuario>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Usuarios__3213E83F1E3CAF6D");
+            entity.HasKey(e => e.Id).HasName("PK__Usuarios__3213E83F20FBF5A3");
 
-            entity.HasIndex(e => e.Correo, "UQ__Usuarios__2A586E0BF16C119A").IsUnique();
+            entity.HasIndex(e => e.Correo, "UQ__Usuarios__2A586E0B5F90A329").IsUnique();
 
-            entity.HasIndex(e => e.NombreUsuario, "UQ__Usuarios__A0436BD704C6C48F").IsUnique();
+            entity.HasIndex(e => e.NombreUsuario, "UQ__Usuarios__A0436BD7D6AD2916").IsUnique();
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.Contra)
@@ -393,8 +399,8 @@ public partial class LacteosBdContext : DbContext
                 .HasColumnType("datetime")
                 .HasColumnName("fechaCreacion");
             entity.Property(e => e.IdEstado)
-            .HasDefaultValue(1)
-            .HasColumnName("idEstado");
+                .HasDefaultValue(1)
+                .HasColumnName("idEstado");
             entity.Property(e => e.IdRole)
                 .HasDefaultValue(2)
                 .HasColumnName("idRole");
@@ -406,19 +412,19 @@ public partial class LacteosBdContext : DbContext
             entity.HasOne(d => d.IdEstadoNavigation).WithMany(p => p.Usuarios)
                 .HasForeignKey(d => d.IdEstado)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Usuarios__idEsta__30F848ED");
+                .HasConstraintName("FK__Usuarios__idEsta__32E0915F");
 
             entity.HasOne(d => d.IdRoleNavigation).WithMany(p => p.Usuarios)
                 .HasForeignKey(d => d.IdRole)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Usuarios__idRole__300424B4");
+                .HasConstraintName("FK__Usuarios__idRole__31EC6D26");
         });
 
         modelBuilder.Entity<Venta>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Ventas__3213E83F756CF6C3");
+            entity.HasKey(e => e.Id).HasName("PK__Ventas__3213E83F193EF567");
 
-            entity.HasIndex(e => e.NumeroFactura, "UQ__Ventas__16B1D021E08DB1AE").IsUnique();
+            entity.HasIndex(e => e.NumeroFactura, "UQ__Ventas__16B1D021D08739FE").IsUnique();
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.FechaVenta)
@@ -441,12 +447,12 @@ public partial class LacteosBdContext : DbContext
             entity.HasOne(d => d.IdClienteNavigation).WithMany(p => p.Venta)
                 .HasForeignKey(d => d.IdCliente)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Ventas__idClient__52593CB8");
+                .HasConstraintName("FK__Ventas__idClient__5535A963");
 
             entity.HasOne(d => d.IdUsuarioNavigation).WithMany(p => p.Venta)
                 .HasForeignKey(d => d.IdUsuario)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Ventas__idUsuari__534D60F1");
+                .HasConstraintName("FK__Ventas__idUsuari__5629CD9C");
         });
 
         OnModelCreatingPartial(modelBuilder);
