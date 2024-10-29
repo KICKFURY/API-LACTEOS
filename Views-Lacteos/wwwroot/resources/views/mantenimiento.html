@@ -12,89 +12,50 @@
 
 <body>
     <div class="d-flex">
-        <div class="sidebar p-3">
-            <img alt="Company Logo" height="100"
-                src="https://storage.googleapis.com/a1aa/image/7UO4OiBGfwwOIyahsJLMoMvogsUY4iB9cpvDqjKMcotx4A1JA.jpg"
-                width="100" />
-            <nav class="nav flex-column">
-                <a class="nav-link" href="#">
-                    <i class="fas fa-truck">
-                    </i>
-                    Gestión de Proveedores
-                </a>
-                <a class="nav-link" href="#">
-                    <i class="fas fa-users">
-                    </i>
-                    Gestión de Clientes
-                </a>
-                <a class="nav-link" href="#">
-                    <i class="fas fa-user-cog">
-                    </i>
-                    Gestión de Usuarios
-                </a>
-                <a class="nav-link" href="#">
-                    <i class="fas fa-chart-bar">
-                    </i>
-                    Reportes
-                </a>
-                <a class="nav-link active" href="#">
-                    <i class="fas fa-cogs">
-                    </i>
-                    Mantenimiento
-                </a>
-                <a class="nav-link" href="#">
-                    <i class="fas fa-info-circle">
-                    </i>
-                    Acerca de
-                </a>
-            </nav>
-            <a class="nav-link logout" href="#">
-                <i class="fas fa-sign-out-alt">
-                </i>
-                Cerrar Sesión
-            </a>
-        </div>
+        <div id="contents"></div>
         <div class="content flex-grow-1">
-            <div class="content-header d-flex align-items-center">
-                <h1>
-                    Mantenimiento
-                </h1>
-                <img alt="Company Logo" height="50"
-                    src="https://storage.googleapis.com/a1aa/image/7UO4OiBGfwwOIyahsJLMoMvogsUY4iB9cpvDqjKMcotx4A1JA.jpg"
-                    width="50" />
-                <i class="fas fa-question-circle">
-                </i>
-            </div>
-            <div class="card">
-                <div class="card-header">
-                    Respaldo de la Base de Datos
+            <div class="main">
+                <div class="topbar">
+                    <div class="toggle">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                    <h2> Gestión de Clientes</h2>
+                    <div class="help">
+                        <i class="fas fa-question-circle"></i>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <input class="form-control" placeholder="Ruta de respaldo" type="text" />
-                    <button>
-                        Buscar
-                    </button>
-                    <button>
-                        Respaldar
-                    </button>
+                <div class="card">
+                    <div class="card-header">
+                        Respaldo de la Base de Datos
+                    </div>
+                    <div class="card-body">
+                        <input class="form-control" placeholder="Ruta de respaldo" type="text" />
+                        <button>
+                            Buscar
+                        </button>
+                        <button>
+                            Respaldar
+                        </button>
+                    </div>
                 </div>
-            </div>
-            <div class="card">
-                <div class="card-header">
-                    Restaurar Base de Datos
-                </div>
-                <div class="card-body">
-                    <input class="form-control" placeholder="Ruta de restauración" type="text" />
-                    <button>
-                        Buscar
-                    </button>
-                    <button>
-                        Restaurar
-                    </button>
+                <div class="card">
+                    <div class="card-header">
+                        Restaurar Base de Datos
+                    </div>
+                    <div class="card-body">
+                        <input class="form-control" placeholder="Ruta de restauración" type="text" />
+                        <button>
+                            Buscar
+                        </button>
+                        <button>
+                            Restaurar
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    <script type="module" src="/resources/public/js/mantenimiento/mantenimiento.js"></script>
 </body>
 
 </html>

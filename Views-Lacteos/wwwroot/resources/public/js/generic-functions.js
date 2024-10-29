@@ -7,6 +7,15 @@ function GET(url, mensageError, callback) {
         .catch(error => console.log(mensageError, error))
 }
 
+function GETInterno(url, mensageError, callback) {
+    fetch(url)
+        .then(response => response.text())
+        .then(data => {
+            callback(data)
+        })
+        .catch(error => console.log(mensageError, error))
+}
+
 function GETTABLARUC(url, mensageError, callback) {
     fetch(url)
     .then(response => response.json())
@@ -65,4 +74,4 @@ function DELETE(url,  mensageOK, mensageError, callback) {
         .catch(error => console.log(mensageError, error))
 }
 
-export  { GET, GETTABLARUC, POST, PUT, DELETE };
+export  { GET, GETTABLARUC, GETInterno, POST, PUT, DELETE };

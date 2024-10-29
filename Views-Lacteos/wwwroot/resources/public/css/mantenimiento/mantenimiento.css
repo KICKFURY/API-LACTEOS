@@ -3,44 +3,6 @@ body {
     font-family: Arial, sans-serif;
 }
 
-.sidebar {
-    background-color: #fff;
-    border-right: 1px solid #ddd;
-    height: 100vh;
-    padding-top: 20px;
-}
-
-.sidebar img {
-    width: 100px;
-    display: block;
-    margin: 0 auto 20px;
-}
-
-.sidebar .nav-link {
-    color: #5a2d1a;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.sidebar .nav-link i {
-    margin-right: 10px;
-}
-
-.sidebar .nav-link.active {
-    background-color: #f8f1e4;
-    border-left: 4px solid #5a2d1a;
-}
-
-.sidebar .nav-link:hover {
-    background-color: #f8f1e4;
-}
-
-.sidebar .logout {
-    position: absolute;
-    bottom: 20px;
-    width: 100%;
-}
-
 .content {
     padding: 20px;
 }
@@ -52,19 +14,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
-
-.content-header img {
-    width: 50px;
-}
-
-.content-header h1 {
-    margin: 0;
-    font-size: 24px;
-}
-
-.content-header .fa-question-circle {
-    font-size: 24px;
 }
 
 .card {

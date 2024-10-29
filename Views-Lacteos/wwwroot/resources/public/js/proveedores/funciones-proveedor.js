@@ -36,10 +36,10 @@ function AddEvents() {
             CargarProveedorEnTabla()
         }
     })
-    let toggle = document.querySelector(".toggle");
-    toggle.onclick = function () {
-        Menutoggle()
-    }
+    // let toggle = document.querySelector(".toggle");
+    // toggle.onclick = function () {
+    //     Menutoggle()
+    // }
 }
 
 function CrearProveedor() {
@@ -150,18 +150,6 @@ function OcultarBuscadorRUC() {
     LimpiarControles()
     document.getElementById('Busquedacedula').style.display = 'none'
     document.getElementById('lbaBuscador').style.display = 'none'
-}
-
-function Menutoggle() {
-    let navigation = document.querySelector(".navigation");
-    let main = document.querySelector(".main");
-    let topbar = document.querySelector(".topbar");
-    let logoIcon = document.querySelector(".logo-icon");
-
-    navigation.classList.toggle("active");
-    main.classList.toggle("active");
-    topbar.classList.toggle("active");
-    logoIcon.classList.toggle("small");
 }
 
 export { ObtenerProveedores, AddEvents }

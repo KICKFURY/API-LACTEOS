@@ -1,6 +1,8 @@
 <html>
 
 <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Facturación</title>
     <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
@@ -8,174 +10,142 @@
 </head>
 
 <body>
-    <div class="d-flex">
-        <div class="sidebar">
-            <div class="logo">
-                <img alt="Company Logo" height="100"
-                    src="https://storage.googleapis.com/a1aa/image/QqpWGDthy3qIMxv5Ns3ibtGe5QtO2iuC9IgB0OjqyKfRICqTA.jpg"
-                    width="100"/>
-            </div>
-            <a class="active" href="#">
-                <i class="fas fa-file-invoice">
-                </i>
-                Facturación
-            </a>
-            <a href="#">
-                <i class="fas fa-users">
-                </i>
-                Gestión de Clientes
-            </a>
-            <a href="#">
-                <i class="fas fa-credit-card">
-                </i>
-                Gestión de Crédito
-            </a>
-            <a href="#">
-                <i class="fas fa-undo">
-                </i>
-                Devoluciones
-            </a>
-            <a href="#">
-                <i class="fas fa-info-circle">
-                </i>
-                Acerca de
-            </a>
-            <a class="mt-auto" href="#">
-                <i class="fas fa-sign-out-alt">
-                </i>
-                Cerrar Sesión
-            </a>
-        </div>
-        <div class="content flex-grow-1">
-            <div class="header d-flex align-items-center">
-                <i class="fas fa-file-invoice fa-2x">
-                </i>
-                <h2 class="mb-0">
-                    Facturación
-                </h2>
-            </div>
-            <form>
-                <div class="row mb-3">
-                    <div class="col-md-4">
-                        <label class="form-label" for="txtVendedor">
-                            Vendedor:
-                        </label>
-                        <input class="form-control" id="txtVendedor" type="text" />
+    <div class="sidebar">
+        <div id="contents"></div>
+        <div class="main">
+            <div class="content flex-grow-1">
+                <div class="topbar">
+                    <div class="toggle">
+                        <i class="fas fa-bars"></i>
                     </div>
-                    <div class="col-md-4">
-                        <label class="form-label" for="fechaVenta">
-                            Fecha de Venta:
-                        </label>
-                        <input class="form-control" id="fechaVenta" type="date" value="2024-09-15" />
-                    </div>
-                    <div class="col-md-4">
-                        <label class="form-label" for="txtNumeroFactura">
-                            No:
-                        </label>
-                        <input class="form-control" id="txtNumeroFactura" type="text" />
+                    <h2>Facturación</h2>
+                    <div class="help">
+                        <i class="fas fa-question-circle"></i>
                     </div>
                 </div>
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <div class="border p-3">
-                            <div class="form-check">
-                                <input checked="" class="form-check-input" id="cliente" name="tipo" type="radio" />
-                                <label class="form-check-label" for="cliente">
-                                    Cliente
-                                </label>
-                            </div>
-                            <label class="form-label" for="txtCedulaCliente">
-                                Cédula del Cliente:
+                <form>
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <label class="form-label" for="txtVendedor">
+                                Vendedor:
                             </label>
-                            <input class="form-control" id="txtCedulaCliente" type="text" />
-                            <label class="form-label" for="nombreCliente">
-                                Nombre del Cliente:
+                            <input class="form-control" id="txtVendedor" type="text" />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label" for="fechaVenta">
+                                Fecha de Venta:
                             </label>
-                            <input class="form-control" id="nombreCliente" type="text" />
+                            <input class="form-control" id="fechaVenta" type="date" value="2024-09-15" />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label" for="txtNumeroFactura">
+                                No:
+                            </label>
+                            <input class="form-control" id="txtNumeroFactura" type="text" />
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="border p-3">
-                            <div class="form-check">
-                                <input class="form-check-input" id="producto" name="tipo" type="radio" />
-                                <label class="form-check-label" for="producto">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <div class="border p-3">
+                                <div class="form-check">
+                                    <input checked="" class="form-check-input" id="cliente" name="tipo" type="radio" />
+                                    <label class="form-check-label" for="cliente">
+                                        Cliente
+                                    </label>
+                                </div>
+                                <label class="form-label" for="txtCedulaCliente">
+                                    Cédula del Cliente:
+                                </label>
+                                <input class="form-control" id="txtCedulaCliente" type="text" />
+                                <label class="form-label" for="nombreCliente">
+                                    Nombre del Cliente:
+                                </label>
+                                <input class="form-control" id="nombreCliente" type="text" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="border p-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" id="producto" name="tipo" type="radio" />
+                                    <label class="form-check-label" for="producto">
+                                        Producto
+                                    </label>
+                                </div>
+                                <label class="form-label" for="txtProducto">
+                                    Producto:
+                                </label>
+                                <input class="form-control" id="txtProducto" type="text" />
+                                <label class="form-label" for="txtStock">
+                                    Stock:
+                                </label>
+                                <input class="form-control" id="txtStock" type="text" />
+                                <label class="form-label" for="txtPrecio">
+                                    Precio:
+                                </label>
+                                <input class="form-control" id="txtPrecio" type="text" />
+                                <label class="form-label" for="cmbTipoPago">
+                                    Tipo de Pago:
+                                </label>
+                                <select class="form-select" id="cmbTipoPago">
+                                    <option value="Contado">
+                                        Contado
+                                    </option>
+                                    <option value="Crédito">
+                                        Crédito
+                                    </option>
+                                </select>
+                                <label class="form-label" for="txtCantidad">
+                                    Cantidad:
+                                </label>
+                                <input class="form-control" id="txtCantidad" type="text" />
+                            </div>
+                        </div>
+                    </div>
+                    <button id="btnAgregar" class="btn btn-custom mb-3" type="button">
+                        Agregar
+                    </button>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>
                                     Producto
-                                </label>
-                            </div>
-                            <label class="form-label" for="txtProducto">
-                                Producto:
+                                </th>
+                                <th>
+                                    Cantidad
+                                </th>
+                                <th>
+                                    Precio
+                                </th>
+                                <th>
+                                    Subtotal
+                                </th>
+                                <th>
+                                    Editar
+                                </th>
+                                <th>
+                                    Eliminar
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <div class="d-flex justify-content-between">
+                        <button id="btnFacturar" class="btn btn-custom" type="button">
+                            Facturar
+                        </button>
+                        <button class="btn btn-custom" type="button">
+                            Cancelar
+                        </button>
+                        <div>
+                            <label class="form-label" for="txtTotal">
+                                Total:
                             </label>
-                            <input class="form-control" id="txtProducto" type="text" />
-                            <label class="form-label" for="txtStock">
-                                Stock:
-                            </label>
-                            <input class="form-control" id="txtStock" type="text" />
-                            <label class="form-label" for="txtPrecio">
-                                Precio:
-                            </label>
-                            <input class="form-control" id="txtPrecio" type="text" />
-                            <label class="form-label" for="cmbTipoPago">
-                                Tipo de Pago:
-                            </label>
-                            <select class="form-select" id="cmbTipoPago">
-                                <option value="Contado">
-                                    Contado
-                                </option>
-                                <option value="Crédito">
-                                    Crédito
-                                </option>
-                            </select>
-                            <label class="form-label" for="txtCantidad">
-                                Cantidad:
-                            </label>
-                            <input class="form-control" id="txtCantidad" type="text" />
+                            <input class="form-control d-inline-block" id="txtTotal" style="width: 100px;" type="text" />
                         </div>
                     </div>
-                </div>
-                <button id="btnAgregar" class="btn btn-custom mb-3" type="button">
-                    Agregar
-                </button>
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>
-                                Producto
-                            </th>
-                            <th>
-                                Cantidad
-                            </th>
-                            <th>
-                                Precio
-                            </th>
-                            <th>
-                                Subtotal
-                            </th>
-                            <th>
-                                Editar
-                            </th>
-                            <th>
-                                Eliminar
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
-                <div class="d-flex justify-content-between">
-                    <button id="btnFacturar" class="btn btn-custom" type="button">
-                        Facturar
-                    </button>
-                    <button class="btn btn-custom" type="button">
-                        Cancelar
-                    </button>
-                    <div>
-                        <label class="form-label" for="txtTotal">
-                            Total:
-                        </label>
-                        <input class="form-control d-inline-block" id="txtTotal" style="width: 100px;" type="text" />
-                    </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </div>
     <script type="module" src="/resources/public/js/facturacion/facturacion.js"></script>

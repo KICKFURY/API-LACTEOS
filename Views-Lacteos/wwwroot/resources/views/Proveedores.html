@@ -12,77 +12,7 @@
 
 <body>
     <div class="sidebar">
-        <div class="navigation">
-            <div class="Logo">
-                <a href="/resources/views/Admin/home.html">
-                    <img alt="Company Logo" class="logo-icon" src="/resources/public/img/logo.png" />
-                </a>
-            </div>
-            <ul>
-                <li>
-                    <a href="#">
-                        <span class="icon">
-                            <i class="fas fa-truck"></i>
-                        </span>
-                        <span class="title">Gestión de Proveedores</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <span class="icon">
-                            <i class="fas fa-users"></i>
-                        </span>
-                        <span class="title">Gestión de Clientes</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <span class="icon">
-                            <i class="fas fa-user-cog"></i>
-                        </span>
-                        <span class="title">Gestión de Usuarios</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <span class="icon">
-                            <i class="fas fa-flag"></i>
-                        </span>
-                        <span class="title">Reportes</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <span class="icon">
-                            <i class="fas fa-tools"></i>
-                        </span>
-                        <span class="title">Mantenimiento</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <span class="icon">
-                            <i class="fas fa-info-circle"></i>
-                        </span>
-                        <span class="title">Acerca de</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <span class="icon">
-                            <i class="fas fa-sign-out-alt"></i>
-                        </span>
-                        <span class="title">Cerrar Sesión</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
+        <div id="contents"></div>
         <div class="main">
             <div class="topbar">
                 <div class="toggle">
@@ -99,7 +29,7 @@
                         <label for="fecha">
                             Fecha de Registro:
                         </label>
-                        <input id="fecha" name="fecha" type="date" value="2024-09-15" />
+                        <input id="fecha" name="fecha" type="date" value="2024-09-15" disabled />
                     </div>
                     <div>
                         <label for="nombre">
@@ -111,13 +41,13 @@
                         <label for="cedula">
                             Cédula:
                         </label>
-                        <input id="cedula" placeholder="4411111111111G" name="cedula" type="text" />
+                        <input id="cedula" maxlength="14" placeholder="4411111111111G" name="cedula" type="text" />
                     </div>
                     <div>
                         <label for="telefono">
                             Teléfono:
                         </label>
-                        <input id="telefono" maxlength="8" placeholder="55555555" name="telefono" type="text" />
+                        <input id="telefono" maxlength="8" placeholder="12345678" name="telefono" type="text" />
                     </div>
                     <div>
                         <label for="estado">

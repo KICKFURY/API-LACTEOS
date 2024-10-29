@@ -1,78 +1,27 @@
-<html>
+<!DOCTYPE html>
+<html lang="es">
 
 <head>
-    <title>
-        Gestión De Usuarios
-    </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión De Usuarios</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="/resources/public/css/usuarios/usuarios.css">
+    <link rel="shortcut icon" href="/resources/public/img/logo.png" type="image/x-icon">
 </head>
 
 <body>
-    <div class="container">
-        <div class="sidebar">
-            <img alt="Company Logo" height="100"
-                src="https://storage.googleapis.com/a1aa/image/msYIl1uUTppaPdU3rMZmuEdULN4SeV1oAsEZaCS6WieAPBqTA.jpg"
-                width="100" />
-            <ul>
-                <li>
-                    <i class="fas fa-truck">
-                    </i>
-                    <a href="#">
-                        Gestión De Proveedores
-                    </a>
-                </li>
-                <li>
-                    <i class="fas fa-users">
-                    </i>
-                    <a href="#">
-                        Gestión de Clientes
-                    </a>
-                </li>
-                <li>
-                    <i class="fas fa-user-cog">
-                    </i>
-                    <a href="#">
-                        Gestión De Usuarios
-                    </a>
-                </li>
-                <li>
-                    <i class="fas fa-chart-line">
-                    </i>
-                    <a href="#">
-                        Reportes
-                    </a>
-                </li>
-                <li>
-                    <i class="fas fa-tools">
-                    </i>
-                    <a href="#">
-                        Mantenimiento
-                    </a>
-                </li>
-                <li>
-                    <i class="fas fa-info-circle">
-                    </i>
-                    <a href="#">
-                        Acerca de
-                    </a>
-                </li>
-                <li>
-                    <i class="fas fa-sign-out-alt">
-                    </i>
-                    <a href="#">
-                        Cerrar Sesión
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <div class="main-content">
-            <div class="header">
-                <i class="fas fa-user-cog">
-                </i>
-                <h1>
-                    Gestión De Usuarios
-                </h1>
+    <div class="sidebar">
+        <div id="contents"></div>
+        <div class="main">
+            <div class="topbar">
+                <div class="toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <h2> Gestión de Clientes</h2>
+                <div class="help">
+                    <i class="fas fa-question-circle"></i>
+                </div>
             </div>
             <div class="content">
                 <div class="form-section">
@@ -153,6 +102,7 @@
             </div>
         </div>
     </div>
+    <script type="module" src="/resources/public/js/usuarios/usuario.js"></script>
 </body>
 
 </html>
