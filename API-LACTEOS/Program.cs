@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using API_LACTEOS.Models;
+using API_LACTEOS.Servicios;
 using System.Text.Json;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -23,6 +24,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<LacteosBdContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("CadenaSQL")));
+builder.Services.AddScoped<ServiciosBD>();
 
 var app = builder.Build();
 

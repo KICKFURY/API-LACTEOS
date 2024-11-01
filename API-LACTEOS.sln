@@ -5,7 +5,7 @@ VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API-LACTEOS", "API-LACTEOS\API-LACTEOS.csproj", "{04B3B46A-3C27-42B3-8FDA-CDB4D3598971}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Views-Lacteos", "Views-Lacteos\Views-Lacteos.csproj", "{46E78693-4749-484E-B73F-63C4C38F14A9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Views-Lacteos", "Views-Lacteos\Views-Lacteos.csproj", "{46E78693-4749-484E-B73F-63C4C38F14A9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

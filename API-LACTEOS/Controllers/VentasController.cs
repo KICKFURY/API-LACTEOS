@@ -89,12 +89,12 @@ namespace API_LACTEOS.Controllers
         }
 
         [HttpPost]
-        [Route("GuardarV1/{rucCliente}&{vendedor}&{totalVenta:int}&{tipoVenta}&{numeroFactura}&{nombreProducto}&{cantidadVendida:int}&{precioUnitario:int}")]
-        public IActionResult GuardarV1(string rucCliente, string vendedor, int totalVenta, string tipoVenta, string numeroFactura, string nombreProducto, int cantidadVendida, int precioUnitario)
+        [Route("GuardarV1/{rucCliente}&{vendedor}&{totalVenta:int}&{tipoVenta}&{numeroFactura}")]
+        public IActionResult GuardarV1(string rucCliente, string vendedor, int totalVenta, string tipoVenta, string numeroFactura)
         {
             try
             {
-                if (totalVenta < 0 || cantidadVendida <= 0 || precioUnitario < 0)
+                if (totalVenta < 0)
                 {
                     return BadRequest(new { mensaje = "Datos de entrada no válidos." });
                 }
@@ -118,25 +118,7 @@ namespace API_LACTEOS.Controllers
                         _dbcontext.SaveChanges();
                     }
 
-                    var producto = _dbcontext.Productos.FirstOrDefault(p => p.NombreProducto == nombreProducto);
-                    if (producto == null)
-                    {
-                        return NotFound(new { mensaje = "Producto no encontrado." });
-                    }
-
-                    var detallesVentum = new DetallesVentum
-                    {
-                        IdProducto = producto.Id,
-                        CantidadVendida = cantidadVendida,
-                        PrecioUnitario = precioUnitario,
-                        IdVenta = _dbcontext.Ventas.OrderBy(p => p.Id).Last().Id
-                    };
-
-                    _dbcontext.DetallesVenta.Add(detallesVentum);
-                    _dbcontext.SaveChanges();
-
                     transaction.Commit();
-
                     return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok" });
                 }
             }
@@ -145,7 +127,6 @@ namespace API_LACTEOS.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, new { mensaje = ex.Message });
             }
         }
-
 
         [HttpPut]
         [Route("Editar")]

@@ -49,6 +49,10 @@ public partial class LacteosBdContext : DbContext
 
     public virtual DbSet<Venta> Ventas { get; set; }
 
+    public virtual DbSet<ViewFactura> ViewFacturas { get; set; }
+
+    public virtual DbSet<ViewUsuario> ViewUsuarios { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
 
@@ -453,6 +457,74 @@ public partial class LacteosBdContext : DbContext
                 .HasForeignKey(d => d.IdUsuario)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__Ventas__idUsuari__5629CD9C");
+        });
+
+        modelBuilder.Entity<ViewFactura>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToView("ViewFactura");
+
+            entity.Property(e => e.ApellidoCliente)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("apellidoCliente");
+            entity.Property(e => e.CantidadVendida).HasColumnName("cantidadVendida");
+            entity.Property(e => e.NombreCliente)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("nombreCliente");
+            entity.Property(e => e.NombreProducto)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("nombreProducto");
+            entity.Property(e => e.NombreUsuario)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("nombreUsuario");
+            entity.Property(e => e.NumeroFactura)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("numeroFactura");
+            entity.Property(e => e.PrecioUnitario)
+                .HasColumnType("decimal(8, 2)")
+                .HasColumnName("precioUnitario");
+            entity.Property(e => e.TipoVenta)
+                .HasMaxLength(10)
+                .IsUnicode(false)
+                .HasColumnName("tipoVenta");
+            entity.Property(e => e.TotalVenta)
+                .HasColumnType("decimal(8, 2)")
+                .HasColumnName("totalVenta");
+        });
+
+        modelBuilder.Entity<ViewUsuario>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToView("ViewUsuarios");
+
+            entity.Property(e => e.Contra)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("contra");
+            entity.Property(e => e.Correo)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("correo");
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.NombreEstado)
+                .HasMaxLength(20)
+                .IsUnicode(false)
+                .HasColumnName("nombreEstado");
+            entity.Property(e => e.NombreRol)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("nombreRol");
+            entity.Property(e => e.NombreUsuario)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("nombreUsuario");
         });
 
         OnModelCreatingPartial(modelBuilder);

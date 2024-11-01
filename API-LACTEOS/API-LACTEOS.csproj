@@ -8,12 +8,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Reportes\FacturaContado.rdlc" />
+    <None Remove="Reportes\Usuarios.rdlc" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Reportes\FacturaContado.rdlc" />
+    <EmbeddedResource Include="Reportes\Usuarios.rdlc" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AspNetCore.Reporting" Version="2.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.10">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
 	 <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.10" />
+	 <PackageReference Include="System.Drawing.Common" Version="8.0.10" />
+	 <PackageReference Include="System.Security.Permissions" Version="8.0.0" />
   </ItemGroup>
 
   <ItemGroup>
