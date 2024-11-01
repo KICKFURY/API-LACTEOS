@@ -25,59 +25,49 @@
                     <i class="fas fa-question-circle"></i>
                 </div>
             </div>
-            <div class="mt-4">
-                <form>
-                    <div class="row mb-3">
-                        <div class="col">
-                            <label>
-                                Nombre:
-                            </label>
+            <div class="form-container">
+                <div class="form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Nombre:</label>
                             <input id="txtNombre" class="form-control" type="text" />
                         </div>
-                        <div class="col">
-                            <label>
-                                Apellido:
-                            </label>
-                            <input id="txtApellido" placeholder="4411111111002A" class="form-control" type="text" />
+                        <div class="form-group">
+                            <label>Apellido:</label>
+                            <input id="txtApellido"  maxlength="14" class="form-control" type="text"/>
                         </div>
-                        <div class="col">
-                            <label>
-                                Cédula:
-                            </label>
-                            <input id="txtRUC" maxlength="14" class="form-control" type="text" />
+                        <div class="form-group">
+                            <label>Cédula:</label>
+                            <input id="txtRUC" placeholder="4411111111002A" class="form-control" type="text"/>
                         </div>
                     </div>
-                    <div class="row mb-3">
-                        <div class="col">
-                            <label>
-                                Teléfono:
-                            </label>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Teléfono:</label>
                             <input id="txtTelefono" class="form-control" type="text" />
                         </div>
-                        <div class="col">
-                            <label>
-                                Dirección:
-                            </label>
+                        <div class="form-group">
+                            <label>Dirección:</label>
                             <input id="txtDireccion" class="form-control" type="text" />
                         </div>
-                        <div class="col">
+                        <div class="form-group radio-group">
                             <div>
                                 <input checked="" id="crear" name="registro" type="radio" />
-                                <label for="crear">
-                                    Crear
-                                </label>
+                                <label for="crear">Crear</label>
                                 <input id="editar" name="registro" type="radio" />
-                                <label for="editar">
-                                    Editar
-                                </label>
+                                <label for="editar">Editar</label>
                                 <input id="eliminar" name="registro" type="radio" />
-                                <label for="eliminar">
-                                    Eliminar
-                                </label>
+                                <label for="eliminar">Eliminar</label>
                             </div>
                         </div>
                     </div>
-                    <div class="text-center">
+                    <div class="buscadorRUC">
+                        <label for="Busquedacedula" id="lbaBuscador">
+                            Cédula:
+                        </label>
+                        <input id="Busquedacedula" maxlength="14" placeholder="4411111111111G" name="Busquedacedula" type="text" />
+                    </div>
+                    <div class="buttons">
                         <button id="btnCrear" class="btn" type="button">
                             Registrar
                         </button>
@@ -91,48 +81,46 @@
                             Cancelar
                         </button>
                     </div>
-                </form>
-            </div>
-            <div class="mt-4">
-                <div class="row mb-3">
-                    <div class="col">
-                        <label>
-                            Búsqueda por:
-                        </label>
-                        <input class="form-control" type="text" />
-                    </div>
-                    <div class="col">
-                        <button class="btn mt-4" type="button">
+                </div>
+                <div class="search-container">
+                    <label for="ruc">
+                        Buscar por:
+                    </label>
+                    <input id="ruc" name="ruc" type="text" />
+                    <div class="buttones-search">
+                        <button id="btnBuscar">
                             Buscar
                         </button>
-                        <button class="btn mt-4" type="button">
+                        <button id="btnActualizar">
                             Actualizar
                         </button>
                     </div>
                 </div>
-                <table id="tablaClientes" class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>
-                                Nombre
-                            </th>
-                            <th>
-                                Apellido
-                            </th>
-                            <th>
-                                RUC
-                            </th>
-                            <th>
-                                Direccion
-                            </th>
-                            <th>
-                                Telefono
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
+                <div class="table-container">
+                    <table id="tablaClientes">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Nombre
+                                </th>
+                                <th>
+                                    Apellido
+                                </th>
+                                <th>
+                                    RUC
+                                </th>
+                                <th>
+                                    Direccion
+                                </th>
+                                <th>
+                                    Telefono
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

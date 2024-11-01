@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
 
 * {
     font-family: "Ubuntu", sans-serif;
@@ -7,35 +7,189 @@
     box-sizing: border-box;
 }
 
-body {
-    min-height: 100vh;
-    overflow-x: hidden;
+.container {
+    display: flex;
+    justify-content: space-between;
+    width: 1000px;
+    margin: 0 auto;
+    margin-top: 20px;
 }
 
-.sidebar {
-    position: relative;
-    width: 100%;
+.container label {
+    color: var(--blue);
 }
 
-.content {
+.container input {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.container select {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.body-cliente,
+.body-producto {
+    margin-bottom: 20px;
+    border: 1px solid #000;
+    width: 48%;
+    max-width: 100%;
+    padding: 10px;
+}
+
+.body-cliente {
+    margin-right: 10px;
+}
+
+.body-producto {
+    margin-left: 10px;
+}
+
+.border {
     padding: 20px;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.form-label {
+    flex: 0 0 40%;
+    margin-right: 10px;
+    width: 100px;
+    margin-left: -20px;
 }
 
 .form-control,
 .form-select {
-    margin-bottom: 10px;
+    flex: 1;
+    margin-left: 0;
+    width: 100%;
 }
 
-.table th,
-.table td {
-    text-align: center;
+.form-select {
+    height: 30px;
 }
 
-.btn-custom {
-    background-color: #5a1a0e;
-    color: white;
+input {
+    height: 30px;
 }
 
-.btn-custom:hover {
-    background-color: #3e0e07;
+
+.head {
+    display: flex;
+    gap: 60px;
+    align-items: center;
+    margin-bottom: 90px;
+    margin-right: 100px;
+    margin-top: 110px;
+    margin-left: 35px;
+}
+
+.head label {
+    color: var(--blue);
+}
+
+.head input {
+    width: 50%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#txtNumeroFactura {
+    width: 80px;
+}
+
+.numero {
+    margin-left: 90px;
+}
+
+.form-check {
+    margin-bottom: 35px;
+}
+
+.form-check label {
+    color: var(--blue);
+    font-weight: bold;
+}
+
+.btnAgregar {
+    background-color: var(--blue);
+    color: var(--white);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 90%;
+}
+
+.table-container {
+    width: 75%;
+    height: 400px;
+    overflow-y: auto;
+
+}
+
+.table-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 50px;
+    margin-left: 25px;
+}
+
+.table-container th,
+.table-container td {
+    padding: 10px;
+    border: 1px solid var(--blue);
+}
+
+.table-container th {
+    background-color: var(--gray);
+    color: var(--blue);
+}
+
+.table-container table tbody tr:hover {
+    background-color: var(--blue);
+    color: var(--white);
+}
+
+.buttons {
+    display: flex; 
+    justify-content: center; 
+    gap: 10px; 
+    margin-top: 20px; 
+    margin-right: 80%;
+}
+
+.buttons button {
+    background-color: var(--blue);
+    color: var(--white);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 50px;
+}
+
+
+.total {
+    margin-left: 80%;
+    margin-bottom: 200px;
+}
+
+.total label {
+    color: var(--blue);
+    font-weight: bold;
+}
+
+.total input {
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }

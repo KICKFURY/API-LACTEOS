@@ -1,44 +1,52 @@
-body {
-    background-color: #f8f1e4;
-    font-family: Arial, sans-serif;
+.cards {
+    border: 1px solid #000;
+    border-radius: 1%;
+    width: 60%;
 }
-
-.content {
-    padding: 20px;
-}
-
-.content-header {
-    background-color: #5a2d1a;
-    color: #fff;
-    padding: 10px 20px;
+.card1, .card2 {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    padding: 20px;
+    width: 400px;
+    position: relative;
 }
 
-.card {
-    margin-top: 20px;
-    border: 1px solid #ddd;
+.row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    width: 100%;
 }
 
-.card-header {
-    background-color: #f8f1e4;
+.row label {
+    margin-bottom: 5px;
+    color: var(--blue);
     font-weight: bold;
 }
 
-.card-body {
+.row input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 150%;
+    box-sizing: border-box;
+}
+
+.buttons-group {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    position: absolute;
+    top: 20px; 
+    right: -340px;
 }
 
-.card-body input {
-    flex: 1;
-    margin-right: 10px;
-}
-
-.card-body button {
-    background-color: #5a2d1a;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
+.buttons-group button {
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    background: var(--blue);
+    color: var(--white);
 }

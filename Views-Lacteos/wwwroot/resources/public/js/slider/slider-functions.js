@@ -48,6 +48,7 @@ function camposSlider() {
         } else if (usuario == "Vendedor") {
             document.getElementById('btnFacturacion').style.display = "";
             document.getElementById('btnClientes').style.display = "";
+            document.getElementById('btnCreditos').style.display = "";
             document.getElementById('btnProveedores').style.display = "none";
             document.getElementById('btnUsuarios').style.display = "none";
             document.getElementById('btnReportes').style.display = "none";

@@ -1,141 +1,117 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Crédito</title>
     <link rel="stylesheet" href="/resources/public/css/credito/credito.css">
 </head>
-
 <body>
-    <div class="d-flex">
-        <div class="sidebar">
-            <div class="logo">
-                <img alt="Company Logo" height="100"
-                    src="https://storage.googleapis.com/a1aa/image/ZEoWszYnTeWKJKfE1b9mQlPTEV84tsaRUvXrbiCj3vO98upTA.jpg"
-                    width="100" />
+    <div class="sidebar">
+        <div id="contents"></div>
+        <div class="main">
+            <div class="topbar">
+                <div class="toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <h2>Gestión de Créditos</h2>
+                <div class="help">
+                    <i class="fas fa-question-circle"></i>
+                </div>
             </div>
-            <a href="#">
-                Facturación
-            </a>
-            <a href="#">
-                Gestión de Clientes
-            </a>
-            <a class="active" href="#">
-                Gestión de Crédito
-            </a>
-            <a href="#">
-                Devoluciones
-            </a>
-            <a href="#">
-                Acerca de
-            </a>
-            <a class="mt-auto" href="#">
-                Cerrar Sesión
-            </a>
-        </div>
-        <div class="flex-grow-1">
-            <div class="header">
-                Gestión de Crédito
+            <div class="head">
+                <div>
+                    <label for="vendedor">
+                        Vendedor:
+                    </label>
+                    <input class="form1" id="vendedor" type="text" />
+                </div>
+                <div>
+                    <label for="fechaVenta">
+                        Fecha de Venta:
+                    </label>
+                    <input class="form2" id="fechaVenta" type="date" value="2024-09-15" />
+                </div>
             </div>
-            <div class="content">
-                <form>
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <label for="vendedor">
-                                Vendedor:
-                            </label>
-                            <input class="form-control" id="vendedor" type="text" />
-                        </div>
-                        <div class="col-md-6">
-                            <label for="fechaVenta">
-                                Fecha de Venta:
-                            </label>
-                            <input class="form-control" id="fechaVenta" type="date" value="2024-09-15" />
-                        </div>
+            <div class="body-form">
+                <div class="cliente">
+                    <div class="form-check">
+                        <label class="form-check-label" for="clientOption">
+                            Cliente
+                        </label>
                     </div>
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <div class="border p-3">
-                                <div class="form-check">
-                                    <input class="form-check-input" id="clientOption" name="creditOption"
-                                        type="radio" />
-                                    <label class="form-check-label" for="clientOption">
-                                        Cliente
-                                    </label>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="numeroFactura">
-                                        Ingresar número de Factura:
-                                    </label>
-                                    <input class="form-control" id="numeroFactura" type="text" />
-                                </div>
-                                <div class="mb-3">
-                                    <label for="nombreCliente">
-                                        Nombre del Cliente:
-                                    </label>
-                                    <input class="form-control" id="nombreCliente" type="text" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="border p-3">
-                                <div class="form-check">
-                                    <input class="form-check-input" id="creditDataOption" name="creditOption"
-                                        type="radio" />
-                                    <label class="form-check-label" for="creditDataOption">
-                                        Datos del Crédito
-                                    </label>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="total">
-                                        Total:
-                                    </label>
-                                    <input class="form-control" id="total" type="text" />
-                                </div>
-                                <div class="mb-3">
-                                    <label for="estado">
-                                        Estado:
-                                    </label>
-                                    <select class="form-control" id="estado">
-                                        <option value="">
-                                            Seleccione
-                                        </option>
-                                    </select>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="plazo">
-                                        Plazo:
-                                    </label>
-                                    <input class="form-control" id="plazo" type="text" />
-                                </div>
-                                <div class="mb-3">
-                                    <label for="cancelar">
-                                        Cancelar:
-                                    </label>
-                                    <input class="form-control" id="cancelar" type="text" />
-                                </div>
-                                <div class="mb-3">
-                                    <label for="saldo">
-                                        Saldo:
-                                    </label>
-                                    <input class="form-control" id="saldo" type="text" />
-                                </div>
-                                <div class="mb-3">
-                                    <label for="diaPago">
-                                        Día de Pago:
-                                    </label>
-                                    <input class="form-control" id="diaPago" type="date" value="2024-09-15" />
-                                </div>
-                                <button class="btn btn-primary" type="button">
-                                    Guardar
-                                </button>
-                                <button class="btn btn-primary" type="button">
-                                    Cancelar
-                                </button>
-                            </div>
-                        </div>
+                    <div class="mb-3">
+                        <label for="numeroFactura">
+                            Ingresar Número de Factura:
+                        </label>
+                        <input class="form-control" id="numeroFactura" type="text" />
                     </div>
+                    <div class="mb-3">
+                        <label for="nombreCliente">
+                            Nombre del Cliente:
+                        </label>
+                        <input class="form-control" id="nombreCliente" type="text" />
+                    </div>
+                </div>
+                <div class="credito">
+                    <div class="form-check">
+                        <input class="form-check-input" id="creditDataOption" name="creditOption"
+                            type="radio" />
+                        <label class="form-check-label" for="creditDataOption">
+                            Datos del Crédito
+                        </label>
+                    </div>
+                    <div class="mb-3">
+                        <label for="total">
+                            Total:
+                        </label>
+                        <input class="form-control" id="total" type="text" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="estado">
+                            Estado:
+                        </label>
+                        <select class="form-control" id="estado">
+                            <option value="">
+                                Seleccione
+                            </option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="plazo">
+                            Plazo:
+                        </label>
+                        <input class="form-control" id="plazo" type="text" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="cancelar">
+                            Cancelar:
+                        </label>
+                        <input class="form-control" id="cancelar" type="text" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="saldo">
+                            Saldo:
+                        </label>
+                        <input class="form-control" id="saldo" type="text" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="diaPago">
+                            Día de Pago:
+                        </label>
+                        <input class="form-control" id="diaPago" type="date" value="2024-09-15" />
+                    </div>
+                </div>
+                <div class="buttones">
+                    <button class="btn btn-primary" type="button">
+                        Guardar
+                    </button>
+                    <button class="btn btn-primary" type="button">
+                        Cancelar
+                    </button>
+                </div>
+            </div>
+
                     <div class="row mb-3">
                         <div class="col-md-12">
                             <label for="numeroFacturaBuscar">
@@ -185,69 +161,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>
-                                Cell 1
-                            </td>
-                            <td>
-                                Cell 2
-                            </td>
-                            <td>
-                                Cell 3
-                            </td>
-                            <td>
-                                Cell 4
-                            </td>
-                            <td>
-                                Cell 5
-                            </td>
-                            <td>
-                                Cell 6
-                            </td>
-                            <td>
-                                Cell 7
-                            </td>
-                            <td>
-                                Cell 8
-                            </td>
-                            <td>
-                                Cell 9
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Cell 11
-                            </td>
-                            <td>
-                                Cell 12
-                            </td>
-                            <td>
-                                Cell 13
-                            </td>
-                            <td>
-                                Cell 14
-                            </td>
-                            <td>
-                                Cell 15
-                            </td>
-                            <td>
-                                Cell 16
-                            </td>
-                            <td>
-                                Cell 17
-                            </td>
-                            <td>
-                                Cell 18
-                            </td>
-                            <td>
-                                Cell 19
-                            </td>
-                        </tr>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
+    <script type="module" src="/resources/public/js/credito/credito.js"></script>
 </body>
-
 </html>
