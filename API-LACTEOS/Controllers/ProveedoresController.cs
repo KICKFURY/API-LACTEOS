@@ -52,7 +52,7 @@ namespace API_LACTEOS.Controllers
         }
 
         [HttpPost]
-        [Route("Guardar/{nombre}&&{telefono}&&{ruc}")]
+        [Route("Guardar/{nombre}&{telefono}&{ruc}")]
         public IActionResult ValidarLogin(string nombre, string telefono, string ruc)
         {
             Proveedore proveedore = new Proveedore();
@@ -73,7 +73,7 @@ namespace API_LACTEOS.Controllers
         }
 
         [HttpPut]
-        [Route("Editar/{nombre}&&{ruc}&&{telefono}&&{idEstado:int}")]
+        [Route("Editar/{nombre}&{ruc}&{telefono}&{idEstado:int}")]
         public IActionResult Editar(string nombre, string ruc, string telefono, int idEstado)
         {
             Proveedore oProveedore = new Proveedore();
