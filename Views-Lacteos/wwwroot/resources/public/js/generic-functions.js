@@ -1,28 +1,10 @@
-function GET(url, mensageError, callback) {
+function GET(url, mensageError, optionResponseType, callback) {
     fetch(url)
-        .then(response => response.json())
+        .then(response => optionResponseType == 1 ? response.json() : response.text())
         .then(data => {
             callback(data)
         })
         .catch(error => console.log(mensageError, error))
-}
-
-function GETInterno(url, mensageError, callback) {
-    fetch(url)
-        .then(response => response.text())
-        .then(data => {
-            callback(data)
-        })
-        .catch(error => console.log(mensageError, error))
-}
-
-function GETTABLARUC(url, mensageError, callback) {
-    fetch(url)
-    .then(response => response.json())
-    .then(data => {
-        callback(data)
-    })
-    .catch(error => console.log(mensageError, error))
 }
 
 function POST(url, mensageOK, mensageError, callback) {
@@ -74,4 +56,4 @@ function DELETE(url,  mensageOK, mensageError, callback) {
         .catch(error => console.log(mensageError, error))
 }
 
-export  { GET, GETTABLARUC, GETInterno, POST, PUT, DELETE };
+export  { GET, POST, PUT, DELETE };

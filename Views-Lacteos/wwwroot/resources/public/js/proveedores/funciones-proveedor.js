@@ -1,4 +1,4 @@
-import { GET, GETTABLARUC, POST, PUT, DELETE } from '../generic-functions.js'
+import { GET, POST, PUT, DELETE } from '../generic-functions.js'
 import { POST_Proveedor, PUT_Proveedor, DELETE_Proveedor, GET_Proveedores, GET_Proveedor } from '../endpoints.js'
 
 function AddEvents() {
@@ -36,10 +36,6 @@ function AddEvents() {
             CargarProveedorEnTabla()
         }
     })
-    // let toggle = document.querySelector(".toggle");
-    // toggle.onclick = function () {
-    //     Menutoggle()
-    // }
 }
 
 function CrearProveedor() {
@@ -80,7 +76,7 @@ function EliminarProveedor() {
 function ObtenerProveedores() {
     var url = GET_Proveedores
 
-    GET(url, "Error al obtener la lista de proveedores", (data) => {
+    GET(url, "Error al obtener la lista de proveedores", 1, (data) => {
         const proveedoresTabla = document.getElementById('idProveedoresTabla').getElementsByTagName('tbody')[0]
         proveedoresTabla.innerHTML = ''
         data.response.forEach(proveedor => {
@@ -109,7 +105,7 @@ function CargarProveedor() {
     var cedula = document.getElementById('cedula')
     var url = GET_Proveedor+ruc
 
-    GETTABLARUC(url, "Error al obtener el proveedor", (data) => {
+    GET(url, "Error al obtener el proveedor", 1, (data) => {
         nombre.value = data.response.nombreProveedor
         telefono.value = data.response.telefonoProveedor
         cedula.value = data.response.rucProveedor
@@ -120,7 +116,7 @@ function CargarProveedorEnTabla() {
     var  ruc = document.getElementById('ruc').value
     var url = GET_Proveedor+ruc
 
-    GETTABLARUC(url,  "Error al obtener el proveedor", (data) => { 
+    GET(url,  "Error al obtener el proveedor", 1, (data) => { 
         const proveedoresTabla = document.getElementById('idProveedoresTabla').getElementsByTagName('tbody')[0]
         proveedoresTabla.innerHTML = ''
         let row = proveedoresTabla.insertRow();

@@ -9,7 +9,7 @@ function AddEvents() {
 }
 
 function ObtenerClientes() {
-    GET(GET_Clientes, "Error al cargar es listado de clientes", (data) => {
+    GET(GET_Clientes, "Error al cargar es listado de clientes", 1, (data) => {
         const proveedoresTabla = document.getElementById('tablaClientes').getElementsByTagName('tbody')[0]
         proveedoresTabla.innerHTML = ''
         data.response.forEach(cliente => {

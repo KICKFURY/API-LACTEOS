@@ -12,7 +12,7 @@ function Login() {
     var url = `${GET_Login}${username}`
     var psw = encriptar(password)
 
-    GET(url, "Usuario no encontrado", (data) => {
+    GET(url, "Usuario no encontrado", 1, (data) => {
         localStorage.setItem('UsuarioRole', data.response.idRole == 1 ? "Admin" : data.response.idRole == 2 ? "Vendedor" : "Encargado de Inventario")
         if (data.response.nombreUsuario == username && data.response.contra == psw) {
             window.open('/resources/views/home.html', '_self')

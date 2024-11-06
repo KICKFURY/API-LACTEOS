@@ -1,4 +1,4 @@
-import { GETInterno } from "../generic-functions.js"
+import { GET } from "../generic-functions.js"
 
 function AddEvents() {
     let toggle = document.querySelector(".toggle");
@@ -20,7 +20,7 @@ function Menutoggle() {
 }
 
 function cargarSidebar() {
-    GETInterno('/resources/views/slider.html', "No se pudo cargar el contenido", (data) => {
+    GET('/resources/views/slider.html', "No se pudo cargar el contenido", 2, (data) => {
         const contents = document.getElementById('contents')
 
         if (contents) {
