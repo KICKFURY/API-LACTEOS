@@ -39,7 +39,7 @@ function AddEvents() {
 
 
 function ObtenerClientes() {
-    GET(GET_Clientes, "Error al cargar el listado de clientes", (data) => {
+    GET(GET_Clientes, "Error al cargar el listado de clientes", 1, (data) => {
         const clientesTabla = document.getElementById('tablaClientes').getElementsByTagName('tbody')[0];
         clientesTabla.innerHTML = ''; 
         data.response.forEach(cliente => {
@@ -67,10 +67,10 @@ function CrearCliente() {
     var url = `${POST_Cliente}${nombre}&${apellido}&${ruc}?direccion=${direccion}&telefono=${telefono}`;
 
 
-    POST(url, "Cliente Creado Exitosamente", "Error al crear el cliente", () => {
-        ObtenerClientes(); 
-        LimpiarControles(); 
-    });
+        POST(url, "Cliente Creado Exitosamente", "Error al crear el cliente", () => {
+            ObtenerClientes(); 
+            LimpiarControles(); 
+        });
     }
 
 
@@ -119,7 +119,7 @@ function ActualizarClientes(){
     var direccion = document.getElementById('txtDireccion')
     var url = GET_Cliente+ruc
 
-    GET(url,"Error al Obtener el cliente", (data) =>{
+    GET(url,"Error al Obtener el cliente", 1, (data) =>{
         console.log(data)
         nombre.value = data.response.nombreCliente
         apellido.value = data.response.apellidoCliente

@@ -1,4 +1,4 @@
-import { GET } from "../generic-functions.js" 
+import { GET, GET_SERVIDOR } from "../generic-functions.js" 
 import { encriptar } from "../security.js"
 import { GET_Login } from "../endpoints.js"
 
@@ -18,6 +18,15 @@ function Login() {
             window.open('/resources/views/home.html', '_self')
         }
     })
+
+    // GET_SERVIDOR(`https://lacteos-la-granja.great-site.net/api/login.php?param=${username}`, 'Usuario no encontrado', (data) => {
+    //     data.forEach(usuario => {
+    //     localStorage.setItem('UsuarioRole', usuario.idRole == 1 ? "Admin" : usuario.idRole == 2 ? "Vendedor" : "Encargado de Inventario")
+    //         if (usuario.nombreUsuario == username && usuario.contra == psw) {
+    //             window.open('/resources/views/home.html', '_self')
+    //         }
+    //     })
+    // })
 }
 
 export { AddEvents }

@@ -36,17 +36,28 @@ function AddEvents() {
             CargarProveedorEnTabla()
         }
     })
+
+    var btn = document.getElementById('btnGenerarReporte')
+    var role = localStorage.getItem('UsuarioRole');
+
+    if (role == 'Admin') {
+        btn.style.display = ''
+    } else if (role == 'Vendedor') {
+        btn.style.display = 'none'
+    } else if (role == 'Encargado de Inventario') {
+        btn.style.display = 'none'
+    }
 }
 
 function CrearProveedor() {
     var nombre = document.getElementById('nombre').value
     var telefono = document.getElementById('telefono').value
     var cedula = document.getElementById('cedula').value
-    var url = `${POST_Proveedor}${nombre}&&${telefono}&&${cedula}`
+    var url = `${POST_Proveedor}${nombre}&${telefono}&${cedula}`
 
     POST(url, "Proveedor guardado", "Error al guardar el proveedor", () => {
         ObtenerProveedores()
-        LimpiarControles()  
+        LimpiarControles()
     })
 }
 

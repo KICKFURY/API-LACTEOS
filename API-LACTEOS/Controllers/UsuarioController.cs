@@ -57,7 +57,7 @@ namespace API_LACTEOS.Controllers
         }
 
         [HttpPost]
-        [Route("Guardar/{correo}&&{nombreUsuario}&&{contra}&&{idRole:int}")]
+        [Route("Guardar/{correo}&{nombreUsuario}&{contra}&{idRole:int}")]
         public IActionResult Guardar(string correo, string nombreUsuario, string contra, int idRole)
         {
             Usuario usuario = new Usuario();

@@ -2,8 +2,17 @@
 function RedirectURL() {
     const usuario = localStorage.getItem('UsuarioRole')
     if (usuario == "") {
-        alert("Primero debe iniciar sesión")
-        window.open('/index.html', '_self')
+        Swal.fire({
+            title: 'Acceso denegado',
+            text: 'Primero debe iniciar sesión',
+            icon: 'error',
+            confirmButtonText: 'Aceptar'
+        }).then(result => {
+            if (result.isConfirmed) {
+                window.open('/index.html', '_self')
+            }
+        })
+        
     }
 }
 

@@ -18,44 +18,46 @@
                 <div class="toggle">
                     <i class="fas fa-bars"></i>
                 </div>
-                <h2>Gestión de Proveedores</h2>
+                <h2>Gestión de Usuarios</h2>
                 <div class="help">
                     <i class="fas fa-question-circle"></i>
                 </div>
             </div>
             <div class="search">
-                <label for="username">
+                <label for="buscarUsername">
                     Ingrese el Nombre del Usuario:
                 </label>
-                <input id="username" name="username" type="text" />
-                <button class="buttons">
-                    Buscar
+                <input id="buscarUsername" name="buscarUsername" type="text" />
+                <button id="btnCargarTabla" class="buttons">
+                    Cargar Tabla
                 </button>
+                <button id="btnGenerarReporte" style="margin: 10px;">
+                    Generar Reporte
+                </button>
+                <dialog id="reporte">
+                    <iframe src="http://localhost:5037/api/Reportes/usuarios" frameborder="0"
+                        width="900px" height="500px"></iframe>r
+                    <br>
+                    <center>
+                        <button id="reporte1">Cerrar</button>
+                    </center>
+                </dialog>
             </div>
             <div class="table-container">
-                <table class="tabled">
+                <table id="tablaUsuarios" class="tabled">
                     <thead>
                         <tr>
                             <th>
-                                Id
-                            </th>
-                            <th>
-                                Correo
-                            </th>
-                            <th>
-                                Nombre De Usuario
+                                Usuario
                             </th>
                             <th>
                                 Contraseña
                             </th>
                             <th>
-                                Id Rol
+                                Correo
                             </th>
                             <th>
-                                Id Estado
-                            </th>
-                            <th>
-                                Fecha de Creación
+                                Estado
                             </th>
                         </tr>
                     </thead>

@@ -4,6 +4,33 @@ function GET(url, mensageError, optionResponseType, callback) {
         .then(data => {
             callback(data)
         })
+        .catch((error) => {
+            Swal.fire({
+                title: 'Error',
+                text: "Revise el nombre de usuario o contraseña uno de los dos es incorrecto",
+                icon: 'error',
+                confirmButtonText: 'Aceptar',
+                confirmButtonColor: '#7a2a1e',
+            });
+            console.log(mensageError, error)
+        })
+}
+
+function GET_SERVIDOR(url, mensageError, callback) {
+    fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const contentType = response.headers.get('content-type');
+            if (!contentType || !contentType.includes('application/json')) {
+                return response.text().then(text => { throw new TypeError(`Expected JSON, got ${text}`); });
+            }
+            return response.json();
+        })
+        .then(data => {
+            callback(data)
+        })
         .catch(error => console.log(mensageError, error))
 }
 
@@ -17,6 +44,13 @@ function POST(url, mensageOK, mensageError, callback) {
         })
         .then(response => response.json())
         .then(data => {
+            Swal.fire({
+                title: 'Confirmado',
+                text: mensageOK,
+                icon: 'success',
+                confirmButtonText: 'Aceptar',
+                confirmButtonColor: '#7a2a1e',
+            });
             console.log(`${mensageOK}`, data)
             callback()
         })
@@ -56,4 +90,4 @@ function DELETE(url,  mensageOK, mensageError, callback) {
         .catch(error => console.log(mensageError, error))
 }
 
-export  { GET, POST, PUT, DELETE };
+export  { GET, GET_SERVIDOR, POST, PUT, DELETE };

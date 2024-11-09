@@ -34,29 +34,29 @@
                 </div>
                 <div class="radio-group">
                     <label>
-                        <input checked="" name="action" type="radio" value="crear" />
+                        <input id="rdaCrear" checked="" name="action" type="radio" value="crear" />
                         Crear
                     </label>
                     <label>
-                        <input name="action" type="radio" value="editar" />
+                        <input id="rdaEditar" name="action" type="radio" value="editar" />
                         Editar
                     </label>
                     <label>
-                        <input name="action" type="radio" value="eliminar" />
+                        <input id="rdaEliminar" name="action" type="radio" value="eliminar" />
                         Eliminar
                     </label>
                 </div>
                 <div class="buscadorRUC">
-                    <label for="Busquedacedula" id="lbaBuscador">
-                        Cédula:
+                    <label for="buscarUsername" id="lbaBuscador">
+                        Nombre de Usuario:
                     </label>
-                    <input id="Busquedacedula" maxlength="14" placeholder="4411111111111G" name="Busquedacedula" type="text" />
+                    <input id="buscarUsername" maxlength="10" placeholder="user1" name="buscarUsername" type="text" />
                 </div>
                 <div class="form-section">
                     
                     <div class="form-group">
                         <label for="fechaRegistro">Fecha De Registro:</label>
-                        <input id="fechaRegistro" type="date" value="2024-09-15" />
+                        <input id="fechaRegistro" type="date" value="2024-09-15" disabled/>
                     </div>
                     
                     <div class="form-group">
@@ -65,13 +65,13 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input id="email" type="email" />
+                        <label for="txtCorreo">Email:</label>
+                        <input id="txtCorreo" type="txtCorreo" />
                     </div>
                     
                     <div class="form-group">
                         <label for="estado">Estado:</label>
-                        <select id="estado">
+                        <select id="estado" disabled>
                             <option>Activo</option>
                             <option>Inactivo</option>
                         </select>
@@ -81,14 +81,14 @@
                         <label for="rolGeneral">Rol General:</label>
                         <select id="rolGeneral">
                             <option>Vendedor</option>
-                            <option>Administrador</option>
+                            <option>Encargado de Inventario</option>
                         </select>
                     </div>
                     
                     <div class="button-group">
-                        <button>Modificar</button>
-                        <button>Cancelar</button>
-                        <button>Eliminar</button>
+                        <button id="btnEditar" >Modificar</button>
+                        <button id="btnCancelar">Cancelar</button>
+                        <button id="btnEliminar">Eliminar</button>
                     </div>
                 </div>
                 
@@ -96,19 +96,22 @@
                     <label>
                         Contraseña:
                     </label>
-                    <input type="password"/>
+                    <input id="txtPSW1" type="password"/>
                     <label>
                         Repetir Contraseña:
                     </label>
-                    <input type="password" />
-                    <button>
+                    <input id="txtPSW2" type="password" />
+                    <button id="btnCrear">
                         Guardar Datos
                     </button>
                 </div>
             </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="module" src="/resources/public/js/usuarios/usuario.js"></script>
+
 </body>
 
 </html>
