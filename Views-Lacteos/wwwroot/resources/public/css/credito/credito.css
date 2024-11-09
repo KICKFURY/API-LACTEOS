@@ -1,9 +1,228 @@
 /*encabezado*/
 .head {
     display: flex;
-    gap: 60px; 
-    align-items: center; 
-    margin-bottom: 90px;
-    margin-right: 100px;
-    margin-top: 50px;
+    gap: 90px;
+    align-items: center;
+    margin: 120px 100px 110px 160px;
+}
+
+.head label {
+    color: var(--blue);
+    font-weight: bold;
+}
+
+.head input {
+    width: 45%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column; 
+    width: 120%;
+    margin-top: -50px;
+    margin-left: 0%;
+}
+
+.container label {
+    color: var(--blue);
+}
+
+.container input {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.container select {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    height: 31px;
+}
+
+.body-cliente,
+.body-credito {
+    width: 80%; 
+    margin-bottom: 20px;
+    border: 1px solid #000;
+}
+
+.body-cliente {
+    margin-right: 10px;
+    height: 200px; 
+}
+
+.body-credito {
+    height: 290px; 
+}
+
+
+.border {
+    padding: 20px;
+    margin-top: 2%;
+}
+
+.border input {
+    font-weight: bold;
+    margin-right: 15%;
+}
+
+.border label {
+    font-weight: bold;
+}
+
+.form-check {
+    margin-top: -20px;
+}
+
+.form-check label {
+    color: var(--blue);
+    font-weight: bold;
+    font-size: 120%;
+    text-decoration: underline;
+}
+
+.form-select {
+    font-weight: bold;
+}
+
+.columns {
+    display: flex;
+    gap: 10%; 
+    margin-right: 35%;
+    margin-top: 5%;
+}
+
+.column {
+    width: 50%; 
+    margin-right: 25%;
+}
+
+.columnas {
+    width: 50%; 
+    margin-right: 25%;
+    margin-top: 4%;
+}
+
+.form-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem; 
+}
+
+.form-label {
+    flex: 0 0 40%;
+    margin-right: 5px; 
+    white-space: nowrap;
+}
+
+input {
+    height: 30px;
+}
+
+#txtVendedor {
+    width: 200px;
+}
+
+#fechaVenta {
+    width: 200px;
+}
+
+#txtNumeroFactura {
+    flex-basis: 150px; 
+    max-width: 150px; 
+    margin-left: 5%;
+}
+
+#cmbEstado {
+    flex-basis: 250px; 
+    max-width: 250px; 
+}
+
+.buttones {
+    margin-top: 25%;
+    margin-left: -150%;
+    display: flex;
+    gap: 15px;
+    margin-right: 50%;
+}
+
+.buttones button {
+    background-color: var(--blue);
+    color: var(--white);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.buttones button:hover {
+    background-color: #6E1E1E;
+    color: var(--white);
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    padding-left: -20px;
+}
+
+.search-container label {
+    margin-right: 10px;
+    color: var(--blue);
+    font-weight: bold;
+}
+
+.search-container input {
+    margin-right: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 500px;
+    box-sizing: border-box;
+}
+
+.search-container button {
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    background: var(--blue);
+    color: var(--white);
+}
+
+.search-container button:hover {
+    background-color: #6E1E1E;
+    color: var(--white);
+}
+
+/* Tabla */
+.table-container {
+    width: 75%;
+    height: 400px;
+    overflow-y: auto;
+}
+
+
+.table-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+}
+
+.table-container th,
+.table-container td {
+    padding: 10px;
+    border: 1px solid var(--blue);
+}
+
+.table-container th {
+    background-color: var(--gray);
+    color: var(--blue);
+}
+
+.table-container table tbody tr:hover {
+    background-color: var(--blue);
+    color: var(--white);
 }

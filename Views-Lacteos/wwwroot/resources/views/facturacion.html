@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="UTF-8">
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <title>Facturación</title>
     <link rel="stylesheet" href="/resources/public/css/facturacion/facturacion.css">
 </head>
@@ -121,7 +120,11 @@
                         </div>
                     </div>
                 </div>
-                <button id="btnAgregar" class="btnAgregar" type="button">Agregar</button>
+                <div class="buttons">
+                    <button id="btnAgregar" class="btnAgregar" type="button">Agregar</button>
+                    <button id="btnFacturar" class="btnFacturar" type="button">Facturar</button>
+                    <button class="btnCancelar" id="btnCancelar" type="button">Cancelar</button>
+                </div>
                 <div class="table-container">
                     <table id="tablaProductos">
                         <thead>
@@ -136,12 +139,6 @@
                         </thead>
                         <tbody></tbody>
                     </table>
-                </div>
-               
-
-                <div class="buttons">
-                    <button id="btnFacturar" class="btn btn-custom" type="button">Facturar</button>
-                    <button class="btn btn-custom" type="button">Cancelar</button>
                 </div>
                 <div class="total">
                     <label class="form-label" for="txtTotal">Total:</label>

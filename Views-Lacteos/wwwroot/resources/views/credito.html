@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Crédito</title>
     <link rel="stylesheet" href="/resources/public/css/credito/credito.css">
 </head>
+
 <body>
     <div class="sidebar">
         <div id="contents"></div>
@@ -19,116 +21,102 @@
                     <i class="fas fa-question-circle"></i>
                 </div>
             </div>
-            <div class="head">
-                <div>
-                    <label for="vendedor">
-                        Vendedor:
-                    </label>
-                    <input class="form1" id="vendedor" type="text" />
-                </div>
-                <div>
-                    <label for="fechaVenta">
-                        Fecha de Venta:
-                    </label>
-                    <input class="form2" id="fechaVenta" type="date" value="2024-09-15" />
-                </div>
-            </div>
-            <div class="body-form">
-                <div class="cliente">
-                    <div class="form-check">
-                        <label class="form-check-label" for="clientOption">
-                            Cliente
-                        </label>
+            <div class="form">
+                <div class="head">
+                    <div class="vendedor">
+                        <label for="txtVendedor">Vendedor:</label>
+                        <input id="txtVendedor" type="text" class="vendedor" />
                     </div>
-                    <div class="mb-3">
-                        <label for="numeroFactura">
-                            Ingresar Número de Factura:
-                        </label>
-                        <input class="form-control" id="numeroFactura" type="text" />
-                    </div>
-                    <div class="mb-3">
-                        <label for="nombreCliente">
-                            Nombre del Cliente:
-                        </label>
-                        <input class="form-control" id="nombreCliente" type="text" />
+                    <div class="fecha">
+                        <label for="fechaVenta">Fecha de Venta:</label>
+                        <input id="fechaVenta" type="date" value="2024-09-15" class="fecha" />
                     </div>
                 </div>
-                <div class="credito">
-                    <div class="form-check">
-                        <input class="form-check-input" id="creditDataOption" name="creditOption"
-                            type="radio" />
-                        <label class="form-check-label" for="creditDataOption">
-                            Datos del Crédito
-                        </label>
-                    </div>
-                    <div class="mb-3">
-                        <label for="total">
-                            Total:
-                        </label>
-                        <input class="form-control" id="total" type="text" />
-                    </div>
-                    <div class="mb-3">
-                        <label for="estado">
-                            Estado:
-                        </label>
-                        <select class="form-control" id="estado">
-                            <option value="">
-                                Seleccione
-                            </option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="plazo">
-                            Plazo:
-                        </label>
-                        <input class="form-control" id="plazo" type="text" />
-                    </div>
-                    <div class="mb-3">
-                        <label for="cancelar">
-                            Cancelar:
-                        </label>
-                        <input class="form-control" id="cancelar" type="text" />
-                    </div>
-                    <div class="mb-3">
-                        <label for="saldo">
-                            Saldo:
-                        </label>
-                        <input class="form-control" id="saldo" type="text" />
-                    </div>
-                    <div class="mb-3">
-                        <label for="diaPago">
-                            Día de Pago:
-                        </label>
-                        <input class="form-control" id="diaPago" type="date" value="2024-09-15" />
-                    </div>
-                </div>
-                <div class="buttones">
-                    <button class="btn btn-primary" type="button">
-                        Guardar
-                    </button>
-                    <button class="btn btn-primary" type="button">
-                        Cancelar
-                    </button>
-                </div>
-            </div>
 
-                    <div class="row mb-3">
-                        <div class="col-md-12">
-                            <label for="numeroFacturaBuscar">
-                                Ingrese el Número de Factura:
-                            </label>
-                            <input class="form-control d-inline-block" id="numeroFacturaBuscar" style="width: auto;"
-                                type="text" />
-                            <button class="btn btn-primary" type="button">
-                                Buscar
-                            </button>
-                            <button class="btn btn-primary" type="button">
-                                Cargar Registro
-                            </button>
+                <div class="container">
+                    <!-- Sección Cliente -->
+                    <div class="body-cliente">
+                        <div class="border">
+                            <div class="form-check">
+                                <label class="form-check-label" for="cliente">
+                                    Cliente
+                                </label>
+                            </div>
+                            <div class="columnas">
+                                <div class="form-row">
+                                    <label class="form-label" for="txtNumeroFactura">Ingresar Número de Factura:</label>
+                                    <input class="form-control" id="txtNumeroFactura" type="text" />
+                                </div>
+                                <div class="form-row">
+                                    <label class="form-label" for="txtCliente">Nombre del Cliente:</label>
+                                    <input class="form-control" id="txtCliente" type="text" />
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </form>
-                <table class="table table-bordered">
+
+                    <!-- Sección crédito -->
+                    <div class="body-credito">
+                        <div class="border">
+                            <div class="form-check">
+                                <label class="form-check-label" for="producto">
+                                    Datos del Crédito
+                                </label>
+                            </div>
+                            <div class="columns">
+                                <!-- Primera columna -->
+                                <div class="column">
+                                    <div class="form-row">
+                                        <label class="form-label" for="txtTotal">Total:</label>
+                                        <input class="form-control" id="txtTotal" type="text" />
+                                    </div>
+                                    <div class="form-row">
+                                        <label class="form-label" for="txtPlazo">Plazo:</label>
+                                        <input class="form-control" id="txtPlazo" type="text" />
+                                    </div>
+                                    <div class="form-row">
+                                        <label class="form-label" for="txtCancelar">Cancelar:</label>
+                                        <input class="form-control" id="txtCancelar" type="text" />
+                                    </div>
+                                </div>
+                                <!-- Segunda columna -->
+                                <div class="column">
+                                    <div class="form-row">
+                                        <label class="form-label" for="txtSaldo">Saldo:</label>
+                                        <input class="form-control" id="txtSaldo" type="text" />
+                                    </div>
+                                    <div class="form-row example">
+                                        <label class="form-label" for="fechaDiaPago">Día de Pago:</label>
+                                        <input class="form-control" id="fechaDiaPago" type="date" value="2024-09-15"/>
+                                    </div>
+                                    <div class="form-row">
+                                        <label class="form-label" for="cmbEstado">Estado:</label>
+                                        <select class="form-select" id="cmbEstado">
+                                            <option value="Activo">Activo</option>
+                                            <option value="Inactivo">Inactivo</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="buttones">
+                                    <button class="btnGuardar" id="btnGuardar">Guardar</button>
+                                    <button class="btnCancelar" id="btnCancelar">Cancelar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                    
+                </div>
+            </div>
+            <div class="search-container">
+                <label for="ruc">
+                    Ingrese el Número de Factura:
+                </label>
+                <input id="ruc" name="ruc" type="text" />
+                <button id="btnBuscar">Buscar</button>
+                <button id="btnCargarRegistro">Cargar Registro</button>
+            </div>
+            </form>
+            <div class="table-container">
+                <table id="tableRegistro">
                     <thead>
                         <tr>
                             <th>
@@ -166,6 +154,8 @@
             </div>
         </div>
     </div>
+    </div>
     <script type="module" src="/resources/public/js/credito/credito.js"></script>
 </body>
+
 </html>
