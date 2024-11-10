@@ -47,6 +47,14 @@ function AddEvents() {
     } else if (role == 'Encargado de Inventario') {
         btn.style.display = 'none'
     }
+
+    btn.addEventListener('click', () => {
+        window.reporte.showModal()
+    })
+    
+    document.getElementById('reporte1').addEventListener('click', ()=>{
+        window.reporte.close()
+    })
 }
 
 function CrearProveedor() {

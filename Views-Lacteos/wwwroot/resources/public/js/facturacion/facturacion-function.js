@@ -1,8 +1,13 @@
 import { POST } from "../generic-functions.js";
-import { POST_Factura } from "../endpoints.js";
+import { POST_Factura, POST_DetallesFactura, REPORTE_Factura } from "../endpoints.js";
 
 let productos = [];
 let total = 0;
+
+function AddEvents() {
+    document.getElementById('btnAgregar').addEventListener('click', agregarProducto);
+    document.getElementById('btnFacturar').addEventListener('click', facturar)
+}
 
 function agregarProducto() {
     const producto = document.getElementById('txtProducto').value;
@@ -11,7 +16,13 @@ function agregarProducto() {
     const subtotal = cantidad * precio;
 
     if (!producto || isNaN(cantidad) || isNaN(precio)) {
-        alert('Por favor, complete todos los campos correctamente.');
+        Swal.fire({
+            title: 'Error',
+            text: 'Por favor, complete todos los campos correctamente',
+            icon: 'error',
+            confirmButtonText: 'Aceptar',
+            confirmButtonColor: '#7a2a1e',
+        });
         return;
     }
 
@@ -80,27 +91,56 @@ async function facturar() {
     const totalVenta = parseInt(document.getElementById('txtTotal').value);
     const numeroFactura = document.getElementById('txtNumeroFactura').value;
 
-    var url = `${POST_Factura}${cedulaCliente}&${vendedor}&${totalVenta}&${tipoPago}&${numeroFactura}&`;
-    
-    productos.forEach(items => {
-        url += `${items.producto}&${items.cantidad}&${items.precio}`
-    })
-    console.log(url)
-    POST(url, "Factura creada", "Error al crear la factura", () => {
-        limpiarFormulario()
-    })
+    if (productos.length === 0) {
+        Swal.fire({
+            title: 'Error',
+            text: "No hay productos en la factura",
+            icon: 'error',
+            confirmButtonText: 'Aceptar',
+            confirmButtonColor: '#7a2a1e',
+        });
+        return;
+    }
+
+    try {
+        var urlVentas = `${POST_Factura}${cedulaCliente}&${vendedor}&${totalVenta}&${tipoPago}&${numeroFactura}`;
+        await new Promise((resolve, reject) => {
+            POST(urlVentas, "Factura creada", "Error al crear la factura", resolve, reject);
+        })
+
+        for (const items of productos) {
+            console.log(items)
+            var urlProducto = `${POST_DetallesFactura}${items.producto}&${items.cantidad}&${items.precio}`
+            await new Promise((resolve, reject) => {
+                POST(urlProducto, "Dealles de factura creados", "Error al crear los detalles de la factura ", resolve, reject)
+            })
+        }
+
+        Swal.fire({
+            title: 'Confirmado',
+            text: "Factura creada exitosamente con todos los productos",
+            icon: 'success',
+            confirmButtonText: 'Aceptar',
+            confirmButtonColor: '#7a2a1e',
+        });
+        limpiarFormulario();
+
+        document.getElementById('reporteFactura').src = REPORTE_Factura+numeroFactura
+        window.reporte.showModal()
+        
+        document.getElementById('reporte1').addEventListener('click', ()=>{
+            window.reporte.close()
+        })
+    } catch (error) {
+        console.error("Error al crear la factura:", error);
+        alert("Error al crear la factura. Por favor, intente de nuevo.");
+    }
 }
 
 function limpiarFormulario() {
-    document.querySelector('form').reset();
     productos = [];
     actualizarTablaProductos();
     calcularTotal();
-}
-
-function AddEvents() {
-    document.getElementById('btnAgregar').addEventListener('click', agregarProducto);
-    document.getElementById('btnFacturar').addEventListener('click', facturar)
 }
 
 export { AddEvents }

@@ -31,7 +31,24 @@ namespace API_LACTEOS.Controllers
             var result = report.Execute(RenderType.Pdf);
             
             Response.Headers.Add("content-disposition", "inline; filename=reporte-usuarios.pdf");
-            
+
+            return File(result.MainStream, "application/pdf");
+        }
+
+        [HttpGet("proveedores")]
+        public IActionResult ObtenerProveedores()
+        {
+            var dt = _dbContext.ObtenerDatosProveedores();
+
+            string path = Path.Combine(Directory.GetCurrentDirectory(), "Reportes", "Proveedores.rdlc");
+
+            LocalReport report = new LocalReport(path);
+            report.AddDataSource("dsProveedor", dt);
+
+            var result = report.Execute(RenderType.Pdf);
+
+            Response.Headers.Add("content-disposition", "inline; filename=reporte-usuarios.pdf");
+
             return File(result.MainStream, "application/pdf");
         }
 
@@ -45,9 +62,11 @@ namespace API_LACTEOS.Controllers
             LocalReport report = new LocalReport(pathRDLC);
             report.AddDataSource("dsVenta", datos);
 
-            var result = report.Execute(RenderType.Pdf, 1);
+            var result = report.Execute(RenderType.Pdf);
 
-            return File(result.MainStream, "application/pdf", $"Factura_{numeroFactura}.pdf");
+            Response.Headers.Add("content-disposition", "inline; filename=Factura.pdf");
+
+            return File(result.MainStream, "application/pdf");
         }
     }
 }

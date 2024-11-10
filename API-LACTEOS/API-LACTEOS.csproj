@@ -9,11 +9,13 @@
 
   <ItemGroup>
     <None Remove="Reportes\FacturaContado.rdlc" />
+    <None Remove="Reportes\Proveedores.rdlc" />
     <None Remove="Reportes\Usuarios.rdlc" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Reportes\FacturaContado.rdlc" />
+    <EmbeddedResource Include="Reportes\Proveedores.rdlc" />
     <EmbeddedResource Include="Reportes\Usuarios.rdlc" />
   </ItemGroup>
 

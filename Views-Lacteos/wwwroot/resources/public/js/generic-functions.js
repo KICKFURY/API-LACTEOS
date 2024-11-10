@@ -38,15 +38,8 @@ function POST(url, mensageOK, mensageError, callback) {
         })
         .then(response => response.json())
         .then(data => {
-            Swal.fire({
-                title: 'Confirmado',
-                text: mensageOK,
-                icon: 'success',
-                confirmButtonText: 'Aceptar',
-                confirmButtonColor: '#7a2a1e',
-            });
             console.log(`${mensageOK}`, data)
-            callback()
+            callback(data)
         })
         .catch(error => console.log(`${mensageError}`, error))
 }

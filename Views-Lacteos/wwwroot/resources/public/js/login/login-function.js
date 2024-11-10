@@ -17,6 +17,14 @@ function Login() {
         localStorage.setItem('UserPSW', data.response.contra)
         if (data.response.nombreUsuario == username && data.response.contra == psw) {
             window.open('/resources/views/home.html', '_self')
+        } else {
+            Swal.fire({
+                title: 'Error',
+                text: 'La contraseña o el usuario es incorrecta',
+                icon: 'error',
+                confirmButtonText: 'Aceptar',
+                confirmButtonColor: '#7a2a1e',
+            });
         }
     })
 

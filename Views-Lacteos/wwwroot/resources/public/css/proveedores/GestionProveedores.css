@@ -401,3 +401,54 @@ body {
     background-color: var(--blue);
     color: var(--white);
 }
+
+/* Reporte */
+
+dialog[open] {
+    scale: 1;
+    transition: scale 0.3s ease;
+
+    @starting-style {
+        scale: 0;
+    }
+}
+
+dialog {
+    transition: scale .3s ease, display .3 ease allow-discrete;
+    scale: 0;
+}
+
+dialog {
+    margin-top: 100px;
+    margin-left: 320px;
+    background-color: #1a242f;
+    background-color: var(--background-alt);
+    color: #dbdbdb;
+    color: var(--text-main);
+    border: none;
+    border-radius: 6px;
+    border-color: #526980;
+    border-color: var(--border);
+    padding: 10px 30px;
+}
+
+dialog>header:first-child {
+    background-color: #161f27;
+    background-color: var(--background);
+    border-radius: 6px 6px 0 0;
+    margin: -10px -30px 10px;
+    padding: 10px;
+    text-align: center;
+}
+
+dialog::-webkit-backdrop {
+    background: #0000009c;
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+}
+
+dialog::backdrop {
+    background: #0000009c;
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+}

@@ -175,6 +175,18 @@ button:disabled:hover {
     top: -30px; 
 }
 
+@media (min-width: 1601px) {
+    .next i {
+        left: 1018px;
+    }
+}
+
+@media (max-width: 1600px) {
+    .next i {
+        left: 720px;
+    }
+}
+
 :root {
     --background-alt: #1a242f;
     --text-main: #dbdbdb;

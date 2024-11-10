@@ -16,7 +16,31 @@ namespace API_LACTEOS.Servicios
         {
             DataTable dt = new DataTable();
 
-            string query = "SELECT dbo.Usuarios.id, dbo.Usuarios.correo, dbo.Usuarios.nombreUsuario, dbo.Usuarios.contra, dbo.Roles.nombreRol, dbo.Estado.nombreEstado FROM dbo.Usuarios INNER JOIN dbo.Roles ON dbo.Usuarios.idRole = dbo.Roles.id INNER JOIN dbo.Estado ON dbo.Usuarios.idEstado = dbo.Estado.id";
+            string query = "SELECT * FROM ViewUsuarios";
+
+            string conexion = _config.GetConnectionString("CadenaSQL");
+
+            using (SqlConnection conn = new SqlConnection(conexion))
+            {
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    conn.Open();
+
+                    using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                    {
+                        da.Fill(dt);
+                    }
+                }
+            }
+
+            return dt;
+        }
+
+        public DataTable ObtenerDatosProveedores()
+        {
+            DataTable dt = new DataTable();
+
+            string query = "SELECT * FROM ViewProveedores";
 
             string conexion = _config.GetConnectionString("CadenaSQL");
 
@@ -40,7 +64,7 @@ namespace API_LACTEOS.Servicios
         {
             DataTable table = new DataTable();
 
-            string query = @"SELECT * FROM ViewFactura WHERE numeroFactura = @numeroFactura";
+            string query = @"SELECT * FROM ViewFacturaContado WHERE numeroFactura = @numeroFactura";
 
             string conexion = _config.GetConnectionString("CadenaSQL");
 

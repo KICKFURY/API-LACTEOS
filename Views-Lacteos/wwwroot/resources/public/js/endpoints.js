@@ -31,8 +31,12 @@ var DELETE_Producto = `${host}/Productos/Eliminar/`
 // FACTURACION
 var POST_Factura = `${host}/Ventas/GuardarV1/`
 
+// DETALLES FACTURACION
+var POST_DetallesFactura = `${host}/DetallesVenta/Guardar/`
+var REPORTE_Factura = `${host}/Reportes/reporte-pdf/`
+
 export { GET_Login, GET_Usuarios, POST_Usuario, PUT_Usuario, DELETE_Usuario,
         POST_Proveedor, PUT_Proveedor, DELETE_Proveedor, GET_Proveedores,
         GET_Proveedor, GET_Clientes, GET_Cliente, POST_Cliente, PUT_Cliente,
         DELETE_Cliente, GET_Productos, GET_Producto, POST_Producto, PUT_Producto,
-        DELETE_Producto, POST_Factura }
+        DELETE_Producto, POST_Factura, POST_DetallesFactura, REPORTE_Factura }
