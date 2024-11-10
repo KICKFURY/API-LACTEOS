@@ -1,5 +1,6 @@
 import { cargarSidebar, AddEvents } from "../slider/slider-functions.js";
 import { RedirectURL } from "../home/home-functions.js";
+import { loading } from "../components/loading.js";
 
 window.onload = function () {
     AddEvents()
@@ -7,6 +8,6 @@ window.onload = function () {
     cargarSidebar()
 }
 
-// window.addEventListener('DOMContentLoaded', () => {
-//     cargarSidebar()
-// })
+window.addEventListener('DOMContentLoaded', () => {
+    loading()
+})

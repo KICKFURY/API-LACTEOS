@@ -1,17 +1,11 @@
-function GET(url, mensageError, optionResponseType, callback) {
+function GET(url, mensageError, optionResponseType, callbackThen, callbackCatch) {
     fetch(url)
         .then(response => optionResponseType == 1 ? response.json() : response.text())
         .then(data => {
-            callback(data)
+            callbackThen(data)
         })
         .catch((error) => {
-            Swal.fire({
-                title: 'Error',
-                text: "Revise el nombre de usuario o contraseña uno de los dos es incorrecto",
-                icon: 'error',
-                confirmButtonText: 'Aceptar',
-                confirmButtonColor: '#7a2a1e',
-            });
+            callbackCatch(error)
             console.log(mensageError, error)
         })
 }

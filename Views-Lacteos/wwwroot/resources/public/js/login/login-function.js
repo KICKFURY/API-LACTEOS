@@ -14,6 +14,7 @@ function Login() {
 
     GET(url, "Usuario no encontrado", 1, (data) => {
         localStorage.setItem('UsuarioRole', data.response.idRole == 1 ? "Admin" : data.response.idRole == 2 ? "Vendedor" : "Encargado de Inventario")
+        localStorage.setItem('UserPSW', data.response.contra)
         if (data.response.nombreUsuario == username && data.response.contra == psw) {
             window.open('/resources/views/home.html', '_self')
         }

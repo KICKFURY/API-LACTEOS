@@ -5,26 +5,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/resources/public/css/home/home.css">
+    <link rel="stylesheet" href="../public/css/components/loading.css">
     <title>Home</title>
 </head>
 
 <body>
-    <div id="contents"></div>
-    <div class="main">
-        <div class="topbar">
-            <div class="toggle">
-                <i class="fas fa-bars"></i>
-            </div
-                style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh">
-            <div class="help">
-                <i class="fas fa-question-circle"></i>
+    <div id="loader" class="loader"></div>
+    <div id="content" style="display: none;">
+        <div id="contents"></div>
+        <div class="main">
+            <div class="topbar">
+                <div class="toggle">
+                    <i class="fas fa-bars"></i>
+                    </div
+                        style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh">
+                    <div class="help">
+                        <i class="fas fa-question-circle"></i>
+                    </div>
+                </div>
+                <div>
+                    <img alt="Logo of Lácteos la Granja with a barn and cows in a field" height="300"
+                        src="/resources/public/img/logo.png" width="300" />
+                </div>
             </div>
         </div>
-        <div>
-            <img alt="Logo of Lácteos la Granja with a barn and cows in a field" height="300"
-                src="/resources/public/img/logo.png" width="300" />
-        </div>
-    </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="module" src="/resources/public/js/home/home.js"></script>

@@ -175,5 +175,106 @@ button:disabled:hover {
     top: -30px; 
 }
 
+:root {
+    --background-alt: #1a242f;
+    --text-main: #dbdbdb;
+    --border: #526980;
+    --background: #161f27;
+}
 
 
+/* Confirmacion de la contra Admin */
+
+.password-section-confirm {
+    background-color: #fff;
+    width: 100%;
+    border: 1px solid #000;
+    border-radius: 5px;
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    padding: 20px; 
+}
+
+.password-section-confirm label {
+    display: block;
+    margin-bottom: 20px;
+    margin-top: 50px;
+    color: var(--blue);
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.password-section-confirm input {
+    padding: .375rem .75rem; 
+    font-size: 1rem;
+    border: 1px solid #dee2e6;
+    border-radius: 0.375rem; 
+    width: 70%;
+    max-width: 200px;
+    box-sizing: border-box; 
+    margin-bottom: 10px; 
+}
+
+.password-section-confirm button {
+    background-color: var(--blue);
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 3px;
+    cursor: pointer;
+    width: 60%; 
+    margin-top: 30px; 
+}
+
+.password-section-confirm button:hover {
+    background-color: #7a2a1e;
+}
+
+dialog[open] {
+    scale: 1;
+    transition: scale 0.3s ease;
+
+    @starting-style {
+        scale: 0;
+    }
+}
+
+dialog {
+    transition: scale .3s ease, display .3 ease allow-discrete;
+    scale: 0;
+}
+
+dialog {
+    margin: 150px 650px;
+    background-color: #591610;
+    /* background-color: var(--background-alt); */
+    color: #dbdbdb;
+    color: var(--text-main);
+    border: none;
+    border-radius: 6px;
+    border-color: #526980;
+    border-color: var(--border);
+    padding: 10px 30px;
+}
+
+dialog>header:first-child {
+    background-color: #161f27;
+    background-color: var(--background);
+    border-radius: 6px 6px 0 0;
+    margin: -10px -30px 10px;
+    padding: 10px;
+    text-align: center;
+}
+
+dialog::-webkit-backdrop {
+    background: #0000009c;
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+}
+
+dialog::backdrop {
+    background: #0000009c;
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+}

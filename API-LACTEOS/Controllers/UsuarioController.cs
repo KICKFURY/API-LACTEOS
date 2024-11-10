@@ -79,7 +79,7 @@ namespace API_LACTEOS.Controllers
         }
 
         [HttpPut]
-        [Route("Editar/{correo}&&{nombreUsuario}&&{contra}&&{idRole:int}&&{idEstado:int}")]
+        [Route("Editar/{correo}&{nombreUsuario}&{contra}&{idRole:int}&{idEstado:int}")]
         public IActionResult Editar(string correo, string nombreUsuario, string contra, int idRole, int idEstado)
         {
             Usuario oUsuario = new Usuario();

@@ -1,5 +1,5 @@
-import { GET_Usuarios, GET_Login, POST_Usuario } from "../endpoints.js"
-import { GET, POST } from "../generic-functions.js"
+import { GET_Usuarios, GET_Login, POST_Usuario, PUT_Usuario, DELETE_Usuario } from "../endpoints.js"
+import { GET, POST, PUT, DELETE } from "../generic-functions.js"
 import { encriptar } from "../security.js"
 
 function AddEvents() {
@@ -38,6 +38,7 @@ function AddEvents() {
 
 function AddEventsFirst() {
     document.getElementById('rdaCrear').addEventListener('change', RDACREARINTERNO)
+    
     document.getElementById('rdaEditar').addEventListener('change', () => {
         MostrarBuscadorUsername()
         ActivateControl(false)
@@ -46,39 +47,106 @@ function AddEventsFirst() {
         document.getElementById('btnEliminar').disabled = true
         document.getElementById('estado').disabled = false
     })
+
     document.getElementById('rdaEliminar').addEventListener('change', () => {
         MostrarBuscadorUsername()
         ActivateControl(true)
         document.getElementById('btnCrear').disabled = true
         document.getElementById('btnEditar').disabled = true
         document.getElementById('btnEliminar').disabled = false
-        document.getElementById('estado').disabled = false
+        document.getElementById('estado').disabled = true
     })
 
     document.getElementById('buscarUsername').addEventListener('keyup', () => {
         var username = document.getElementById('buscarUsername').value
-        if (username.length == 5) {
+
+        if (username.length == '') {
+            LimpiarControles()
+            return
+        }
+
+        if (username.length >= 5) {
             CargarUsuarioCampos()
+        } else {
+            LimpiarControles()
         }
     })
 
+    document.getElementById('btnEditar').addEventListener('click', () => {
+        let username = document.getElementById('buscarUsername').value
+
+        if (username <= 4) {
+            Swal.fire({
+                title: 'Error',
+                text: 'Ingrese un nombre de usuario',
+                icon: 'error',
+                confirmButtonText: 'Aceptar',
+                confirmButtonColor: '#7a2a1e',
+            });
+            LimpiarControles()
+            return
+        }
+
+        window.dialogPSW.showModal()
+    })
+
+    document.getElementById('btnEliminar').addEventListener('click', () => {
+        window.dialogPSW.showModal()
+    })
+
+    document.getElementById('dialogPSW1').addEventListener('click', () => {
+        window.dialogPSW.close()
+    })
     document.getElementById('btnCancelar').addEventListener('click', LimpiarControles)
     document.getElementById('btnCrear').addEventListener('click', CrearUsuario)
+
+    document.getElementById('btnConfirmar').addEventListener('click', () => {
+        const pswGlobal = localStorage.getItem('UserPSW')
+        const psw = encriptar(document.getElementById('txtPSWAdmin').value)
+        var rdaEliminar = document.getElementById('rdaEliminar')
+        var rdaEditar = document.getElementById('rdaEditar')
+
+        if (pswGlobal == psw) {
+            if (rdaEliminar.checked) {
+                EliminarUsuario()
+            } else if (rdaEditar.checked) {
+                EditarUsuario()
+            }
+        } else {
+            window.dialogPSW.close()
+            Swal.fire({
+                title: 'Error',
+                text: 'La contraseña es incorrecta',
+                icon: 'error',
+                confirmButtonText: 'Aceptar',
+                confirmButtonColor: '#7a2a1e',
+            });
+            LimpiarControles()
+            document.getElementById('buscarUsername').value = ''
+        }
+    })
 }
 
 function CargarUsuarioCampos() {
-    var username = document.getElementById('nombreUsuario').value
-    var correo = document.getElementById('txtCorreo').value
-    var role = document.getElementById('rolGeneral').value
-    var psw1 = document.getElementById('txtPSW1').value
-    var psw2 = document.getElementById('txtPSW2').value
+    var username = document.getElementById('buscarUsername').value
+    var fecha = document.getElementById('fechaRegistro')
+    var user = document.getElementById('nombreUsuario')
+    var correo = document.getElementById('txtCorreo')
+    var role = document.getElementById('rolGeneral')
+    var estado = document.getElementById('estado')
+    // var psw1 = document.getElementById('txtPSW1').value
+    // var psw2 = document.getElementById('txtPSW2').value
     var url = GET_Login+username
 
-    GET(url,  "Error al obtener el usuario", 1, (data) => { 
-        username = data.response.nombreUsuario
-        correo = data.response.correo
-        role = data.response.rolGeneral == 2 ? "Vendedor" : "Encargado de Inventario"
-        
+    GET(url,  "Error al obtener el usuario", 1, (data) => {
+        let date = data.response.fechaCreacion.toString().split('T')[0]
+        fecha.value = date
+        user.value = data.response.nombreUsuario
+        correo.value = data.response.correo
+        role.value = data.response.idRole == 1 ? "Admin" : data.response.idRole == 2 ? "Vendedor" : "Encargado de Inventario"
+        estado.value = data.response.idEstado == 1 ? "Activo" : "Inactivo"
+    }, () => {
+        LimpiarControles()
     })
 }
 
@@ -96,6 +164,8 @@ function CargarUsuario() {
                 <td>${data.response.correo}</td>
                 <td>${data.response.idEstado == 1 ? 'Activo' : 'Inactivo'}</td>
             `
+    }, () => {
+
     })
 }
 
@@ -151,22 +221,67 @@ function CrearUsuario() {
 
     var hash = encriptar(psw1)
     const url = `${POST_Usuario}${correo}&${username}&${hash}&${role == 'Vendedor' ? 2 : 3}`
-
+    console.log(url)
     POST(url, "Usuario Creado", "Error al crear el usuario", () => {
         LimpiarControles()
     })
 }
 
+function EditarUsuario() {
+    var username = document.getElementById('nombreUsuario').value
+    var correo = document.getElementById('txtCorreo').value
+    var role = document.getElementById('rolGeneral').value
+    var psw1 = document.getElementById('txtPSW1').value
+    var psw2 = document.getElementById('txtPSW2').value
+    var hash = encriptar(psw1)
+
+    var estado = document.getElementById('estado')
+    var url = `${PUT_Usuario}${correo}&${username}&${hash}&${role == 'Vendedor'? 2 : 3}&${estado.value == 'Activo' ? 1 : 2}`
+
+    PUT(url, "Usuario Editado", "Error al editar el usuario", () => {
+        Swal.fire({
+            title: 'Confirmado',
+            text: "Usuario Editado",
+            icon: 'success',
+            confirmButtonText: 'Aceptar',
+            confirmButtonColor: '#7a2a1e',
+        });
+        LimpiarControles()
+        document.getElementById('buscarUsername').value = ''
+    })
+    window.dialogPSW.close()
+}
+
+function EliminarUsuario() {
+    const username = document.getElementById('buscarUsername').value
+    const url = DELETE_Usuario+username
+
+    DELETE(url, "Usuario Eliminado", "Error al eliminar el usuario", () => {
+        Swal.fire({
+            title: 'Confirmado',
+            text: "Usuario Eliminado",
+            icon: 'success',
+            confirmButtonText: 'Aceptar',
+            confirmButtonColor: '#7a2a1e',
+        });
+        LimpiarControles()
+        document.getElementById('buscarUsername').value = ''
+    })
+    window.dialogPSW.close()
+}
+
 function ActivateControl(value) {
-    document.getElementById('buscarUsername').disabled = value
     document.getElementById('nombreUsuario').disabled = value
     document.getElementById('txtCorreo').disabled = value
     document.getElementById('txtPSW1').disabled = value
     document.getElementById('txtPSW2').disabled = value
+    document.getElementById('rolGeneral').disabled = value
+    document.getElementById('estado').disabled = value
 }
 
 function RDACREARINTERNO() {
     OcultarBuscadorUsername()
+    ActivateControl(false)
     document.getElementById('btnCrear').disabled = false
     document.getElementById('btnEditar').disabled = true
     document.getElementById('btnEliminar').disabled = true
@@ -175,6 +290,8 @@ function RDACREARINTERNO() {
 
 function OcultarBuscadorUsername() {
     LimpiarControles()
+    document.getElementById('buscarUsername').value = ''
+    document.getElementById('buscarUsername').disabled = true
     document.getElementById('buscarUsername').style.display = 'none'
     document.getElementById('lbaBuscador').style.display = 'none'
     document.querySelector('.form-section').style.marginLeft = '-100px'
@@ -182,17 +299,18 @@ function OcultarBuscadorUsername() {
 
 function MostrarBuscadorUsername() {
     LimpiarControles()
+    document.getElementById('buscarUsername').value = ''
+    document.getElementById('buscarUsername').disabled = false
     document.getElementById('buscarUsername').style.display = ''
     document.getElementById('lbaBuscador').style.display = ''
-    document.querySelector('.form-section').style.marginLeft = '-414px'
+    document.querySelector('.form-section').style.marginLeft = '-402px'
 }
 
 function LimpiarControles() {
-    document.getElementById('buscarUsername').value = ''
     document.getElementById('nombreUsuario').value = ''
     document.getElementById('txtCorreo').value = ''
     document.getElementById('txtPSW1').value = ''
     document.getElementById('txtPSW2').value = ''
 }
 
-export { AddEventsFirst, AddEvents, ObtenerUsuarios }
+export { AddEventsFirst, AddEvents, ObtenerUsuarios, OcultarBuscadorUsername }
