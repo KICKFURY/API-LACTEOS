@@ -56,53 +56,38 @@ namespace API_LACTEOS.Controllers
         }
 
         [HttpPost]
-        [Route("Guardar/{idCliente:int}&{idUsuario:int}&{totalVenta:int}&{tipoVenta}&{numeroFactura}&{nombreProducto}&{cantidadVendida:int}&{precioUnitario:int}")]
-        public IActionResult Guardar(int idCliente, int idUsuario, int totalVenta, string tipoVenta, string numeroFactura, string nombreProducto, int cantidadVendida, int precioUnitario)
-        {
-            Venta venta = new Venta();
-            DetallesVentum detallesVentum = new DetallesVentum();
-            try
-            {
-                venta.IdCliente = idCliente;
-                venta.IdUsuario = idUsuario;
-                venta.TotalVenta = totalVenta;
-                venta.TipoVenta = tipoVenta;
-                venta.NumeroFactura = numeroFactura;
-                venta.FechaVenta = DateTime.Now;
-
-                detallesVentum.IdProducto = _dbcontext.Productos.Where(p => p.NombreProducto == nombreProducto).FirstOrDefault().Id;
-                detallesVentum.CantidadVendida = cantidadVendida;
-                detallesVentum.PrecioUnitario = precioUnitario;
-
-                _dbcontext.Ventas.Add(venta);
-                _dbcontext.SaveChanges();
-
-                detallesVentum.IdVenta = _dbcontext.Ventas.OrderBy(p => p.Id).Last().Id;
-                _dbcontext.DetallesVenta.Add(detallesVentum);
-                _dbcontext.SaveChanges();
-                return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok" });
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, new { mensaje = ex.Message });
-            }
-        }
-
-        [HttpPost]
-        [Route("GuardarV1/{rucCliente}&{vendedor}&{totalVenta:int}&{tipoVenta}&{numeroFactura}")]
+        [Route("Guardar/{rucCliente}&{vendedor}&{totalVenta:int}&{tipoVenta}&{numeroFactura}")]
         public IActionResult GuardarV1(string rucCliente, string vendedor, int totalVenta, string tipoVenta, string numeroFactura)
         {
             try
             {
                 if (totalVenta < 0)
                 {
-                    return BadRequest(new { mensaje = "Datos de entrada no válidos." });
+                    return BadRequest(new { mensaje = "Datos de entrada no válidos" });
                 }
 
                 using (var transaction = _dbcontext.Database.BeginTransaction())
                 {
 
-                    if (_dbcontext.Ventas.OrderBy(p => p.NumeroFactura).Last().NumeroFactura != numeroFactura)
+                    try
+                    {
+                        if (_dbcontext.Ventas.OrderBy(p => p.NumeroFactura).Last().NumeroFactura != numeroFactura)
+                        {
+                            var venta = new Venta
+                            {
+                                IdCliente = _dbcontext.Clientes.Where(p => p.Ruc == rucCliente).FirstOrDefault().Id,
+                                IdUsuario = _dbcontext.Usuarios.Where(p => p.NombreUsuario == vendedor).FirstOrDefault().Id,
+                                TotalVenta = totalVenta,
+                                TipoVenta = tipoVenta,
+                                NumeroFactura = numeroFactura,
+                                FechaVenta = DateTime.Now
+                            };
+
+                            _dbcontext.Ventas.Add(venta);
+                            _dbcontext.SaveChanges();
+                        }
+                    }
+                    catch (Exception error)
                     {
                         var venta = new Venta
                         {
