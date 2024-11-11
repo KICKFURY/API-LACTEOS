@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/resources/public/css/compras/compras.css">
+    <title>Compras e Inventario</title>
+</head>
+<body>
+    <div class="sidebar">
+        <div id="contents"></div>
+        <div class="main">
+            <div class="topbar">
+                <div class="toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <h2> Compras</h2>
+                <div class="help">
+                    <i class="fas fa-question-circle"></i>
+                </div>
+            </div>
+           
+            <div class="form">
+                <div class="next">
+                    <a href="/resources/views/inventario.html">
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                <div class="container">
+                    <!-- Sección Compras -->
+                    <div class="body-compra">
+                        <div class="border">
+                            <div class="form-check">
+                                <label class="form-check-label" for="cliente">
+                                    Datos de la Compra
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-row">
+                                    <label class="form-label" for="txtFechaCompra">
+                                        Fecha de Compra:
+                                    </label>
+                                    <input class="form-control" id="txtFechaCompra" type="date" value="2024-11-09" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-row">
+                                    <label class="form-label" for="txtNoCompra">
+                                        N° de Compra:
+                                    </label>
+                                    <input class="form-control" id="txtNoCompra" type="text" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-row">
+                                    <label class="form-label" for="txtNoProveedor">
+                                        N° del Proveedor:
+                                    </label>
+                                    <input class="form-control" id="txtNoProveedor" type="text" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-row">
+                                    <label class="form-label" for="txtProveedor">
+                                        Proveedor:
+                                    </label>
+                                    <input class="form-control" id="txtProveedor" type="text" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sección Datos del Producto -->
+                    <div class="body-producto">
+                        <div class="border">
+                            <div class="form-check">
+                                <label class="form-check-label" for="producto">
+                                    Datos del Producto
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-row">
+                                    <label class="form-label" for="cmbProducto">
+                                        Producto:
+                                    </label>
+                                    <select class="form-select" id="cmbProducto">
+                                        <option value="Leche">Leche</option>
+                                        <option value="Crema">Crema</option>
+                                        <option value="Yogurt">Yogurt</option>
+                                        <option value="QuesoCheddar">Queso Cheddar</option>
+                                        <option value="Cuajada">Cuajada</option>
+                                        <option value="Pastilladecuajo">Pastilla de cuajo</option>
+                                        <option value="Empaque">Empaque</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-row">
+                                    <label class="form-label" for="txtDescripcion">
+                                        Descripción:
+                                    </label>
+                                    <input class="form-control" id="txtDescripcion" type="text" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-row">
+                                    <label class="form-label" for="txtCantidad">
+                                        Cantidad:
+                                    </label>
+                                    <input class="form-control" id="txtCantidad" type="text" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-row">
+                                    <label class="form-label" for="txtPrecio">
+                                        Precio C$:
+                                    </label>
+                                    <input class="form-control" id="txtPrecio" type="text" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="buttons">
+                <button id="btnAgregar" class="btnAgregar" type="button">Agregar</button>
+                <button id="btnFacturar" class="btnFacturar" type="button">Facturar</button>
+                <button class="btnCancelar" id="btnCancelar" type="button">Cancelar</button>
+            </div>
+            <div class="table-container">
+                <table id="tablaProductos">
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                            <th>Precio</th>
+                            <th>Subtotal</th>
+                            <th>Editar</th>
+                            <th>Eliminar</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <div class="total">
+                <label class="form-label" for="txtTotal">Total:</label>
+                <input class="form-control d-inline-block" id="txtTotal" style="width: 100px;" type="text" />
+            </div>
+        </div>
+    </div>
+    <script type="module" src="/resources/public/js/compras/compras.js"></script>
+</body>
+</html>

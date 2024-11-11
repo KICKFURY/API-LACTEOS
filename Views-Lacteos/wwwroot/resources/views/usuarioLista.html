@@ -1,79 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
         Gestión De Usuarios
     </title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="/resources/public/css/usuarios/usuariosLista.css">
-    <link rel="stylesheet" href="../public/css/components/loading.css">
     <link rel="stylesheet" href="/resources/public/img/logo.png" type="image/x-icon">
 </head>
-
 <body>
-    <div id="loader" class="loader"></div>
-    <div id="content" style="display: none;">
-        <div class="sidebar">
-            <div id="contents"></div>
-            <div class="main">
-                <div class="topbar">
-                    <div class="toggle">
-                        <i class="fas fa-bars"></i>
-                    </div>
-                    <h2>Gestión de Usuarios</h2>
-                    <div class="help">
-                        <i class="fas fa-question-circle"></i>
-                    </div>
+    <div class="sidebar">
+        <div id="contents"></div>
+        <div class="main">
+            <div class="topbar">
+                <div class="toggle">
+                    <i class="fas fa-bars"></i>
                 </div>
-                <div class="search">
-                    <label for="buscarUsername">
-                        Ingrese el Nombre del Usuario:
-                    </label>
-                    <input id="buscarUsername" name="buscarUsername" type="text" />
-                    <button id="btnCargarTabla" class="buttons">
-                        Cargar Tabla
-                    </button>
-                    <button id="btnGenerarReporte" style="margin: 10px;">
-                        Generar Reporte
-                    </button>
-                    <dialog id="reporte">
-                        <iframe src="http://localhost:5037/api/Reportes/usuarios" frameborder="0" width="900px"
-                            height="500px"></iframe>
-                        <br>
-                        <center>
-                            <button id="reporte1">Cerrar</button>
-                        </center>
-                    </dialog>
+                <h2>Gestión de Usuarios</h2>
+                <div class="help">
+                    <i class="fas fa-question-circle"></i>
                 </div>
-                <div class="table-container">
-                    <table id="tablaUsuarios" class="tabled">
-                        <thead>
-                            <tr>
-                                <th>
-                                    Usuario
-                                </th>
-                                <th>
-                                    Contraseña
-                                </th>
-                                <th>
-                                    Correo
-                                </th>
-                                <th>
-                                    Estado
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
-                </div>
+            </div>
+            <div class="next">
+                <a href="/resources/views/usuarios.html">
+                    <i class="fas fa-arrow-left"></i>
+                </a>
+            </div>
+            <div class="search">
+                <label for="buscarUsername">
+                    Ingrese el Nombre del Usuario:
+                </label>
+                <input id="buscarUsername" name="buscarUsername" type="text" />
+                <button id="btnCargarTabla" class="buttons">
+                    Cargar Tabla
+                </button>
+                <button id="btnGenerarReporte" style="margin: 10px;">
+                    Generar Reporte
+                </button>
+                <dialog id="reporte">
+                    <iframe src="http://localhost:5037/api/Reportes/usuarios" frameborder="0"
+                        width="900px" height="500px"></iframe>r
+                    <br>
+                    <center>
+                        <button id="reporte1">Cerrar</button>
+                    </center>
+                </dialog>
+            </div>
+            <div class="table-container">
+                <table id="tablaUsuarios" class="tabled">
+                    <thead>
+                        <tr>
+                            <th>
+                                Usuario
+                            </th>
+                            <th>
+                                Contraseña
+                            </th>
+                            <th>
+                                Correo
+                            </th>
+                            <th>
+                                Estado
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
     <script type="module" src="/resources/public/js/usuarios/usuarioLista.js"></script>
 </body>
-
 </html>

@@ -1,0 +1,161 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    width: 170%;
+    margin-left: -35%;
+    align-content: center;
+    margin-top: 25%;
+    flex-wrap: wrap;
+}
+
+.container label {
+    color: var(--blue);
+    font-weight: bold;
+}
+
+.container input {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    height: 30px;
+}
+
+.container select {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    height: 30px;
+    width: 41%;
+}
+.body-compra,
+.body-producto {
+    margin-bottom: 15%;
+    border: 1px solid #000;
+    width: 48%;
+    max-width: 100%;
+    padding: 10px;
+}
+
+.body-cliente {
+    margin-right: 10px;
+}
+
+.body-producto {
+    margin-left: 10px;
+}
+
+.border {
+    margin-left: 5%;
+} 
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.form-label {
+    flex: 0 0 40%;
+    margin-right: 10px;
+    width: 100px;
+    margin-left: -20px;
+}
+
+.form-check {
+    margin-bottom: 35px;
+}
+
+.form-check label {
+    color: var(--blue);
+    font-weight: bold;
+    font-size: 120%;
+    text-decoration: underline;
+}
+
+#txtFechaCompra {
+    width: 41%;
+}
+
+.buttons {
+    display: flex; 
+    justify-content: center; 
+    gap: 10px; 
+    margin-top: -7%;
+    margin-left: 55%;
+}
+
+.buttons button {
+    background-color: var(--blue);
+    color: var(--white);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.buttons button:hover {
+    background-color: #6E1E1E;
+    color: var(--white);
+}
+
+.total {
+    margin-left: 60%;
+    margin-top: 2%;
+}
+
+.total label {
+    color: var(--blue);
+    font-weight: bold;
+}
+
+.total input {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-weight: bold;
+    height: 30px;
+}
+
+/* Tabla */
+.table-container {
+    width: 80%;
+    height: 290px;
+    overflow-y: auto;
+    margin-left: 0%;
+    margin-top: 4%;
+}
+
+.table-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-left: 25px;
+}
+
+.table-container th,
+.table-container td {
+    padding: 10px;
+    border: 1px solid var(--blue);
+}
+
+.table-container th {
+    background-color: var(--gray);
+    color: var(--blue);
+}
+
+.table-container table tbody tr:hover {
+    background-color: var(--blue);
+    color: var(--white);
+}
+
+.next {
+    position: relative; 
+}
+
+.next i {
+    color: var(--blue);
+    font-size: 24px;
+    position: absolute; 
+    margin-top: 15%;
+    margin-left: 140%;
+}

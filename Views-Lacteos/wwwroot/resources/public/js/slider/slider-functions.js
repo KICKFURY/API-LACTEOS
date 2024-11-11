@@ -43,19 +43,24 @@ function camposSlider() {
             document.getElementById('btnClientes').style.display = "";
             document.getElementById('btnProveedores').style.display = "";
             document.getElementById('btnUsuarios').style.display = "";
+            document.getElementById('btnCreditos').style.display = "none";
+            document.getElementById('btnCompras').style.display = "none";
             document.getElementById('btnReportes').style.display = "block";
             document.getElementById('btnFacturacion').style.display = "none";
         } else if (usuario == "Vendedor") {
             document.getElementById('btnFacturacion').style.display = "";
             document.getElementById('btnClientes').style.display = "";
             document.getElementById('btnCreditos').style.display = "";
+            document.getElementById('btnCompras').style.display = "none";
             document.getElementById('btnProveedores').style.display = "none";
             document.getElementById('btnUsuarios').style.display = "none";
             document.getElementById('btnReportes').style.display = "none";
             document.getElementById('btnMantenimiento').style.display = "none";
         } else if (usuario == "Encargado de Inventario")  {
             document.getElementById('btnProveedores').style.display = "";
+            document.getElementById('btnCompras').style.display = "";
             document.getElementById('btnClientes').style.display = "none";
+            document.getElementById('btnCreditos').style.display = "none";
             document.getElementById('btnUsuarios').style.display = "none";
             document.getElementById('btnFacturacion').style.display = "none";
             document.getElementById('btnReportes').style.display = "none";
