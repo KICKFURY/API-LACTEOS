@@ -92,7 +92,7 @@
 //            {
 //                oPerdida.MotivoDevolucion = objeto.MotivoDevolucion is null ? oPerdida.MotivoDevolucion : objeto.MotivoDevolucion;
 //                oPerdida.CantidadProducto = objeto.CantidadProducto;
-           
+
 //                _dbcontext.Perdidas.Update(oPerdida);
 //                _dbcontext.SaveChanges();
 

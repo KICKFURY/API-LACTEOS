@@ -50,8 +50,8 @@ namespace API_LACTEOS.Controllers
         }
 
         [HttpPost]
-        [Route("Guardar/{nombre}&{descripcion}&{precio}&{cantidad}&{idTipoProducto}&{minimoStock}&{idUnidadMedida}&{fechaExpiracion}")]
-        public IActionResult Guardar(string nombre, string descripcion, int precio, int cantidad, int idTipoProducto, int minimoStock, int idUnidadMedida, DateTime fechaExpiracion)
+        [Route("Guardar/{nombre}&{descripcion}&{precio}&{cantidad}&{minimoStock}&{fechaExpiracion}")]
+        public IActionResult Guardar(string nombre, string descripcion, int precio, int cantidad, int minimoStock, DateTime fechaExpiracion)
         {
             Producto producto = new Producto();
             try
@@ -60,9 +60,7 @@ namespace API_LACTEOS.Controllers
                 producto.DescripcionProducto = descripcion;
                 producto.PrecioProducto = precio;
                 producto.CantidadProducto = cantidad;
-                producto.IdTipoProducto = idTipoProducto;
                 producto.MinimoStockProducto = minimoStock;
-                producto.IdUnidadMedida = idUnidadMedida;
                 producto.FechaExpiracionProducto = fechaExpiracion;
                 _dbcontext.Productos.Add(producto);
                 _dbcontext.SaveChanges();
@@ -76,8 +74,8 @@ namespace API_LACTEOS.Controllers
         }
 
         [HttpPut]
-        [Route("Editar/{nombre}&{descripcion}&{precio}&{cantidad}&{idTipoProducto}&{minimoStock}&{idUnidadMedida}&{fechaExpiracion}")]
-        public IActionResult Editar(string nombre, string descripcion, int precio, int cantidad, int idTipoProducto, int minimoStock, int idUnidadMedida, DateTime fechaExpiracion)
+        [Route("Editar/{nombre}&{descripcion}&{precio}&{cantidad}&{minimoStock}&{fechaExpiracion}")]
+        public IActionResult Editar(string nombre, string descripcion, int precio, int cantidad, int minimoStock, DateTime fechaExpiracion)
         {
             Producto producto = new Producto();
             try
@@ -87,9 +85,7 @@ namespace API_LACTEOS.Controllers
                 producto.DescripcionProducto = descripcion;
                 producto.PrecioProducto = precio;
                 producto.CantidadProducto = cantidad;
-                producto.IdTipoProducto = idTipoProducto;
                 producto.MinimoStockProducto = minimoStock;
-                producto.IdUnidadMedida = idUnidadMedida;
                 producto.FechaExpiracionProducto = fechaExpiracion;
                 _dbcontext.Productos.Update(producto);
                 _dbcontext.SaveChanges();

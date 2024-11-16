@@ -1,4 +1,4 @@
-﻿using API_LACTEOS.Models;
+﻿//using API_LACTEOS.Models;
 using API_LACTEOS.Servicios;
 using AspNetCore.Reporting;
 using Microsoft.AspNetCore.Http;
@@ -29,7 +29,7 @@ namespace API_LACTEOS.Controllers
             report.AddDataSource("dsUsuario", dt);
 
             var result = report.Execute(RenderType.Pdf);
-            
+
             Response.Headers.Add("content-disposition", "inline; filename=reporte-usuarios.pdf");
 
             return File(result.MainStream, "application/pdf");
@@ -52,6 +52,40 @@ namespace API_LACTEOS.Controllers
             return File(result.MainStream, "application/pdf");
         }
 
+        [HttpGet("productos")]
+        public IActionResult ObtenerProdutos()
+        {
+            var dt = _dbContext.ObtenerDatosProductos();
+
+            string path = Path.Combine(Directory.GetCurrentDirectory(), "Reportes", "Productos.rdlc");
+
+            LocalReport report = new LocalReport(path);
+            report.AddDataSource("dsProducto", dt);
+
+            var result = report.Execute(RenderType.Pdf);
+
+            Response.Headers.Add("content-disposition", "inline; filename=reporte-productos.pdf");
+
+            return File(result.MainStream, "application/pdf");
+        }
+
+        [HttpGet("clientes")]
+        public IActionResult ObtenerClientes()
+        {
+            var dt = _dbContext.ObtenerDatosClientes();
+
+            string path = Path.Combine(Directory.GetCurrentDirectory(), "Reportes", "Clientes.rdlc");
+
+            LocalReport report = new LocalReport(path);
+            report.AddDataSource("dsCliente", dt);
+
+            var result = report.Execute(RenderType.Pdf);
+
+            Response.Headers.Add("content-disposition", "inline; filename=reporte-cliente.pdf");
+
+            return File(result.MainStream, "application/pdf");
+        }
+
         [HttpGet("reporte-pdf/{numeroFactura}")]
         public IActionResult GetReportePdf(string numeroFactura)
         {
@@ -65,6 +99,23 @@ namespace API_LACTEOS.Controllers
             var result = report.Execute(RenderType.Pdf);
 
             Response.Headers.Add("content-disposition", "inline; filename=Factura.pdf");
+
+            return File(result.MainStream, "application/pdf");
+        }
+
+        [HttpGet("facturaFecha/{fechaInicial}")]
+        public IActionResult GetReporteFacturaFecha(string fechaInicial)
+        {
+            DataTable datos = _dbContext.ObtenerFacturaPorFechas(fechaInicial);
+
+            string pathRDLC = Path.Combine(Directory.GetCurrentDirectory(), "Reportes", "FacturaFecha.rdlc");
+
+            LocalReport report = new LocalReport(pathRDLC);
+            report.AddDataSource("dsVenta", datos);
+
+            var result = report.Execute(RenderType.Pdf);
+
+            Response.Headers.Add("content-disposition", "inline; filename=FacturaFecha.pdf");
 
             return File(result.MainStream, "application/pdf");
         }

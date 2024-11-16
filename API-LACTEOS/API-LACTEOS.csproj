@@ -8,13 +8,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Reportes\Clientes.rdlc" />
     <None Remove="Reportes\FacturaContado.rdlc" />
+    <None Remove="Reportes\FacturaFecha.rdlc" />
+    <None Remove="Reportes\Productos.rdlc" />
     <None Remove="Reportes\Proveedores.rdlc" />
     <None Remove="Reportes\Usuarios.rdlc" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Reportes\Clientes.rdlc" />
     <EmbeddedResource Include="Reportes\FacturaContado.rdlc" />
+    <EmbeddedResource Include="Reportes\FacturaFecha.rdlc" />
+    <EmbeddedResource Include="Reportes\Productos.rdlc" />
     <EmbeddedResource Include="Reportes\Proveedores.rdlc" />
     <EmbeddedResource Include="Reportes\Usuarios.rdlc" />
   </ItemGroup>
@@ -29,10 +35,6 @@
 	 <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.10" />
 	 <PackageReference Include="System.Drawing.Common" Version="8.0.10" />
 	 <PackageReference Include="System.Security.Permissions" Version="8.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Models\" />
   </ItemGroup>
 
 </Project>

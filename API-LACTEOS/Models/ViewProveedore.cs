@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace API_LACTEOS.Models;
 
-public partial class Proveedore
+public partial class ViewProveedore
 {
     public int Id { get; set; }
 
@@ -13,11 +13,7 @@ public partial class Proveedore
 
     public string RucProveedor { get; set; } = null!;
 
-    public int IdEstado { get; set; }
+    public string NombreEstado { get; set; } = null!;
 
     public DateTime FechaCreacion { get; set; }
-
-    public virtual ICollection<Compra> Compras { get; set; } = new List<Compra>();
-
-    public virtual Estado IdEstadoNavigation { get; set; } = null!;
 }

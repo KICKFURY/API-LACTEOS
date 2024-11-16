@@ -36,6 +36,29 @@ namespace API_LACTEOS.Controllers
         }
 
         [HttpGet]
+        [Route("ultimaFactura")]
+        public IActionResult NumeroFactura()
+        {
+            try
+            {
+                try
+                {
+                    var nf = _dbcontext.Compras.OrderBy(p => p.NumeroFacutura).Last().NumeroFacutura;
+                    return StatusCode(StatusCodes.Status200OK, new { message = "ok", Response = nf });
+                }
+                catch (Exception)
+                {
+                    return StatusCode(StatusCodes.Status200OK, new { message = "ok", Response = 1 });
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status200OK, new { mensaje = ex.Message });
+            }
+        }
+
+
+        [HttpGet]
         [Route("Obtener/{idCompra:int}")]
         public IActionResult Obtener(int idCompra)
         {
@@ -58,14 +81,53 @@ namespace API_LACTEOS.Controllers
         }
 
         [HttpPost]
-        [Route("Guardar")]
-        public IActionResult Guardar([FromBody] Compra objeto)
+        [Route("Guardar/{rucProveedor}&{nombreUsuario}&{totalCompra:int}&{numeroFactura}")]
+        public IActionResult Guardar(string rucProveedor, string nombreUsuario, int totalCompra, string numeroFactura)
         {
             try
             {
-                _dbcontext.Compras.Add(objeto);
-                _dbcontext.SaveChanges();
-                return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok" });
+                if (totalCompra < 0)
+                {
+                    return BadRequest(new { mensaje = "Datos de entrada no válidos" });
+                }
+
+                using (var transaction = _dbcontext.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        if (_dbcontext.Compras.OrderBy(p => p.NumeroFacutura).Last().NumeroFacutura != numeroFactura)
+                        {
+                            var compra = new Compra
+                            {
+                                IdProveedor = _dbcontext.Proveedores.Where(p => p.RucProveedor == rucProveedor).FirstOrDefault().Id,
+                                IdUsuario = _dbcontext.Usuarios.Where(p => p.NombreUsuario == nombreUsuario).FirstOrDefault().Id,
+                                TotalCompra = totalCompra,
+                                NumeroFacutura = numeroFactura,
+                                FechaCompra = DateTime.Now
+                            };
+
+                            _dbcontext.Compras.Add(compra);
+                            _dbcontext.SaveChanges();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        var compra = new Compra
+                        {
+                            IdProveedor = _dbcontext.Proveedores.Where(p => p.RucProveedor == rucProveedor).FirstOrDefault().Id,
+                            IdUsuario = _dbcontext.Usuarios.Where(p => p.NombreUsuario == nombreUsuario).FirstOrDefault().Id,
+                            TotalCompra = totalCompra,
+                            NumeroFacutura = numeroFactura,
+                            FechaCompra = DateTime.Now
+                        };
+
+                        _dbcontext.Compras.Add(compra);
+                        _dbcontext.SaveChanges();
+                    }
+
+                    transaction.Commit();
+                    return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok" });
+                }
             }
             catch (Exception ex)
             {

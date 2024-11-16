@@ -62,15 +62,39 @@ namespace API_LACTEOS.Controllers
         }
 
         [HttpPost]
-        [Route("Guardar")]
-        public IActionResult Guardar([FromBody] DetallesCompra objeto)
+        [Route("Guardar/{nombreProducto}&{cantidadComprada:int}&{precioUnitario:int}")]
+        public IActionResult Guardar(string nombreProducto, int cantidadComprada, int precioUnitario)
         {
             try
             {
-                _dbcontext.DetallesCompras.Add(objeto);
-                _dbcontext.SaveChanges();
+                if (cantidadComprada <= 0 || precioUnitario < 0)
+                {
+                    return BadRequest(new { mensaje = "Datos de entrada no válidos." });
+                }
 
-                return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok" });
+                using (var transaction = _dbcontext.Database.BeginTransaction())
+                {
+                    var producto = _dbcontext.Productos.FirstOrDefault(p => p.NombreProducto == nombreProducto);
+                    if (producto == null)
+                    {
+                        return NotFound(new { mensaje = "Producto no encontrado." });
+                    }
+
+                    var detallesCompra = new DetallesCompra
+                    {
+                        IdCompra = _dbcontext.Compras.OrderBy(p => p.Id).Last().Id,
+                        IdProducto = producto.Id,
+                        CantidadComprada = cantidadComprada,
+                        PrecioUnitario = precioUnitario
+                    };
+
+                    _dbcontext.DetallesCompras.Add(detallesCompra);
+                    _dbcontext.SaveChanges();
+
+                    transaction.Commit();
+
+                    return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok" });
+                }
             }
             catch (Exception ex)
             {
