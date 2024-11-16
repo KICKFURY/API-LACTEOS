@@ -35,6 +35,16 @@ function AddEvents() {
             ObtenerClientes()
         }
     })
+
+    var btn = document.getElementById('btnGenerarReporte')
+
+    btn.addEventListener('click', () => {
+        window.reporte.showModal()
+    })
+    
+    document.getElementById('reporte1').addEventListener('click', ()=>{
+        window.reporte.close()
+    })
 }
 
 

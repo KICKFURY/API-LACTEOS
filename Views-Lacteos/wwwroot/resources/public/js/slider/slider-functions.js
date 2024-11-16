@@ -1,4 +1,4 @@
-import { GET } from "../generic-functions.js"
+import getHTMLLoaderInstance from "../components/singleton.js";
 
 function AddEvents() {
     let toggle = document.querySelector(".toggle");
@@ -19,19 +19,12 @@ function Menutoggle() {
     logoIcon.classList.toggle("small");
 }
 
-function cargarSidebar() {
-    GET('/resources/views/slider.html', "No se pudo cargar el contenido", 2, (data) => {
-        const contents = document.getElementById('contents')
-
-        if (contents) {
-            contents.innerHTML = data;
-            camposSlider()
-            document.getElementById('btnCerrar').addEventListener('click', () => {
-                localStorage.setItem('UsuarioRole', "")
-            })
-        } else {
-            console.error("El contenedor 'contents' no está presente en el DOM.");
-        }
+async function cargarSidebar() {
+    const content = await getHTMLLoaderInstance('../../../views/slider.html')
+    document.getElementById('contents').innerHTML = content
+    camposSlider()
+    document.getElementById('btnCerrar').addEventListener('click', () => {
+        localStorage.setItem('UsuarioRole', '')
     })
 }
 
@@ -65,7 +58,18 @@ function camposSlider() {
             document.getElementById('btnFacturacion').style.display = "none";
             document.getElementById('btnReportes').style.display = "none";
             document.getElementById('btnMantenimiento').style.display = "none";
-        }  
+        }  else if (usuario == '') {
+            Swal.fire({
+                title: 'Acceso denegado',
+                text: 'Primero debe iniciar sesión',
+                icon: 'error',
+                confirmButtonText: 'Aceptar'
+            }).then(result => {
+                if (result.isConfirmed) {
+                    window.open('/index.html', '_self')
+                }
+            })
+        }
 }
 
 export { AddEvents, cargarSidebar, camposSlider }

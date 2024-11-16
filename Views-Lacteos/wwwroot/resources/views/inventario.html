@@ -1,175 +1,154 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Compras e Inventario</title>
     <link rel="stylesheet" href="/resources/public/css/inventario/inventario.css">
+    <link rel="stylesheet" href="../public/css/components/loading.css">
 </head>
 
 <body>
-    <div class="sidebar">
-        <div id="contents"></div>
-        <div class="main">
-            <div class="topbar">
-                <div class="toggle">
-                    <i class="fas fa-bars"></i>
-                </div>
-                <h2> Inventario</h2>
-                <div class="help">
-                    <i class="fas fa-question-circle"></i>
-                </div>
-            </div>
-                <div class="next">
-                    <a href="/resources/views/compras.html">
-                        <i class="fas fa-arrow-left"></i>
-                    </a>
-                </div>
-            <div class="form-container">
-                <div class="form">
-                    <!-- primera columan -->
-                    <div class="form-row">
-                        <div class="form-group">
-                            <div>
-                                <label>Fecha de Expiración:</label>
-                                <input id="fechaExpiracion" class="form-control" type="date" value="2024-11-09" />
-                            </div>
-                            <div>
-                                <label>Producto:</label>
-                                <input id="txtProducto" class="form-control" type="text" />
-                            </div>
-                            <div>
-                                <label>Descripción:</label>
-                                <input id="txtDescripción" class="form-control" type="text" />
-                            </div>
-                            <div>
-                                <label>Precio C$:</label>
-                                <input id="txtPrecio" class="form-control" type="text" />
-                            </div>
-                        </div>
+    <div id="loader" class="loader"></div>
+    <div id="content" style="display: none;">
+        <div class="sidebar">
+            <div id="contents"></div>
+            <div class="main">
+                <div class="topbar">
+                    <div class="toggle">
+                        <i class="fas fa-bars"></i>
                     </div>
-                    <!-- segunda columna -->
-                    <div class="form-row">
-                        <div class="form-group">
-                            <div>
-                                <label class="form-label" for="cmbMedida">
-                                    Unidad de Medida:
-                                </label>
-                                <select class="form-select" id="cmbMedida">
-                                    <option value="L">L</option>
-                                    <option value="ML">ML</option>
-                                    <option value="KG">KG</option>
-                                    <option value="G">G</option>
-                                    <option value="UD">UD</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label class="form-label" for="cmbCategoriaProducto">
-                                    Categoría Producto:
-                                </label>
-                                <select class="form-select" id="cmbCategoriaProducto">
-                                    <option value="MateriaPrima">Materia Prima</option>
-                                    <option value="Procesados">Procesados</option>
-                                    <option value="Ambos">Ambos</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label>Cantidad:</label>
-                                <input id="txtCantidad" class="form-control" type="text" />
-                            </div>
-                            <div>
-                                <label>Mínimo Stock:</label>
-                                <input id="txtMínimoStock" class="form-control" type="text" />
-                            </div>
-                        </div>
+                    <h2> Inventario</h2>
+                    <div class="help">
+                        <i class="fas fa-question-circle"></i>
                     </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <div class="radio-group">
+                </div>
+                    <div class="next">
+                        <a href="/resources/views/compras.html">
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </div>
+                <div class="form-container">
+                    <div class="form">
+                        <!-- primera columan -->
+                        <div class="form-row">
+                            <div class="form-group">
                                 <div>
-                                    <input checked="" id="rdaCrear" name="registro" type="radio" />
-                                    <label for="rdaCrear">Crear</label>
-                                    <input id="rdaEditar" name="registro" type="radio" />
-                                    <label for="rdaEditar">Editar</label>
-                                    <input id="rdaEliminar" name="registro" type="radio" />
-                                    <label for="rdaEliminar">Eliminar</label>
+                                    <label>Fecha de Expiración:</label>
+                                    <input id="fechaExpiracion" class="form-control" type="datetime-local" />
+                                </div>
+                                <div>
+                                    <label>Producto:</label>
+                                    <input id="txtProducto" class="form-control" type="text" />
+                                </div>
+                                <div>
+                                    <label>Descripción:</label>
+                                    <input id="txtDescripción" class="form-control" type="text" />
+                                </div>
+                                <div>
+                                    <label>Precio C$:</label>
+                                    <input id="txtPrecio" class="form-control" type="text" />
                                 </div>
                             </div>
-                            <div class="buscadorRUC">
-                                <label for="Busquedacedula" id="lbBuscador">
-                                    Cédula:
-                                </label>
-                                <input id="Busquedacedula" maxlength="14" placeholder="4411111111111G" name="Busquedacedula"
-                                    type="text" class="form-control"/>
+                        </div>
+                        <!-- segunda columna -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <div>
+                                    <label>Cantidad:</label>
+                                    <input id="txtCantidad" class="form-control" type="text" />
+                                </div>
+                                <div>
+                                    <label>Mínimo Stock:</label>
+                                    <input id="txtMínimoStock" class="form-control" type="text" />
+                                </div>
                             </div>
                         </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <div class="radio-group">
+                                    <div>
+                                        <input checked="" id="rdaCrear" name="registro" type="radio" />
+                                        <label for="rdaCrear">Crear</label>
+                                        <input id="rdaEditar" name="registro" type="radio" />
+                                        <label for="rdaEditar">Editar</label>
+                                        <input id="rdaEliminar" name="registro" type="radio" />
+                                        <label for="rdaEliminar">Eliminar</label>
+                                    </div>
+                                </div>
+                                <div class="buscadorRUC">
+                                    <label for="Busquedacedula" id="lbBuscador">
+                                        Cédula:
+                                    </label>
+                                    <input id="Busquedacedula" maxlength="14" placeholder="4411111111111G" name="Busquedacedula"
+                                        type="text" class="form-control"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="buttons">
+                            <button id="btnCrear" class="btn" type="button">
+                                Registrar
+                            </button>
+                            <button id="btnEditar" class="btn" type="button">
+                                Modificar
+                            </button>
+                            <button id="btnEliminar" class="btn" type="button">
+                                Eliminar
+                            </button>
+                            <button id="btnCancelar" class="btn" type="button">
+                                Cancelar
+                            </button>
+                        </div>
                     </div>
-                    <div class="buttons">
-                        <button id="btnCrear" class="btn" type="button">
-                            Registrar
-                        </button>
-                        <button id="btnEditar" class="btn" type="button">
-                            Modificar
-                        </button>
-                        <button id="btnEliminar" class="btn" type="button">
-                            Eliminar
-                        </button>
-                        <button id="btnCancelar" class="btn" type="button">
-                            Cancelar
-                        </button>
+                    <div class="search-container">
+                        <label id="ruc">
+                            Buscar por:
+                        </label>
+                        <input id="ruc" name="ruc" type="text" />
+                        <div class="buttones-search">
+                            <button id="btnBuscar">
+                                Cargar Tabla
+                            </button>
+                            <button id="btnGenerarReporte">
+                                Generar Reporte
+                            </button>
+                            <dialog id="reporte">
+                                <iframe src="http://localhost:5037/api/Reportes/productos" frameborder="0" width="900px"
+                                    height="500px"></iframe>
+                                <br>
+                                <center>
+                                    <button id="reporte1">Cerrar</button>
+                                </center>
+                            </dialog>
+                        </div>
                     </div>
-                </div>
-                <div class="search-container">
-                    <label id="ruc">
-                        Buscar por:
-                    </label>
-                    <input id="ruc" name="ruc" type="text" />
-                    <div class="buttones-search">
-                        <button id="btnBuscar">
-                            Buscar
-                        </button>
-                        <button id="btnActualizar">
-                            Actualizar
-                        </button>
+                    <div class="table-container">
+                        <table id="tablaProductos">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Nombre del Producto
+                                    </th>
+                                    <th>
+                                        Descripción
+                                    </th>
+                                    <th>
+                                        Precio
+                                    </th>
+                                    <th>
+                                        Stock
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
                     </div>
-                </div>
-                <div class="table-container">
-                    <table id="tablaClientes">
-                        <thead>
-                            <tr>
-                                <th>
-                                    Nombre del Producto
-                                </th>
-                                <th>
-                                    Descripción
-                                </th>
-                                <th>
-                                    Precio
-                                </th>
-                                <th>
-                                    Cantidad
-                                </th>
-                                <th>
-                                    Id
-                                </th>
-                                <th>
-                                    Mínimo Stock
-                                </th>
-                                <th>
-                                    Id Unidad de Medida
-                                </th>
-                                <th>
-                                    Fecha de Expiración
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
                 </div>
             </div>
-        </div>
+    </div>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script type="module" src="/resources/public/js/inventario/inventario.js"></script>
 </body>
 

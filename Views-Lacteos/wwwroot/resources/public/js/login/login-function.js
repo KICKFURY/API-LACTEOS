@@ -13,8 +13,10 @@ function Login() {
     var psw = encriptar(password)
 
     GET(url, "Usuario no encontrado", 1, (data) => {
+        console.log(data.response)
         localStorage.setItem('UsuarioRole', data.response.idRole == 1 ? "Admin" : data.response.idRole == 2 ? "Vendedor" : "Encargado de Inventario")
         localStorage.setItem('UserPSW', data.response.contra)
+        localStorage.setItem('vendedor', data.response.nombreUsuario)
         if (data.response.nombreUsuario == username && data.response.contra == psw) {
             window.open('/resources/views/home.html', '_self')
         } else {
@@ -26,6 +28,8 @@ function Login() {
                 confirmButtonColor: '#7a2a1e',
             });
         }
+    }, (error) => {
+        console.log(error);
     })
 
     // GET_SERVIDOR(`https://lacteos-la-granja.great-site.net/api/login.php?param=${username}`, 'Usuario no encontrado', (data) => {

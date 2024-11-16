@@ -22,21 +22,28 @@ var PUT_Cliente = `${host}/Clientes/Editar/`
 var DELETE_Cliente = `${host}/Clientes/Eliminar/`
 
 // PRODUCTOS
-var GET_Productos = `${host}/Productos/Lista`
-var GET_Producto = `${host}/Productos/Obtener/`
-var POST_Producto = `${host}/Productos/Guardar/`
-var PUT_Producto = `${host}/Productos/Editar/`
-var DELETE_Producto = `${host}/Productos/Eliminar/`
+var GET_Productos = `${host}/Producto/Lista`
+var GET_Producto = `${host}/Producto/Obtener/`
+var POST_Producto = `${host}/Producto/Guardar/`
+var PUT_Producto = `${host}/Producto/Editar/`
+var DELETE_Producto = `${host}/Producto/Eliminar/`
 
 // FACTURACION
-var POST_Factura = `${host}/Ventas/GuardarV1/`
-
-// DETALLES FACTURACION
+var POST_Factura = `${host}/Ventas/Guardar/`
 var POST_DetallesFactura = `${host}/DetallesVenta/Guardar/`
+
+// COMRPRAS
+var POST_COMPRA = `${host}/Compras/Guardar/`
+var GET_NumeroCompra = `${host}/Compras/ultimaFactura`
+var POST_DetallesCompra = `${host}/DetallesCompra/Guardar/`
+
+// REPORTES
 var REPORTE_Factura = `${host}/Reportes/reporte-pdf/`
 
 export { GET_Login, GET_Usuarios, POST_Usuario, PUT_Usuario, DELETE_Usuario,
         POST_Proveedor, PUT_Proveedor, DELETE_Proveedor, GET_Proveedores,
         GET_Proveedor, GET_Clientes, GET_Cliente, POST_Cliente, PUT_Cliente,
         DELETE_Cliente, GET_Productos, GET_Producto, POST_Producto, PUT_Producto,
-        DELETE_Producto, POST_Factura, POST_DetallesFactura, REPORTE_Factura }
+        DELETE_Producto, POST_Factura, POST_DetallesFactura, REPORTE_Factura,
+        POST_COMPRA, POST_DetallesCompra, GET_NumeroCompra
+}

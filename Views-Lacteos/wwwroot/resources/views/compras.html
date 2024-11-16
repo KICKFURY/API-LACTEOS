@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/resources/public/css/compras/compras.css">
+    <link rel="stylesheet" href="../public/css/components/loading.css">
     <title>Compras e Inventario</title>
 </head>
 <body>
-    <div class="sidebar">
+    <div id="loader" class="loader"></div>
+    <div id="content" class="sidebar" style="display: none;">
         <div id="contents"></div>
         <div class="main">
             <div class="topbar">
@@ -19,7 +21,7 @@
                     <i class="fas fa-question-circle"></i>
                 </div>
             </div>
-           
+
             <div class="form">
                 <div class="next">
                     <a href="/resources/views/inventario.html">
@@ -40,7 +42,7 @@
                                     <label class="form-label" for="txtFechaCompra">
                                         Fecha de Compra:
                                     </label>
-                                    <input class="form-control" id="txtFechaCompra" type="date" value="2024-11-09" />
+                                    <input style="text-align: center; font-weight: bolder;" disabled class="form-control" id="txtFechaCompra" type="date" value="2024-11-09" />
                                 </div>
                             </div>
                             <div class="form-group">
@@ -48,7 +50,7 @@
                                     <label class="form-label" for="txtNoCompra">
                                         N° de Compra:
                                     </label>
-                                    <input class="form-control" id="txtNoCompra" type="text" />
+                                    <input style="text-align: center; font-weight: bolder;" disabled class="form-control" id="txtNoCompra" type="text" />
                                 </div>
                             </div>
                             <div class="form-group">
@@ -56,7 +58,7 @@
                                     <label class="form-label" for="txtNoProveedor">
                                         N° del Proveedor:
                                     </label>
-                                    <input class="form-control" id="txtNoProveedor" type="text" />
+                                    <input style="font-weight: bolder;" class="form-control" id="txtNoProveedor" type="text" />
                                 </div>
                             </div>
                             <div class="form-group">
@@ -64,7 +66,7 @@
                                     <label class="form-label" for="txtProveedor">
                                         Proveedor:
                                     </label>
-                                    <input class="form-control" id="txtProveedor" type="text" />
+                                    <input style="text-align: center; font-weight: bolder;" disabled class="form-control" id="txtProveedor" type="text" />
                                 </div>
                             </div>
                         </div>
@@ -83,13 +85,13 @@
                                     <label class="form-label" for="cmbProducto">
                                         Producto:
                                     </label>
-                                    <select class="form-select" id="cmbProducto">
+                                    <select style="text-align: center; font-weight: bolder;" class="form-select" id="cmbProducto">
                                         <option value="Leche">Leche</option>
                                         <option value="Crema">Crema</option>
                                         <option value="Yogurt">Yogurt</option>
-                                        <option value="QuesoCheddar">Queso Cheddar</option>
+                                        <option value="Queso Cheddar">Queso Cheddar</option>
                                         <option value="Cuajada">Cuajada</option>
-                                        <option value="Pastilladecuajo">Pastilla de cuajo</option>
+                                        <option value="Pastilla de cuajo">Pastilla de cuajo</option>
                                         <option value="Empaque">Empaque</option>
                                     </select>
                                 </div>
@@ -99,7 +101,8 @@
                                     <label class="form-label" for="txtDescripcion">
                                         Descripción:
                                     </label>
-                                    <input class="form-control" id="txtDescripcion" type="text" />
+                                    <textarea style="text-align: center; font-weight: bolder;" disabled name="txtDescripcion" id="txtDescripcion"></textarea>
+                                    <!-- <input disabled class="form-control" id="txtDescripcion" type="text" /> -->
                                 </div>
                             </div>
                             <div class="form-group">
@@ -107,7 +110,7 @@
                                     <label class="form-label" for="txtCantidad">
                                         Cantidad:
                                     </label>
-                                    <input class="form-control" id="txtCantidad" type="text" />
+                                    <input style="text-align: center; font-weight: bolder;" class="form-control" id="txtCantidad" type="text" />
                                 </div>
                             </div>
                             <div class="form-group">
@@ -115,7 +118,7 @@
                                     <label class="form-label" for="txtPrecio">
                                         Precio C$:
                                     </label>
-                                    <input class="form-control" id="txtPrecio" type="text" />
+                                    <input style="text-align: center; font-weight: bolder;" disabled class="form-control" id="txtPrecio" type="text" />
                                 </div>
                             </div>
                         </div>
@@ -148,6 +151,7 @@
             </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="module" src="/resources/public/js/compras/compras.js"></script>
 </body>
 </html>

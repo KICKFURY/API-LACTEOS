@@ -109,7 +109,6 @@ async function facturar() {
         })
 
         for (const items of productos) {
-            console.log(items)
             var urlProducto = `${POST_DetallesFactura}${items.producto}&${items.cantidad}&${items.precio}`
             await new Promise((resolve, reject) => {
                 POST(urlProducto, "Dealles de factura creados", "Error al crear los detalles de la factura ", resolve, reject)
@@ -118,7 +117,7 @@ async function facturar() {
 
         Swal.fire({
             title: 'Confirmado',
-            text: "Factura creada exitosamente con todos los productos",
+            text: "Factura creada exitosamente",
             icon: 'success',
             confirmButtonText: 'Aceptar',
             confirmButtonColor: '#7a2a1e',

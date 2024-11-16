@@ -86,11 +86,19 @@
                     <input id="ruc" name="ruc" type="text" />
                     <div class="buttones-search">
                         <button id="btnBuscar">
-                            Buscar
+                            Cargar Tabla
                         </button>
-                        <button id="btnActualizar">
-                            Actualizar
+                        <button id="btnGenerarReporte">
+                            Generar Reporte
                         </button>
+                        <dialog id="reporte">
+                            <iframe src="http://localhost:5037/api/Reportes/clientes" frameborder="0" width="900px"
+                                height="500px"></iframe>
+                            <br>
+                            <center>
+                                <button id="reporte1">Cerrar</button>
+                            </center>
+                        </dialog>
                     </div>
                 </div>
                 <div class="table-container">

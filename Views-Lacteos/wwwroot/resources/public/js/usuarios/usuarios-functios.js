@@ -106,6 +106,9 @@ function AddEventsFirst() {
         var rdaEliminar = document.getElementById('rdaEliminar')
         var rdaEditar = document.getElementById('rdaEditar')
 
+        console.log(pswGlobal == psw)
+        console.log(psw)
+        console.log(pswGlobal)
         if (pswGlobal == psw) {
             if (rdaEliminar.checked) {
                 EliminarUsuario()
