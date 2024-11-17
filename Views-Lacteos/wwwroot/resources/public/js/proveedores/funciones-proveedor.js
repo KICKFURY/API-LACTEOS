@@ -74,7 +74,7 @@ function EditarProveedor() {
     var telefono = document.getElementById('telefono').value
     var ruc = document.getElementById('cedula').value
     var id = document.getElementById('estado').value
-    var url = `${PUT_Proveedor}${nombre}&&${ruc}&&${telefono}&&${id == 'Activo' ? 1 : 2}`
+    var url = `${PUT_Proveedor}${nombre}&${ruc}&${telefono}&${id == 'Activo' ? 1 : 2}`
 
     PUT(url, "Proveedor editado", "Error al editar el proveedor", () => {
         ObtenerProveedores()
