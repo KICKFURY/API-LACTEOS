@@ -86,7 +86,7 @@
     margin-left: 55%;
 }
 
-.buttons button {
+.buttons button, #btnEditar, #btnEliminar {
     background-color: var(--blue);
     color: var(--white);
     border: none;
@@ -127,7 +127,7 @@
 }
 
 .table-container table {
-    width: 100%;
+    width: 95%;
     border-collapse: collapse;
     margin-left: 25px;
 }
@@ -141,6 +141,10 @@
 .table-container th {
     background-color: var(--gray);
     color: var(--blue);
+}
+
+.table-container table tbody tr {
+    text-align: center;
 }
 
 .table-container table tbody tr:hover {

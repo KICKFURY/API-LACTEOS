@@ -72,6 +72,10 @@ label {
     color: var(--white);
 }
 
+.buttons button:disabled {
+    cursor: not-allowed;
+}
+
 .search-container {
     display: flex;
     align-items: center;

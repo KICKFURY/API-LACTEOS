@@ -145,7 +145,7 @@ function CargarProveedorEnTabla() {
             <td>${data.response.rucProveedor}</td>
             <td>${data.response.idEstado == 1 ? 'Activo' : 'Inactivo'}</td>
         `
-    })
+    }, () => {})
 }
 
 function RDACREARINTERNO() {
