@@ -20,7 +20,7 @@ function Menutoggle() {
 }
 
 async function cargarSidebar() {
-    const content = await getHTMLLoaderInstance('../../../views/slider.html')
+    const content = await getHTMLLoaderInstance('/resources/views/slider.html')
     document.getElementById('contents').innerHTML = content
     camposSlider()
     document.getElementById('btnCerrar').addEventListener('click', () => {
