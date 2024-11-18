@@ -50,20 +50,12 @@
     padding: 20px;
 }
 
-.border input {
-    font-weight: bold;
-}
-
 .border label {
     font-weight: bold;
 }
 
 .form-group {
     margin-bottom: 1rem;
-}
-
-.form-group select {
-    font-weight: bold;
 }
 
 .form-row {
@@ -114,7 +106,6 @@ input, select {
     width: 45%;
     border: 1px solid #ccc;
     border-radius: 5px;
-    font-weight: bold;
 }
 
 #txtVendedor {
@@ -211,7 +202,6 @@ input, select {
 .total input {
     border: 1px solid #ccc;
     border-radius: 5px;
-    font-weight: bold;
 }
 
 /* Reporte */

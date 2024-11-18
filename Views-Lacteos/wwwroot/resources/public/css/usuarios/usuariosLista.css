@@ -108,3 +108,20 @@ dialog::backdrop {
     -webkit-backdrop-filter: blur(4px);
     backdrop-filter: blur(4px);
 }
+
+.next {
+    position: relative; 
+}
+
+.next a {
+    position: absolute; 
+    right: 500px; 
+    top: -95px; 
+}
+
+.next a i {
+    color: var(--blue); 
+    font-size: 24px; 
+}
+
+
