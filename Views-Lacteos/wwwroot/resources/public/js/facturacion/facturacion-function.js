@@ -1,16 +1,57 @@
-import { POST } from "../generic-functions.js";
-import { POST_Factura, POST_DetallesFactura, REPORTE_Factura } from "../endpoints.js";
+import { POST, GET } from "../generic-functions.js";
+import { 
+    POST_Factura, POST_DetallesFactura, REPORTE_Factura, GET_Productos, GET_Producto,
+    GET_Cliente
+} from "../endpoints.js";
 
 let productos = [];
 let total = 0;
 
 function AddEvents() {
+    document.getElementById('cmbProductos').addEventListener("change", CargarProducto)
+    document.getElementById('cmbProductos').addEventListener("input", CargarProducto)
     document.getElementById('btnAgregar').addEventListener('click', agregarProducto);
     document.getElementById('btnFacturar').addEventListener('click', facturar)
+    document.getElementById('txtCedulaCliente').addEventListener("keyup", () => {
+        const proveedor = document.getElementById('txtCedulaCliente').value;
+
+        if (proveedor.length == 14) {
+            CargarCliente()
+        } else {
+            document.getElementById('txtProveedor').value = ''
+        }
+    })
+
+    CargarProductos()
+}
+
+function CargarCliente() {
+    const cliente = document.getElementById('txtCedulaCliente').value;
+    let nombre = document.getElementById('nombreCliente');
+    const url = GET_Cliente + cliente;
+
+    GET(url, "Error al cargar el producto", 1, (data) => {
+        nombre.value = data.response.nombreCliente + " " + data.response.apellidoCliente
+    }, () => {
+        Alerta("Error", "No se encontro el proveedor", "error")
+        document.getElementById('txtCedulaCliente').value = '';
+    })
+}
+
+function CargarProducto() {
+    const producto = document.getElementById('cmbProductos').value;
+    let stock = document.getElementById('txtStock');
+    let precio = document.getElementById('txtPrecio');
+    const url = GET_Producto + producto;
+
+    GET(url, "Error al cargar el producto", 1, (data) => {
+        stock.value = data.response.cantidadProducto
+        precio.value = data.response.precioProducto
+    })
 }
 
 function agregarProducto() {
-    const producto = document.getElementById('txtProducto').value;
+    const producto = document.getElementById('cmbProductos').value;
     const cantidad = parseInt(document.getElementById('txtCantidad').value);
     const precio = parseInt(document.getElementById('txtPrecio').value);
     const subtotal = cantidad * precio;
@@ -30,6 +71,18 @@ function agregarProducto() {
     actualizarTablaProductos();
     calcularTotal();
     limpiarCamposProducto();
+}
+
+function CargarProductos() {
+    const selectElement = document.getElementById('cmbProductos')
+    GET(GET_Productos, "Error al cargar los productos", 1, (data) => {
+        data.response.forEach(producto => {
+            let optionElement = document.createElement('option')
+            optionElement.value = producto.nombreProducto
+            optionElement.textContent = producto.nombreProducto
+            selectElement.appendChild(optionElement)
+        })
+    })
 }
 
 function actualizarTablaProductos() {
@@ -62,7 +115,7 @@ function calcularTotal() {
 }
 
 function limpiarCamposProducto() {
-    document.getElementById('txtProducto').value = '';
+    document.getElementById('cmbProductos').value = '';
     document.getElementById('txtStock').value = '';
     document.getElementById('txtCantidad').value = '';
     document.getElementById('txtPrecio').value = '';
@@ -70,7 +123,7 @@ function limpiarCamposProducto() {
 
 function editarProducto(index) {
     const item = productos[index];
-    document.getElementById('txtProducto').value = item.producto;
+    document.getElementById('cmbProductos').value = item.producto;
     document.getElementById('txtCantidad').value = item.cantidad;
     document.getElementById('txtPrecio').value = item.precio;
     productos.splice(index, 1);
@@ -142,4 +195,4 @@ function limpiarFormulario() {
     calcularTotal();
 }
 
-export { AddEvents }
+export { AddEvents, CargarProducto }

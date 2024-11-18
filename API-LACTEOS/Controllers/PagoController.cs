@@ -62,12 +62,17 @@ namespace API_LACTEOS.Controllers
         }
 
         [HttpPost]
-        [Route("Guardar")]
-        public IActionResult Guardar([FromBody] Pago objeto)
+        [Route("Guardar/{saldoPendiente:int}&{plazo:int}&{fechaPago}")]
+        public IActionResult Guardar(int saldoPendiente, int plazo, DateTime fechaPago)
         {
+            Pago pago = new Pago();
             try
             {
-                _dbcontext.Pagos.Add(objeto);
+                pago.IdVenta = _dbcontext.Ventas.OrderBy(p => p.Id).Last().Id;
+                pago.TotalPago = saldoPendiente;
+                pago.Plazo = plazo;
+                pago.FechaPago = fechaPago;
+                _dbcontext.Pagos.Add(pago);
                 _dbcontext.SaveChanges();
 
                 return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok" });
@@ -90,11 +95,6 @@ namespace API_LACTEOS.Controllers
             }
             try
             {
-
-                //oPago.FechaPago = objeto.FechaPago != default ? objeto.FechaPago : DateTime.MinValue;
-                //oPago.TotalPago = objeto.TotalPago is null ? oPago.TotalPago : objeto.TotalPago;
-                //oPago.Plazo = objeto.Plazo is null ? oPago.Plazo : objeto.Plazo;
-
                 _dbcontext.Pagos.Update(oPago);
                 _dbcontext.SaveChanges();
 
@@ -106,9 +106,6 @@ namespace API_LACTEOS.Controllers
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, new { mensaje = ex.Message });
             }
-
-
-
         }
 
         [HttpDelete]
