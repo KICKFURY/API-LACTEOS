@@ -46,7 +46,7 @@ function ActivarPlazos() {
 
 function CargarNumeroUltimaVenta() {
     GET(GET_NumeroFactura, "Error al cargar el numero de la venta", 1, (data) => {
-        factura.numeroFactura.value = parseInt(data.response.numeroFactura) + 1;
+        factura.numeroFactura.value = data.response.numeroFactura != null ?  parseInt(data.response.numeroFactura) + 1 : 1
     })
 }
 
