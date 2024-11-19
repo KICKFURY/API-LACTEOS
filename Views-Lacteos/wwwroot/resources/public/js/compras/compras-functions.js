@@ -1,4 +1,4 @@
-import { POST_COMPRA, POST_DetallesCompra, GET_Producto, GET_Proveedor, GET_NumeroCompra } from "../endpoints.js";
+import { POST_COMPRA, POST_DetallesCompra, GET_Producto, GET_Proveedor, GET_NumeroCompra, GET_Productos } from "../endpoints.js";
 import { GET, POST } from "../generic-functions.js"
 import { Alerta } from "../components/alert.js"
 
@@ -22,7 +22,19 @@ function AddEvents() {
 
     CargarNumeroUltimaCompra()
 
-    CargarProducto()
+    CargarProductos()
+}
+
+function CargarProductos() {
+    GET(GET_Productos, "Error al cargar los productos", 1, (data) => {
+        data.response.forEach(producto => {
+            let optionElement = document.createElement('option')
+            optionElement.value = producto.nombreProducto
+            optionElement.textContent = producto.nombreProducto
+            document.getElementById("cmbProducto").appendChild(optionElement)
+            CargarProducto()
+        })
+    }, () => {})
 }
 
 function CargarNumeroUltimaCompra() {
