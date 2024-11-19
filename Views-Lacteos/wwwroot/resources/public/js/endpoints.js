@@ -29,13 +29,17 @@ var PUT_Producto = `${host}/Producto/Editar/`
 var DELETE_Producto = `${host}/Producto/Eliminar/`
 
 // FACTURACION
+var GET_FacturaYDetalles = `${host}/Ventas/Obtener/`
 var POST_Factura = `${host}/Ventas/Guardar/`
 var POST_DetallesFactura = `${host}/DetallesVenta/Guardar/`
+var GET_NumeroFactura = `${host}/Ventas/getNumeroFactura`
 
 // COMRPRAS
 var POST_COMPRA = `${host}/Compras/Guardar/`
 var GET_NumeroCompra = `${host}/Compras/ultimaFactura`
 var POST_DetallesCompra = `${host}/DetallesCompra/Guardar/`
+
+// CREDITO
 
 // REPORTES
 var REPORTE_Factura = `${host}/Reportes/reporte-pdf/`
@@ -45,5 +49,6 @@ export { GET_Login, GET_Usuarios, POST_Usuario, PUT_Usuario, DELETE_Usuario,
         GET_Proveedor, GET_Clientes, GET_Cliente, POST_Cliente, PUT_Cliente,
         DELETE_Cliente, GET_Productos, GET_Producto, POST_Producto, PUT_Producto,
         DELETE_Producto, POST_Factura, POST_DetallesFactura, REPORTE_Factura,
-        POST_COMPRA, POST_DetallesCompra, GET_NumeroCompra
+        POST_COMPRA, POST_DetallesCompra, GET_NumeroCompra, GET_FacturaYDetalles,
+        GET_NumeroFactura
 }

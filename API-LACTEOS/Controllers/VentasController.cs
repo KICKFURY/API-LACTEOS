@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.ServiceModel.Channels;
 
 namespace API_LACTEOS.Controllers
 {
@@ -14,6 +15,22 @@ namespace API_LACTEOS.Controllers
         public VentasController(LacteosBdContext _context)
         {
             _dbcontext = _context;
+        }
+
+        [HttpGet]
+        [Route("getNumeroFactura")]
+        public IActionResult GetNumeroFactura()
+        {
+            Venta venta = new Venta();
+            try
+            {
+                venta = _dbcontext.Ventas.OrderBy(p => p.NumeroFactura).Last();
+                return StatusCode(StatusCodes.Status200OK, new { Message = "ok", response = venta });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status200OK, new { Message = ex.Message, response = venta });
+            }
         }
 
         [HttpGet]
@@ -35,23 +52,19 @@ namespace API_LACTEOS.Controllers
         }
 
         [HttpGet]
-        [Route("Obtener/{idVenta:int}")]
-        public IActionResult Obtener(int idVenta)
+        [Route("Obtener/{numeroFactura}")]
+        public IActionResult Obtener(string numeroFactura)
         {
-            Venta oVenta = _dbcontext.Ventas.Find(idVenta);
+            Venta venta = new Venta();
 
-            if (oVenta == null)
-            {
-                return BadRequest("Venta no encontrada");
-            }
             try
             {
-                oVenta = _dbcontext.Ventas.Where(p => p.Id == idVenta).FirstOrDefault();
-                return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok", response = oVenta });
+                venta = _dbcontext.Ventas.Where(p => p.NumeroFactura == numeroFactura).FirstOrDefault();
+                return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok", response = venta });
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, new { mensaje = ex.Message, response = oVenta });
+                return StatusCode(StatusCodes.Status500InternalServerError, new { mensaje = ex.Message, response = venta });
             }
         }
 

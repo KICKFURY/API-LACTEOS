@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Crédito</title>
     <link rel="stylesheet" href="/resources/public/css/credito/credito.css">
+    <link rel="shortcut icon" href="../public/img/logo.png" type="image/x-icon">
 </head>
 
 <body>
@@ -25,11 +26,11 @@
                 <div class="head">
                     <div class="vendedor">
                         <label for="txtVendedor">Vendedor:</label>
-                        <input id="txtVendedor" type="text" class="vendedor" />
+                        <input disabled id="txtVendedor" type="text" class="vendedor" />
                     </div>
                     <div class="fecha">
                         <label for="fechaVenta">Fecha de Venta:</label>
-                        <input id="fechaVenta" type="date" value="2024-09-15" class="fecha" />
+                        <input disabled id="fechaVenta" type="date" value="2024-09-15" class="fecha" />
                     </div>
                 </div>
 
@@ -155,6 +156,7 @@
         </div>
     </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="module" src="/resources/public/js/credito/credito.js"></script>
 </body>
 

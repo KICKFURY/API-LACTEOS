@@ -29,15 +29,15 @@
                         <div class="head">
                             <div class="vendedor">
                                 <label for="txtVendedor">Vendedor:</label>
-                                <input id="txtVendedor" type="text" class="vendedor" />
+                                <input disabled id="txtVendedor" type="text" class="vendedor" />
                             </div>
                             <div class="fecha">
                                 <label for="fechaVenta">Fecha de Venta:</label>
-                                <input id="fechaVenta" type="date" value="2024-09-15" class="fecha" />
+                                <input disabled id="fechaVenta" type="date" class="fecha" />
                             </div>
                             <div class="numero">
                                 <label for="txtNumeroFactura">No:</label>
-                                <input id="txtNumeroFactura" type="text" class="NoFactura" />
+                                <input disabled id="txtNumeroFactura" type="text" class="NoFactura" />
                             </div>
                         </div>
     
@@ -79,7 +79,7 @@
                                     </div>
                                     <div class="form-group">
                                         <div class="form-row">
-                                            <label class="form-label" for="txtProducto">
+                                            <label class="form-label" for="cmbProductos">
                                                 Producto:
                                             </label>
                                             <Select class="form-control" id="cmbProductos"></Select>
@@ -110,7 +110,12 @@
                                         <label class="form-label" for="txtPlazo">
                                             Plazo de pago:
                                         </label>
-                                        <input disabled class="form-control" id="txtPlazo" type="text" />
+                                        <select disabled class="form-control" name="txtPlazo" id="txtPlazo">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                        </select>
                                     </div>
                                     <div class="form-group">
                                         <div class="form-row">
@@ -154,7 +159,7 @@
                     </div>
                     <div class="total">
                         <label class="form-label" for="txtTotal">Total:</label>
-                        <input class="form-control d-inline-block" id="txtTotal" style="width: 100px;" type="text" />
+                        <input disabled class="form-control d-inline-block" id="txtTotal" style="width: 100px;" type="text" />
                     </div>
                 </div>
             </div>

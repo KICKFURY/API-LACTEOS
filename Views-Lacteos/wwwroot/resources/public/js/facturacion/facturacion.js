@@ -1,4 +1,4 @@
-import { AddEvents, CargarProducto } from './facturacion-function.js'
+import { AddEvents } from './facturacion-function.js'
 import { cargarSidebar, AddEvents as EventSidebar } from "../slider/slider-functions.js";
 import { loading } from '../components/loading.js'
 
@@ -12,5 +12,4 @@ window.onload = async function () {
 
 window.addEventListener('DOMContentLoaded', () => {
     loading()
-    CargarProducto()
 })

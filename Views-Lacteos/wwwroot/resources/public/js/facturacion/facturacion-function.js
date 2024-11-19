@@ -1,69 +1,84 @@
 import { POST, GET } from "../generic-functions.js";
 import { 
     POST_Factura, POST_DetallesFactura, REPORTE_Factura, GET_Productos, GET_Producto,
-    GET_Cliente
+    GET_Cliente, GET_NumeroFactura
 } from "../endpoints.js";
+import { factura } from './factura-object.js'
+import { Alerta } from '../components/alert.js'
 
 let productos = [];
 let total = 0;
 
 function AddEvents() {
-    document.getElementById('cmbProductos').addEventListener("change", CargarProducto)
-    document.getElementById('cmbProductos').addEventListener("input", CargarProducto)
+    const hoy = new Date()
+    const dia = String(hoy.getDate()).padStart(2, '0')
+    const mes = String(hoy.getMonth() + 1).padStart(2, '0');
+    const año = hoy.getFullYear()
+    const fechaFormateada = `${año}-${mes}-${dia}`
+    document.getElementById('fechaVenta').value = fechaFormateada
+
+    factura.producto.addEventListener("change", CargarProducto)
+    factura.producto.addEventListener("input", CargarProducto)
+    factura.tipoPago.addEventListener("change", ActivarPlazos)
+    factura.tipoPago.addEventListener("input", ActivarPlazos)
     document.getElementById('btnAgregar').addEventListener('click', agregarProducto);
     document.getElementById('btnFacturar').addEventListener('click', facturar)
-    document.getElementById('txtCedulaCliente').addEventListener("keyup", () => {
-        const proveedor = document.getElementById('txtCedulaCliente').value;
-
-        if (proveedor.length == 14) {
+    factura.cedulaCliente.addEventListener("keyup", () => {
+        if (factura.cedulaCliente.value.length == 14) {
             CargarCliente()
         } else {
-            document.getElementById('txtProveedor').value = ''
+            document.getElementById('nombreCliente').value = ''
         }
     })
 
     CargarProductos()
+    factura.vendedor.value = localStorage.getItem('vendedor')
+    CargarNumeroUltimaVenta()
+}
+
+function ActivarPlazos() {
+    if (factura.tipoPago.value === 'Credito') {
+        document.getElementById('txtPlazo').disabled = false
+    } else {
+        document.getElementById('txtPlazo').disabled = true
+    }
+}
+
+function CargarNumeroUltimaVenta() {
+    GET(GET_NumeroFactura, "Error al cargar el numero de la venta", 1, (data) => {
+        factura.numeroFactura.value = parseInt(data.response.numeroFactura) + 1;
+    })
 }
 
 function CargarCliente() {
-    const cliente = document.getElementById('txtCedulaCliente').value;
     let nombre = document.getElementById('nombreCliente');
-    const url = GET_Cliente + cliente;
+    const url = GET_Cliente + factura.cedulaCliente.value;
 
     GET(url, "Error al cargar el producto", 1, (data) => {
         nombre.value = data.response.nombreCliente + " " + data.response.apellidoCliente
     }, () => {
-        Alerta("Error", "No se encontro el proveedor", "error")
-        document.getElementById('txtCedulaCliente').value = '';
+        Alerta("Error", "No se encontro el cliente", "error")
+        factura.cedulaCliente.value = '';
     })
 }
 
 function CargarProducto() {
-    const producto = document.getElementById('cmbProductos').value;
-    let stock = document.getElementById('txtStock');
-    let precio = document.getElementById('txtPrecio');
-    const url = GET_Producto + producto;
+    const url = `${GET_Producto}${factura.producto.value}`;
 
     GET(url, "Error al cargar el producto", 1, (data) => {
-        stock.value = data.response.cantidadProducto
-        precio.value = data.response.precioProducto
-    })
+        factura.precio.value= data.response.precioProducto
+    }, () => {})
 }
 
 function agregarProducto() {
-    const producto = document.getElementById('cmbProductos').value;
-    const cantidad = parseInt(document.getElementById('txtCantidad').value);
-    const precio = parseInt(document.getElementById('txtPrecio').value);
-    const subtotal = cantidad * precio;
+    const producto = factura.producto.value
+    const cantidad = parseInt(factura.cantidad.value)
+    const precio = parseInt(factura.precio.value)
+
+    const subtotal = cantidad * precio
 
     if (!producto || isNaN(cantidad) || isNaN(precio)) {
-        Swal.fire({
-            title: 'Error',
-            text: 'Por favor, complete todos los campos correctamente',
-            icon: 'error',
-            confirmButtonText: 'Aceptar',
-            confirmButtonColor: '#7a2a1e',
-        });
+        Alerta("Error", "Por favor, complete todos los campos correctamente", "error")
         return;
     }
 
@@ -74,15 +89,15 @@ function agregarProducto() {
 }
 
 function CargarProductos() {
-    const selectElement = document.getElementById('cmbProductos')
     GET(GET_Productos, "Error al cargar los productos", 1, (data) => {
         data.response.forEach(producto => {
             let optionElement = document.createElement('option')
             optionElement.value = producto.nombreProducto
             optionElement.textContent = producto.nombreProducto
-            selectElement.appendChild(optionElement)
+            factura.producto.appendChild(optionElement)
+            CargarProducto()
         })
-    })
+    }, () => {})
 }
 
 function actualizarTablaProductos() {
@@ -115,17 +130,14 @@ function calcularTotal() {
 }
 
 function limpiarCamposProducto() {
-    document.getElementById('cmbProductos').value = '';
-    document.getElementById('txtStock').value = '';
-    document.getElementById('txtCantidad').value = '';
-    document.getElementById('txtPrecio').value = '';
+    factura.cantidad.value = '';
 }
 
 function editarProducto(index) {
     const item = productos[index];
-    document.getElementById('cmbProductos').value = item.producto;
-    document.getElementById('txtCantidad').value = item.cantidad;
-    document.getElementById('txtPrecio').value = item.precio;
+    factura.producto.value = item.producto;
+    factura.cantidad.value = item.cantidad;
+    factura.precio.value = item.precio;
     productos.splice(index, 1);
     actualizarTablaProductos();
     calcularTotal();
@@ -138,25 +150,14 @@ function eliminarProducto(index) {
 }
 
 async function facturar() {
-    const vendedor = document.getElementById('txtVendedor').value;
-    const cedulaCliente = document.getElementById('txtCedulaCliente').value;
-    const tipoPago = document.getElementById('cmbTipoPago').value;
-    const totalVenta = parseInt(document.getElementById('txtTotal').value);
-    const numeroFactura = document.getElementById('txtNumeroFactura').value;
 
     if (productos.length === 0) {
-        Swal.fire({
-            title: 'Error',
-            text: "No hay productos en la factura",
-            icon: 'error',
-            confirmButtonText: 'Aceptar',
-            confirmButtonColor: '#7a2a1e',
-        });
+        Alerta("Error", "No hay productos en la factura", "error")
         return;
     }
 
     try {
-        var urlVentas = `${POST_Factura}${cedulaCliente}&${vendedor}&${totalVenta}&${tipoPago}&${numeroFactura}`;
+        var urlVentas = `${POST_Factura}${factura.cedulaCliente.value}&${factura.vendedor.value}&${parseInt(factura.totalVenta.value)}&${factura.tipoPago.value}&${factura.numeroFactura.value}`;
         await new Promise((resolve, reject) => {
             POST(urlVentas, "Factura creada", "Error al crear la factura", resolve, reject);
         })
@@ -167,25 +168,19 @@ async function facturar() {
                 POST(urlProducto, "Dealles de factura creados", "Error al crear los detalles de la factura ", resolve, reject)
             })
         }
-
-        Swal.fire({
-            title: 'Confirmado',
-            text: "Factura creada exitosamente",
-            icon: 'success',
-            confirmButtonText: 'Aceptar',
-            confirmButtonColor: '#7a2a1e',
-        });
+        Alerta("Confirmado", "Factura creada exitosamente", "success",)
         limpiarFormulario();
 
-        document.getElementById('reporteFactura').src = REPORTE_Factura+numeroFactura
+        document.getElementById('reporteFactura').src = REPORTE_Factura+factura.numeroFactura.value
         window.reporte.showModal()
         
         document.getElementById('reporte1').addEventListener('click', ()=>{
             window.reporte.close()
         })
+        CargarNumeroUltimaVenta()
     } catch (error) {
         console.error("Error al crear la factura:", error);
-        alert("Error al crear la factura. Por favor, intente de nuevo.");
+        Alerta("Error", "Error al crear la factura. Por favor, intente de nuevo.", "error")
     }
 }
 
@@ -193,6 +188,8 @@ function limpiarFormulario() {
     productos = [];
     actualizarTablaProductos();
     calcularTotal();
+    factura.cedulaCliente.value = ''
+    document.getElementById('nombreCliente').value = ''
 }
 
 export { AddEvents, CargarProducto }
