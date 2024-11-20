@@ -94,6 +94,7 @@ function CargarProductos() {
             let optionElement = document.createElement('option')
             optionElement.value = producto.nombreProducto
             optionElement.textContent = producto.nombreProducto
+            optionElement.disabled = producto.cantidadProducto <= producto.minimoStockProducto ? true : false
             factura.producto.appendChild(optionElement)
             CargarProducto()
         })
@@ -152,6 +153,11 @@ function eliminarProducto(index) {
 async function facturar() {
     if (productos.length === 0) {
         Alerta("Error", "No hay productos en la factura", "error")
+        return;
+    }
+
+    if (document.getElementById('nombreCliente').value == '') {
+        Alerta("Error", "Por favor, ingrese el nombre del cliente", "error")
         return;
     }
 
