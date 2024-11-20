@@ -1,5 +1,6 @@
 import { GET_Clientes, GET_Cliente, POST_Cliente, PUT_Cliente, DELETE_Cliente } from "../endpoints.js";
 import { GET, POST, PUT, DELETE } from '../generic-functions.js';
+import { Alerta } from '../components/alert.js'
 
 function AddEvents() {
     document.getElementById('btnCrear').addEventListener('click', CrearCliente);
@@ -62,7 +63,7 @@ function ObtenerClientes() {
                 <td>${cliente.telefono}</td>
             `;
         });
-    });
+    }, () => {});
 }
 
 
@@ -72,16 +73,20 @@ function CrearCliente() {
     var ruc = document.getElementById('txtRUC').value;
     var telefono = document.getElementById('txtTelefono').value;
     var direccion = document.getElementById('txtDireccion').value;
-    
+
+    if (nombre == '' || apellido == '' || ruc == '') {
+        Alerta("Error", "Todos los campos son obligatorios", "error");
+        return;
+    }
 
     var url = `${POST_Cliente}${nombre}&${apellido}&${ruc}?direccion=${direccion}&telefono=${telefono}`;
 
-
-        POST(url, "Cliente Creado Exitosamente", "Error al crear el cliente", () => {
-            ObtenerClientes(); 
-            LimpiarControles(); 
-        });
-    }
+    POST(url, "Cliente Creado Exitosamente", "Error al crear el cliente", () => {
+        ObtenerClientes(); 
+        Alerta("Confirmado", "Cliente creado correctamente", "success");
+        LimpiarControles();
+    });
+}
 
 
 function EditarCliente() {
@@ -90,6 +95,11 @@ function EditarCliente() {
     var ruc = document.getElementById('txtRUC').value;
     var telefono = document.getElementById('txtTelefono').value;
     var direccion = document.getElementById('txtDireccion').value;
+
+    if (nombre == '' || apellido == '' || ruc == '') {
+        Alerta("Error", "Todos los campos son obligatorios", "error");
+        return;
+    }
     
     var url = `${PUT_Cliente}${nombre}&${apellido}&${ruc}?direccion=${direccion}&telefono=${telefono}`;
 
@@ -104,6 +114,11 @@ function EditarCliente() {
 function EliminarCliente() {
     var ruc = document.getElementById('txtRUC').value;
     var url = DELETE_Cliente + ruc;
+
+    if (ruc == '') {
+        Alerta("Error", "La cedula del cliente es obligatorio", "error");
+        return;
+    }
 
     DELETE(url, "Cliente eliminado correctamente", "Error al eliminar el cliente", () => {
         ObtenerClientes();  

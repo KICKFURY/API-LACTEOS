@@ -167,6 +167,11 @@ label {
     color: var(--white);
 }
 
+.buttons button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
 
 /*======cedula======*/
 .buscadorRUC {
