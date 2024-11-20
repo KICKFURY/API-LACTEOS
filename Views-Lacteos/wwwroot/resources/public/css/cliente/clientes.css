@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 @import '../content.css';
 @import '../colores.css';
+@import '../components/tabla.css';
 
 * {
     font-family: "Ubuntu", sans-serif;
@@ -68,8 +69,6 @@ label {
     justify-content: space-around;
 }
 
-
-
 /*¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡search-container¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡*/
 .search-container {
     display: flex;
@@ -115,37 +114,6 @@ label {
     width: auto; 
 }
 
-
-/* Tabla */
-.table-container {
-    width: auto;
-    height: 200px;
-    overflow-y: auto;
-    margin-top: -20px;
-}
-
-.table-container table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-.table-container th,
-.table-container td {
-    padding: 10px;
-    border: 1px solid var(--blue);
-}
-
-.table-container th {
-    background-color: var(--gray);
-    color: var(--blue);
-}
-
-.table-container table tbody tr:hover {
-    background-color: var(--blue);
-    color: var(--white);
-}
-
 /*¡¡¡¡¡¡¡¡ botones ¡¡¡¡¡*/
 .buttons {
     display: flex;
@@ -172,6 +140,9 @@ label {
     cursor: not-allowed;
 }
 
+.table-container {
+    margin-left: 10%;
+}
 
 /*======cedula======*/
 .buscadorRUC {

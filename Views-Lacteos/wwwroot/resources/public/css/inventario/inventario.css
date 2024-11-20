@@ -1,3 +1,5 @@
+@import '../components/tabla.css';
+
 .form {
     border: 1px solid #000;
     padding: 45px;
@@ -99,43 +101,16 @@ label {
     box-sizing: border-box;
 }
 
+.table-container {
+    margin-left: 10%;
+}
+
 .search-container button {
     padding: 10px 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
     cursor: pointer;
     background: var(--blue);
-    color: var(--white);
-}
-
-/* Tabla */
-.table-container {
-    width: 85%;
-    height: 290px;
-    overflow-y: auto;
-    margin-left: 8%;
-    margin-top: 0%;
-}
-
-.table-container table {
-    width: 95%;
-    border-collapse: collapse;
-    margin-top: 50px;
-}
-
-.table-container th,
-.table-container td {
-    padding: 10px;
-    border: 1px solid var(--blue);
-}
-
-.table-container th {
-    background-color: var(--gray);
-    color: var(--blue);
-}
-
-.table-container table tbody tr:hover {
-    background-color: var(--blue);
     color: var(--white);
 }
 
