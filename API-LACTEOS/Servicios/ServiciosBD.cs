@@ -133,12 +133,14 @@ namespace API_LACTEOS.Servicios
             return table;
         }
 
-        public DataTable ObtenerFacturaPorFechas(string fechaInicial)
+        public DataTable ObtenerFacturaPorFechas()
         {
             DataTable table = new DataTable();
-            //fechaInicial += " 23:59:59.999";
 
-            string query = @"SELECT * FROM ViewFacturaContado WHERE fechaVenta > @fechaInicial";
+            DateTime fechaActual = DateTime.Now;
+            string fecha = fechaActual.ToString("yyyy-MM-dd");
+
+            string query = @"SELECT * FROM ViewFacturaContado WHERE CONVERT(DATE, fechaVenta) = @fecha";
 
             string conexion = _config.GetConnectionString("CadenaSQL");
 
@@ -146,7 +148,7 @@ namespace API_LACTEOS.Servicios
             {
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    command.Parameters.AddWithValue("@fechaVenta", fechaInicial);
+                    command.Parameters.AddWithValue("@fecha", fecha);
 
                     connection.Open();
                     using (SqlDataAdapter adapter = new SqlDataAdapter(command))

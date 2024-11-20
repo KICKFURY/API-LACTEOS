@@ -63,7 +63,7 @@
                 <Value>Factura</Value>
                 <Style>
                   <FontFamily>Arial Black</FontFamily>
-                  <FontSize>11pt</FontSize>
+                  <FontSize>12pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                   <Color>Maroon</Color>
                 </Style>
@@ -98,7 +98,10 @@
             <TextRuns>
               <TextRun>
                 <Value>Numero de Factura: </Value>
-                <Style />
+                <Style>
+                  <FontSize>12pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style />
@@ -106,9 +109,9 @@
         </Paragraphs>
         <rd:DefaultName>Textbox3</rd:DefaultName>
         <Top>4.91808cm</Top>
-        <Left>10.84823cm</Left>
+        <Left>9.97511cm</Left>
         <Height>0.6cm</Height>
-        <Width>3.34667cm</Width>
+        <Width>4.2198cm</Width>
         <ZIndex>3</ZIndex>
         <Style>
           <Border>
@@ -128,7 +131,10 @@
             <TextRuns>
               <TextRun>
                 <Value>=First(Fields!numeroFactura.Value, "dsVenta")</Value>
-                <Style />
+                <Style>
+                  <FontSize>12pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style />
@@ -158,7 +164,10 @@
             <TextRuns>
               <TextRun>
                 <Value>Nombre Cliente: </Value>
-                <Style />
+                <Style>
+                  <FontSize>12pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style />
@@ -167,7 +176,7 @@
         <rd:DefaultName>Textbox3</rd:DefaultName>
         <Top>6.00287cm</Top>
         <Height>0.6cm</Height>
-        <Width>2.73813cm</Width>
+        <Width>3.58634cm</Width>
         <ZIndex>5</ZIndex>
         <Style>
           <Border>
@@ -186,8 +195,11 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Nombre Vendedor: </Value>
-                <Style />
+                <Value>Nombre Vendedor:</Value>
+                <Style>
+                  <FontSize>12pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style />
@@ -196,7 +208,7 @@
         <rd:DefaultName>Textbox3</rd:DefaultName>
         <Top>4.91808cm</Top>
         <Height>0.6cm</Height>
-        <Width>3.10855cm</Width>
+        <Width>4.10668cm</Width>
         <ZIndex>6</ZIndex>
         <Style>
           <Border>
@@ -216,7 +228,10 @@
             <TextRuns>
               <TextRun>
                 <Value>=First(Fields!nombreUsuario.Value, "dsVenta")</Value>
-                <Style />
+                <Style>
+                  <FontSize>12pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style />
@@ -224,7 +239,7 @@
         </Paragraphs>
         <rd:DefaultName>nombreUsuario</rd:DefaultName>
         <Top>4.91808cm</Top>
-        <Left>3.35703cm</Left>
+        <Left>4.28307cm</Left>
         <Height>0.6cm</Height>
         <Width>2.5cm</Width>
         <ZIndex>7</ZIndex>
@@ -246,7 +261,10 @@
             <TextRuns>
               <TextRun>
                 <Value>=First(Fields!nombreCliente.Value, "dsVenta")</Value>
-                <Style />
+                <Style>
+                  <FontSize>12pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style />
@@ -254,9 +272,9 @@
         </Paragraphs>
         <rd:DefaultName>nombreCliente</rd:DefaultName>
         <Top>6.00287cm</Top>
-        <Left>3.35703cm</Left>
+        <Left>3.99203cm</Left>
         <Height>0.6cm</Height>
-        <Width>3.24083cm</Width>
+        <Width>3.87583cm</Width>
         <ZIndex>8</ZIndex>
         <Style>
           <Border>
@@ -276,7 +294,10 @@
             <TextRuns>
               <TextRun>
                 <Value>=First(Fields!apellidoCliente.Value, "dsVenta")</Value>
-                <Style />
+                <Style>
+                  <FontSize>12pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style />
@@ -284,9 +305,9 @@
         </Paragraphs>
         <rd:DefaultName>apellidoCliente</rd:DefaultName>
         <Top>6.00287cm</Top>
-        <Left>6.77425cm</Left>
+        <Left>8.04425cm</Left>
         <Height>0.6cm</Height>
-        <Width>2.8175cm</Width>
+        <Width>3.5568cm</Width>
         <ZIndex>9</ZIndex>
         <Style>
           <Border>
@@ -302,16 +323,16 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>3.35703cm</Width>
+              <Width>4.49018cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.24083cm</Width>
+              <Width>4.37398cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.99389cm</Width>
+              <Width>4.12704cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.60583cm</Width>
+              <Width>3.73898cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -328,7 +349,11 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Producto</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>Maroon</Color>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -360,7 +385,11 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Precio</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>Maroon</Color>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -392,7 +421,11 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Cantidad</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>Maroon</Color>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -424,7 +457,11 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Sub Total</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>Maroon</Color>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -461,7 +498,10 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!nombreProducto.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -493,7 +533,10 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!precioUnitario.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -525,7 +568,10 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!cantidadVendida.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -557,7 +603,10 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!SubTotal.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -604,7 +653,7 @@
         <DataSetName>dsVenta</DataSetName>
         <Top>7.03474cm</Top>
         <Height>1.2cm</Height>
-        <Width>12.19758cm</Width>
+        <Width>16.73017cm</Width>
         <ZIndex>10</ZIndex>
         <Style>
           <Border>
@@ -620,7 +669,10 @@
             <TextRuns>
               <TextRun>
                 <Value>Total: </Value>
-                <Style />
+                <Style>
+                  <FontSize>12pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style />
@@ -628,9 +680,9 @@
         </Paragraphs>
         <rd:DefaultName>Textbox3</rd:DefaultName>
         <Top>8.85458cm</Top>
-        <Left>6.38464cm</Left>
+        <Left>12.25036cm</Left>
         <Height>0.6cm</Height>
-        <Width>0.93897cm</Width>
+        <Width>1.23001cm</Width>
         <ZIndex>11</ZIndex>
         <Style>
           <Border>
@@ -650,7 +702,10 @@
             <TextRuns>
               <TextRun>
                 <Value>=First(Fields!totalVenta.Value, "dsVenta")</Value>
-                <Style />
+                <Style>
+                  <FontSize>12pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style />
@@ -658,7 +713,7 @@
         </Paragraphs>
         <rd:DefaultName>totalVenta</rd:DefaultName>
         <Top>8.85458cm</Top>
-        <Left>7.5cm</Left>
+        <Left>13.65676cm</Left>
         <Height>0.6cm</Height>
         <Width>2.5cm</Width>
         <ZIndex>12</ZIndex>

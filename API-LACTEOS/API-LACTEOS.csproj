@@ -14,6 +14,7 @@
     <None Remove="Reportes\Productos.rdlc" />
     <None Remove="Reportes\Proveedores.rdlc" />
     <None Remove="Reportes\Usuarios.rdlc" />
+    <None Remove="Reportes\VentasDelDia.rdlc" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,6 +24,7 @@
     <EmbeddedResource Include="Reportes\Productos.rdlc" />
     <EmbeddedResource Include="Reportes\Proveedores.rdlc" />
     <EmbeddedResource Include="Reportes\Usuarios.rdlc" />
+    <EmbeddedResource Include="Reportes\VentasDelDia.rdlc" />
   </ItemGroup>
 
   <ItemGroup>

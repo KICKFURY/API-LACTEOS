@@ -6,13 +6,13 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>4.56375cm</Width>
+              <Width>4.98708cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.98167cm</Width>
+              <Width>4.405cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>5.95251cm</Width>
+              <Width>5.10584cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>2.5cm</Width>
@@ -32,7 +32,11 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Nombre</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>Maroon</Color>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -64,7 +68,11 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Apellido</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>Maroon</Color>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -96,7 +104,11 @@
                           <TextRuns>
                             <TextRun>
                               <Value>RUC</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>Maroon</Color>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -128,7 +140,11 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Telefono</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>Maroon</Color>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -165,7 +181,10 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!nombreCliente.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -197,7 +216,10 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!apellidoCliente.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -229,7 +251,10 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!ruc.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -261,7 +286,10 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!telefono.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -384,10 +412,10 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>Reporte de Proveedores</Value>
+                  <Value>Reporte de Clientes</Value>
                   <Style>
                     <FontFamily>Arial Black</FontFamily>
-                    <FontSize>11pt</FontSize>
+                    <FontSize>12pt</FontSize>
                     <FontWeight>Bold</FontWeight>
                     <Color>Maroon</Color>
                   </Style>

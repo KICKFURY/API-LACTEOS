@@ -79,23 +79,18 @@ namespace API_LACTEOS.Controllers
         }
 
         [HttpPut]
-        [Route("Editar")]
-        public IActionResult Editar([FromBody] Pago objeto)
+        [Route("Editar/{idVenta}&{saldoPendiente:int}&{fechaPago:datetime}")]
+        public IActionResult Editar(int idVenta, int saldoPendiente, DateTime fechaPago)
         {
-            Pago oPago = _dbcontext.Pagos.Find(objeto.Id);
+            Pago pago = new Pago();
 
-            if (oPago == null)
-            {
-                return BadRequest("Pago no encontrado");
-            }
             try
             {
-                _dbcontext.Pagos.Update(oPago);
+                pago = _dbcontext.Pagos.Where(p => p.IdVenta == idVenta).FirstOrDefault(); 
+                _dbcontext.Pagos.Update(pago);
                 _dbcontext.SaveChanges();
 
                 return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok" });
-
-
             }
             catch (Exception ex)
             {

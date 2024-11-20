@@ -6,16 +6,16 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>3.29375cm</Width>
+              <Width>3.88906cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>8.43642cm</Width>
+              <Width>7.73527cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.5cm</Width>
+              <Width>2.51323cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.5cm</Width>
+              <Width>2.5926cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -32,7 +32,11 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Producto</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>Maroon</Color>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -64,7 +68,11 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Descripcion</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>Maroon</Color>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -96,7 +104,11 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Precio</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>Maroon</Color>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -128,7 +140,11 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Stock</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>Maroon</Color>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -165,7 +181,10 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!nombreProducto.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -197,7 +216,10 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!descripcionProducto.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -229,7 +251,10 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!precioProducto.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -261,7 +286,10 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!cantidadProducto.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -319,7 +347,7 @@
     <Height>2in</Height>
     <Style />
   </Body>
-  <Width>6.58668in</Width>
+  <Width>6.61793in</Width>
   <Page>
     <PageHeader>
       <Height>4.1694cm</Height>
@@ -386,7 +414,7 @@
                   <Value>Reporte de Proveedores</Value>
                   <Style>
                     <FontFamily>Arial Black</FontFamily>
-                    <FontSize>11pt</FontSize>
+                    <FontSize>12pt</FontSize>
                     <FontWeight>Bold</FontWeight>
                     <Color>Maroon</Color>
                   </Style>

@@ -103,12 +103,12 @@ namespace API_LACTEOS.Controllers
             return File(result.MainStream, "application/pdf");
         }
 
-        [HttpGet("facturaFecha/{fechaInicial}")]
-        public IActionResult GetReporteFacturaFecha(string fechaInicial)
+        [HttpGet("arqueo")]
+        public IActionResult GetReporteFacturaFecha()
         {
-            DataTable datos = _dbContext.ObtenerFacturaPorFechas(fechaInicial);
+            DataTable datos = _dbContext.ObtenerFacturaPorFechas();
 
-            string pathRDLC = Path.Combine(Directory.GetCurrentDirectory(), "Reportes", "FacturaFecha.rdlc");
+            string pathRDLC = Path.Combine(Directory.GetCurrentDirectory(), "Reportes", "VentasDelDia.rdlc");
 
             LocalReport report = new LocalReport(pathRDLC);
             report.AddDataSource("dsVenta", datos);
