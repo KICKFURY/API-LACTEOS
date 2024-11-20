@@ -45,6 +45,7 @@ var POST_DetallesCompra = `${host}/DetallesCompra/Guardar/`
 var POST_Credito = `${host}/Pago/Guardar/`
 var GET_CreditoByIdVenta = `${host}/Pago/Obtener/`
 var GET_Creditos = `${host}/Pago/Lista/`
+var PUT_Credito = `${host}/Pago/Editar/`
 
 // REPORTES
 var REPORTE_Factura = `${host}/Reportes/reporte-pdf/`
@@ -56,5 +57,5 @@ export { GET_Login, GET_Usuarios, POST_Usuario, PUT_Usuario, DELETE_Usuario,
         DELETE_Producto, POST_Factura, POST_DetallesFactura, REPORTE_Factura,
         POST_COMPRA, POST_DetallesCompra, GET_NumeroCompra, GET_FacturaYDetalles,
         GET_NumeroFactura, GET_ClienteById, POST_Credito, GET_CreditoByIdVenta, GET_Creditos,
-        GET_VentaById
+        GET_VentaById, PUT_Credito
 }

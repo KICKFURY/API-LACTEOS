@@ -79,14 +79,16 @@ namespace API_LACTEOS.Controllers
         }
 
         [HttpPut]
-        [Route("Editar/{idVenta}&{saldoPendiente:int}&{fechaPago:datetime}")]
-        public IActionResult Editar(int idVenta, int saldoPendiente, DateTime fechaPago)
+        [Route("Editar/{idVenta}&{saldoPendiente:decimal}&{fechaPago:datetime}")]
+        public IActionResult Editar(int idVenta, decimal saldoPendiente, DateTime fechaPago)
         {
             Pago pago = new Pago();
 
             try
             {
-                pago = _dbcontext.Pagos.Where(p => p.IdVenta == idVenta).FirstOrDefault(); 
+                pago = _dbcontext.Pagos.Where(p => p.IdVenta == idVenta).FirstOrDefault();
+                pago.TotalPago = saldoPendiente;
+                pago.FechaPago = fechaPago;
                 _dbcontext.Pagos.Update(pago);
                 _dbcontext.SaveChanges();
 

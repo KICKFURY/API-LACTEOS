@@ -1,30 +1,7 @@
-import { GET } from "../generic-functions.js";
-import {
-    GET_FacturaYDetalles,
-    GET_ClienteById,
-    GET_CreditoByIdVenta,
-    GET_Creditos,
-    GET_VentaById,
-} from "../endpoints.js";
+import { GET, PUT } from "../generic-functions.js";
+import { GET_FacturaYDetalles, GET_ClienteById, GET_CreditoByIdVenta, GET_Creditos, GET_VentaById, PUT_Credito } from "../endpoints.js";
 import { Alerta } from "../components/alert.js";
-
-const credito = {
-    idVenta: 0,
-    totalVenta: 0,
-    cliente: 0,
-    saldoPendiente: 0,
-    plazo: 0,
-    fechaPago: "",
-};
-
-const creditoVista = {
-    numeroFactura: document.getElementById("txtNumeroFactura"),
-    cliente: document.getElementById("txtCliente"),
-    total: document.getElementById("txtTotal"),
-    plazo: document.getElementById("txtPlazo"),
-    cancelar: document.getElementById("txtCancelar"),
-    saldo: document.getElementById("txtSaldo"),
-};
+import { credito, creditoVista } from "./credito-objects.js";
 
 function AddEvents() {
     document.getElementById("txtVendedor").value =
@@ -33,9 +10,10 @@ function AddEvents() {
         GetFacturaCredito();
     });
 
+    document.getElementById('btnGuardar').addEventListener("click", ActualizarCredito)
+
     GetCreditos();
 }
-
 function GetFacturaCredito() {
     const numeroFactura = document.getElementById("txtNumeroFactura").value;
     GET(GET_FacturaYDetalles + numeroFactura, "Error al traer la factura", 1, (data) => {
@@ -45,21 +23,15 @@ function GetFacturaCredito() {
             credito.idVenta = data.response.id;
             GetDetallesCredito();
             GetCliente();
-        } else {
-            Alerta("Error", "La factura no es de crédito", "error");
-            return;
         }
-        },
-        () => {}
+    }, () => {}
     );
 }
-
 function GetCliente() {
     GET(GET_ClienteById + credito.cliente, "Error al traer el cliente", 1, (data) => {
         creditoVista.cliente.value = `${data.response.nombreCliente} ${data.response.apellidoCliente}`;
     }, () => {});
 }
-
 function GetDetallesCredito() {
     GET(GET_CreditoByIdVenta + credito.idVenta, "Error al cargar credito", 1, (data) => {
         credito.plazo = data.response.plazo;
@@ -67,10 +39,9 @@ function GetDetallesCredito() {
         creditoVista.total.value = credito.totalVenta;
         creditoVista.plazo.value = credito.plazo;
         creditoVista.cancelar.value = parseInt(credito.totalVenta) / parseInt(credito.plazo);
-        creditoVista.saldo.value = credito.saldoPendiente - parseInt(credito.totalVenta) / parseInt(credito.plazo);
+        creditoVista.saldo.value = credito.saldoPendiente == 0 ? credito.saldoPendiente : credito.saldoPendiente - parseInt(credito.totalVenta) / parseInt(credito.plazo);
         },() => {});
 }
-
 async function GetCreditos() {
     const tbody = document.querySelector("table tbody");
     tbody.innerHTML = "";
@@ -94,7 +65,6 @@ async function GetCreditos() {
         console.error("Error obteniendo los créditos o ventas:", error);
     }
 }
-
 async function fetchCreditos() {
     return new Promise((resolve, reject) => {
         GET(GET_Creditos, "Erro al cargar los creditos", 1, (data) => {
@@ -104,7 +74,6 @@ async function fetchCreditos() {
         });
     });
 }
-
 async function GetVentas(idVenta) {
     return new Promise((resolve, reject) => {
         GET(`${GET_VentaById}${idVenta}`, "Error al cargar la venta", 1, (data) => {
@@ -113,6 +82,21 @@ async function GetVentas(idVenta) {
             reject(error);
         });
     });
+}
+function ActualizarCredito() {
+    PUT(`${PUT_Credito}${credito.idVenta}&${parseFloat(creditoVista.saldo.value)}&${creditoVista.fecha.value}`, "Credito Editado", "Error al editar el credito", () => {
+        GetCreditos();
+        Alerta("Éxito", "El crédito ha sido editado", "success");
+        LimpiarCampos();
+    })
+}
+function LimpiarCampos (){
+    creditoVista.cliente.value = ''
+    creditoVista.numeroFactura.value = ''
+    creditoVista.total.value = ''
+    creditoVista.saldo.value = ''
+    creditoVista.plazo.value = ''
+    creditoVista.cancelar.value = ''
 }
 
 export { AddEvents };
