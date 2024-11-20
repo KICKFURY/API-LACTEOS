@@ -17,6 +17,7 @@ var GET_Proveedor = `${host}/Proveedores/Obtener/`
 // CLIENTES
 var GET_Clientes = `${host}/Clientes/Lista/`
 var GET_Cliente = `${host}/Clientes/Obtener/`
+var GET_ClienteById = `${host}/Clientes/Obtener/`
 var POST_Cliente = `${host}/Clientes/Guardar/`
 var PUT_Cliente = `${host}/Clientes/Editar/`
 var DELETE_Cliente = `${host}/Clientes/Eliminar/`
@@ -30,9 +31,10 @@ var DELETE_Producto = `${host}/Producto/Eliminar/`
 
 // FACTURACION
 var GET_FacturaYDetalles = `${host}/Ventas/Obtener/`
+var GET_NumeroFactura = `${host}/Ventas/getNumeroFactura`
+var GET_VentaById = `${host}/Ventas/ObtenerById/`
 var POST_Factura = `${host}/Ventas/Guardar/`
 var POST_DetallesFactura = `${host}/DetallesVenta/Guardar/`
-var GET_NumeroFactura = `${host}/Ventas/getNumeroFactura`
 
 // COMRPRAS
 var POST_COMPRA = `${host}/Compras/Guardar/`
@@ -40,6 +42,9 @@ var GET_NumeroCompra = `${host}/Compras/ultimaFactura`
 var POST_DetallesCompra = `${host}/DetallesCompra/Guardar/`
 
 // CREDITO
+var POST_Credito = `${host}/Pago/Guardar/`
+var GET_CreditoByIdVenta = `${host}/Pago/Obtener/`
+var GET_Creditos = `${host}/Pago/Lista/`
 
 // REPORTES
 var REPORTE_Factura = `${host}/Reportes/reporte-pdf/`
@@ -50,5 +55,6 @@ export { GET_Login, GET_Usuarios, POST_Usuario, PUT_Usuario, DELETE_Usuario,
         DELETE_Cliente, GET_Productos, GET_Producto, POST_Producto, PUT_Producto,
         DELETE_Producto, POST_Factura, POST_DetallesFactura, REPORTE_Factura,
         POST_COMPRA, POST_DetallesCompra, GET_NumeroCompra, GET_FacturaYDetalles,
-        GET_NumeroFactura
+        GET_NumeroFactura, GET_ClienteById, POST_Credito, GET_CreditoByIdVenta, GET_Creditos,
+        GET_VentaById
 }

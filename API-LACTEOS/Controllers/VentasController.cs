@@ -24,7 +24,7 @@ namespace API_LACTEOS.Controllers
             Venta venta = new Venta();
             try
             {
-                venta = _dbcontext.Ventas.OrderBy(p => p.NumeroFactura).Last();
+                venta = _dbcontext.Ventas.OrderBy(p => p.Id).Last();
                 return StatusCode(StatusCodes.Status200OK, new { Message = "ok", response = venta });
             }
             catch (Exception ex)
@@ -47,6 +47,30 @@ namespace API_LACTEOS.Controllers
             catch (Exception ex)
             {
                 return StatusCode(StatusCodes.Status200OK, new { mensaje = ex.Message, response = lista });
+            }
+
+        }
+
+        [HttpGet]
+        [Route("ObtenerById/{id:int}")]
+        public IActionResult ObtenerById(int id)
+        {
+            Venta venta = _dbcontext.Ventas.Find(id);
+
+            if (venta == null)
+            {
+                return BadRequest("Venta no encontrado");
+            }
+            try
+            {
+                _dbcontext.Ventas.Update(venta);
+                _dbcontext.SaveChanges();
+
+                return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok", response = venta });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new { mensaje = ex.Message, response = venta });
             }
 
         }

@@ -1,7 +1,7 @@
 import { POST, GET } from "../generic-functions.js";
 import { 
     POST_Factura, POST_DetallesFactura, REPORTE_Factura, GET_Productos, GET_Producto,
-    GET_Cliente, GET_NumeroFactura
+    GET_Cliente, GET_NumeroFactura, POST_Credito
 } from "../endpoints.js";
 import { factura } from './factura-object.js'
 import { Alerta } from '../components/alert.js'
@@ -150,7 +150,6 @@ function eliminarProducto(index) {
 }
 
 async function facturar() {
-
     if (productos.length === 0) {
         Alerta("Error", "No hay productos en la factura", "error")
         return;
@@ -168,13 +167,22 @@ async function facturar() {
                 POST(urlProducto, "Dealles de factura creados", "Error al crear los detalles de la factura ", resolve, reject)
             })
         }
+
+        if (factura.tipoPago.value == "Credito") {
+            var t = factura.totalVenta.value.split(".")
+            var url = `${POST_Credito}${t[0]}&${factura.plazo.value}&${factura.fecha.value}`
+            await new Promise((resolve, reject) => {
+                POST(url, "Crédito creado", "Error al crear el crédito", resolve, reject)
+            })
+        }
+
         Alerta("Confirmado", "Factura creada exitosamente", "success",)
         limpiarFormulario();
 
         document.getElementById('reporteFactura').src = REPORTE_Factura+factura.numeroFactura.value
         window.reporte.showModal()
         
-        document.getElementById('reporte1').addEventListener('click', ()=>{
+        document.getElementById('reporte1').addEventListener('click', () => {
             window.reporte.close()
         })
         CargarNumeroUltimaVenta()

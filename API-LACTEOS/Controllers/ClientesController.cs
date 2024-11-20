@@ -36,7 +36,27 @@ namespace API_LACTEOS.Controllers
 
                 return StatusCode(StatusCodes.Status200OK, new { mensaje = ex.Message, response = lista });
             }
+        }
 
+        [HttpGet]
+        [Route("Obtener/{id:int}")]
+        public IActionResult ObtenerClienteById(int id)
+        {
+            Cliente cliente = _dbcontext.Clientes.Find(id);
+
+            if (cliente == null)
+            {
+                return BadRequest("Cliente no encontrado");
+            }
+
+            try
+            {
+                return StatusCode(StatusCodes.Status200OK, new { message = "", response = cliente });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new { message = ex.Message, response = cliente });
+            }
         }
 
         [HttpGet]

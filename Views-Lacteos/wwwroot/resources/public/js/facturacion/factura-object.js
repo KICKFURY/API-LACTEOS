@@ -7,6 +7,8 @@ const factura = {
     tipoPago: document.getElementById('cmbTipoPago'),
     totalVenta: document.getElementById('txtTotal'),
     numeroFactura: document.getElementById('txtNumeroFactura'),
+    plazo: document.getElementById('txtPlazo'),
+    fecha: document.getElementById('fechaVenta'),
 }
 
 export { factura }

@@ -39,25 +39,20 @@ namespace API_LACTEOS.Controllers
         }
 
         [HttpGet]
-        [Route("Obtener/{idPago:int}")]
-        public IActionResult Obtener(int idPago)
+        [Route("Obtener/{idVenta:int}")]
+        public IActionResult Obtener(int idVenta)
         {
-            Pago oPago = _dbcontext.Pagos.Find(idPago);
-
-            if (oPago == null)
-            {
-                return BadRequest("Pago no encontrado");
-            }
+            Pago pago = new Pago();
 
             try
             {
-                oPago = _dbcontext.Pagos.Where(p => p.Id == idPago).FirstOrDefault();
+                pago = _dbcontext.Pagos.Where(p => p.IdVenta == idVenta).FirstOrDefault();
 
-                return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok", response = oPago });
+                return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok", response = pago });
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, new { mensaje = ex.Message, response = oPago });
+                return StatusCode(StatusCodes.Status500InternalServerError, new { mensaje = ex.Message, response = pago });
             }
         }
 
@@ -73,7 +68,7 @@ namespace API_LACTEOS.Controllers
                 pago.Plazo = plazo;
                 pago.FechaPago = fechaPago;
                 _dbcontext.Pagos.Add(pago);
-                _dbcontext.SaveChanges();
+                _dbcontext.SaveChanges(); 
 
                 return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok" });
             }

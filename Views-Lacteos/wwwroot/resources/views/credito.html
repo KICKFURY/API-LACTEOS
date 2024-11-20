@@ -30,7 +30,7 @@
                     </div>
                     <div class="fecha">
                         <label for="fechaVenta">Fecha de Venta:</label>
-                        <input disabled id="fechaVenta" type="date" value="2024-09-15" class="fecha" />
+                        <input disabled id="fechaVenta" type="date" value="2024-11-21" class="fecha" />
                     </div>
                 </div>
 
@@ -50,7 +50,7 @@
                                 </div>
                                 <div class="form-row">
                                     <label class="form-label" for="txtCliente">Nombre del Cliente:</label>
-                                    <input class="form-control" id="txtCliente" type="text" />
+                                    <input disabled class="form-control" id="txtCliente" type="text" />
                                 </div>
                             </div>
                         </div>
@@ -69,33 +69,26 @@
                                 <div class="column">
                                     <div class="form-row">
                                         <label class="form-label" for="txtTotal">Total:</label>
-                                        <input class="form-control" id="txtTotal" type="text" />
+                                        <input disabled class="form-control" id="txtTotal" type="text" />
                                     </div>
                                     <div class="form-row">
                                         <label class="form-label" for="txtPlazo">Plazo:</label>
-                                        <input class="form-control" id="txtPlazo" type="text" />
+                                        <input disabled class="form-control" id="txtPlazo" type="text" />
                                     </div>
                                     <div class="form-row">
                                         <label class="form-label" for="txtCancelar">Cancelar:</label>
-                                        <input class="form-control" id="txtCancelar" type="text" />
+                                        <input disabled class="form-control" id="txtCancelar" type="text" />
                                     </div>
                                 </div>
                                 <!-- Segunda columna -->
                                 <div class="column">
                                     <div class="form-row">
                                         <label class="form-label" for="txtSaldo">Saldo:</label>
-                                        <input class="form-control" id="txtSaldo" type="text" />
+                                        <input disabled class="form-control" id="txtSaldo" type="text" />
                                     </div>
                                     <div class="form-row example">
                                         <label class="form-label" for="fechaDiaPago">Día de Pago:</label>
-                                        <input class="form-control" id="fechaDiaPago" type="date" value="2024-09-15"/>
-                                    </div>
-                                    <div class="form-row">
-                                        <label class="form-label" for="cmbEstado">Estado:</label>
-                                        <select class="form-select" id="cmbEstado">
-                                            <option value="Activo">Activo</option>
-                                            <option value="Inactivo">Inactivo</option>
-                                        </select>
+                                        <input class="form-control" id="fechaDiaPago" type="date" min="2024-11-21" value="2024-11-21"/>
                                     </div>
                                 </div>
                                 <div class="buttones">
@@ -133,17 +126,14 @@
                                 Plazo
                             </th>
                             <th>
-                                Pago Crédito
-                            </th>
-                            <th>
                                 Saldo
                             </th>
                             <th>
                                 Próximo Pago
                             </th>
-                            <th>
+                            <!-- <th>
                                 Último Pago
-                            </th>
+                            </th> -->
                             <th>
                                 Progreso
                             </th>
