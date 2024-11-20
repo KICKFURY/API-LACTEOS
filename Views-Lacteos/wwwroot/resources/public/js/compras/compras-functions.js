@@ -69,16 +69,16 @@ function ActualizarTablaProductos() {
         tr.innerHTML = `
             <td>${item.producto}</td>
             <td>${item.cantidad}</td>
-            <td>${item.precio}</td>
-            <td>${item.precio * item.cantidad}</td>
-            <td><button id="btnEditar">Editar</button></td>
-            <td><button id="btnEliminar">Eliminar</button></td>
+            <td>${item.precio.toFixed(2)}</td>
+            <td>${item.precio * item.cantidad.toFixed(2)}</td>
+            <td><button id="btnEditar${index}">Editar</button></td>
+            <td><button id="btnEliminar${index}">Eliminar</button></td>
         `;
         tbody.appendChild(tr);
-        document.getElementById('btnEditar').addEventListener('click', ()=>{
+        document.getElementById(`btnEditar${index}`).addEventListener('click', ()=>{
             editarProducto(index)
         });
-        document.getElementById('btnEliminar').addEventListener('click', ()=>{
+        document.getElementById(`btnEliminar${index}`).addEventListener('click', ()=>{
             eliminarProducto(index)
         });
     })
