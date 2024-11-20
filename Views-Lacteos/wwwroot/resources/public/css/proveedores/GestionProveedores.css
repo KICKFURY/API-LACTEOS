@@ -379,7 +379,6 @@ body {
     overflow-y: auto;
 }
 
-
 .table-container table {
     width: 100%;
     border-collapse: collapse;
@@ -389,17 +388,31 @@ body {
 .table-container th,
 .table-container td {
     padding: 10px;
-    border: 1px solid var(--blue);
+    border: 1px solid gray;
 }
 
 .table-container th {
     background-color: var(--gray);
     color: var(--blue);
+    font-size: 19px;
+}
+
+.table-container table tbody tr {
+    font-weight: 900;
+    font-size: 18px;
+    text-align: center;
 }
 
 .table-container table tbody tr:hover {
-    background-color: var(--blue);
-    color: var(--white);
+    color: #591610;
+}
+
+.table-container table tbody tr:nth-child(odd) {
+    background-color: #E3E0E0; 
+}
+
+.table-container table tbody tr:nth-child(even) {
+    background-color: #F6F5F5;  
 }
 
 /* Reporte */
