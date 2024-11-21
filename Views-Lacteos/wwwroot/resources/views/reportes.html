@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reportes</title>
     <link rel="shortcut icon" href="../public/img/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="/resources/public/css/reportes/reportes.css">
 </head>
 <body>
     <div class="sidebar">
@@ -19,13 +20,69 @@
                     <i class="fas fa-question-circle"></i>
                 </div>
             </div>
-            <div class="">
+            <!-- <div class="">
                 <center>
                     <iframe src="http://localhost:5037/api/Reportes/usuarios" height="500px" width="800px"></iframe>
                 </center>
+            </div> -->
+            <img src="/resources/public/img/logo.png" alt="logo">
+            <div class="buttons">
+                <div class="reporte-cliente">
+                    <button id="btnGenerarReporte">
+                        Generar Reporte de Clientes
+                    </button>
+                    <dialog id="reporte">
+                        <iframe src="http://localhost:5037/api/Reportes/clientes" frameborder="0" width="900px"
+                            height="500px"></iframe>
+                        <br>
+                        <center>
+                            <button id="reporte1">Cerrar</button>
+                        </center>
+                    </dialog>
+                </div>
+                <div class="reporte-inventario">
+                    <button id="btnGenerarReporte">
+                        Generar Reporte de Inventario
+                    </button>
+                    <dialog id="reporte">
+                        <iframe src="http://localhost:5037/api/Reportes/productos" frameborder="0" width="900px"
+                            height="500px"></iframe>
+                        <br>
+                        <center>
+                            <button id="reporte1">Cerrar</button>
+                        </center>
+                    </dialog>
+                </div>
+                <div class="reporte-proveedores">
+                    <button id="btnGenerarReporte">
+                        Generar Reporte Proveedores
+                    </button>
+                    <dialog id="reporte">
+                        <iframe src="http://localhost:5037/api/Reportes/proveedores" frameborder="0" width="900px"
+                            height="500px"></iframe>
+                        <br>
+                        <center>
+                            <button id="reporte1">Cerrar</button>
+                        </center>
+                    </dialog>
+                </div>
+                <div class="reporte-usuarioLista">
+                    <button id="btnGenerarReporte">
+                        Generar Reporte Usuarios
+                    </button>
+                    <dialog id="reporte">
+                        <iframe src="http://localhost:5037/api/Reportes/usuarios" frameborder="0" width="900px"
+                            height="500px"></iframe>
+                        <br>
+                        <center>
+                            <button id="reporte1">Cerrar</button>
+                        </center>
+                    </dialog>
+                </div>
             </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="module" src="../public/js/reporte/reporte.js"></script>
 </body>
 </html>

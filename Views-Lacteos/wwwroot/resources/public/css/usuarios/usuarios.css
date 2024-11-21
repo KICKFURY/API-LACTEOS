@@ -49,6 +49,8 @@
     max-width: 200px;
     box-sizing: border-box; 
     margin-bottom: 10px; 
+    font-weight: 900;
+    font-size: 18px;
 }
 
 .password-section button {
@@ -60,6 +62,8 @@
     cursor: pointer;
     width: 60%; 
     margin-top: 30px; 
+    font-weight: 900;
+    font-size: medium;
 }
 
 .password-section button:hover {
@@ -95,6 +99,7 @@ button:disabled:hover {
     margin-right: 15px; 
     color: var(--blue); 
     font-weight: bold;
+    font-size: 18px;
 }
 
 .form-group {
@@ -109,6 +114,7 @@ button:disabled:hover {
     color: var(--blue); 
     font-weight: bold;
     margin-left: -140px; 
+    font-size: 18px;
 }
 
 .form-group input,
@@ -121,6 +127,7 @@ button:disabled:hover {
     max-width: 300px;
     box-sizing: border-box; 
     margin-left: -20px;
+    font-weight: 900;
 }
 
 .button-group {
@@ -139,6 +146,7 @@ button:disabled:hover {
     padding: 10px;
     border-radius: 5px;
     cursor: pointer;
+    font-weight: 900;
 }
 
 .button-group button:hover {
@@ -155,12 +163,15 @@ button:disabled:hover {
     border: 1px solid #ccc;
     border-radius: 5px;
     flex-grow: 1;
-    max-width: 150px;
+    max-width: 160px;
+    font-weight: 900;
+    font-size: 15px;
 }
 
 .buscadorRUC label {
     color: var(--blue);
     font-weight: bold;
+    font-size: 18px;
 }
 
 .next {

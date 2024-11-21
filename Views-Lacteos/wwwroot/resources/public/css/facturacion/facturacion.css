@@ -18,16 +18,22 @@
 
 .container label {
     color: var(--blue);
+    font-weight: 900;
+    font-size: 18px;
 }
 
 .container input {
     border: 1px solid #ccc;
     border-radius: 5px;
+    font-size: 15px;
+    font-weight: 900;
 }
 
 .container select {
     border: 1px solid #ccc;
     border-radius: 5px;
+    font-size: 16px;
+    font-weight: 900;
 }
 
 .body-cliente,
@@ -48,11 +54,7 @@
 }
 
 .border {
-    padding: 20px;
-}
-
-.border label {
-    font-weight: bold;
+    padding: 25px;
 }
 
 .form-group {
@@ -66,7 +68,7 @@
 }
 
 .form-label {
-    flex: 0 0 40%;
+    flex: 0 0 50%;
     margin-right: 10px;
     width: 100px;
     margin-left: -20px;
@@ -85,6 +87,9 @@
 
 input, select {
     height: 30px;
+    font-weight: 900;
+    font-size: 15px;
+    text-align: center;
 }
 
 
@@ -101,24 +106,27 @@ input, select {
 .head label {
     color: var(--blue);
     font-weight: bold;
+    font-size: 18px;
 }
 
 .head input {
-    width: 45%;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
 
 #txtVendedor {
     width: 200px;
+    text-align: center;
 }
 
 #fechaVenta {
     width: 200px;
+    text-align: center;
 }
 
 #txtNumeroFactura {
     width: 80px;
+    text-align: center;
 }
 
 .numero {
@@ -156,6 +164,7 @@ input, select {
     border-radius: 5px;
     cursor: pointer;
     margin-top: 0px;
+    font-weight: 900;
 }
 
 .buttons button:hover {
@@ -172,11 +181,14 @@ input, select {
 .total label {
     color: var(--blue);
     font-weight: bold;
+    font-size: 18px;
 }
 
 .total input {
     border: 1px solid #ccc;
     border-radius: 5px;
+    font-size: 15px;
+    font-weight: 900;
 }
 
 /* Reporte */

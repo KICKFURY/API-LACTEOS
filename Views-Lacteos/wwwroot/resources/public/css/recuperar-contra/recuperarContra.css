@@ -7,6 +7,10 @@ body {
     margin: 0;
 }
 
+form {
+    width: 75%;
+}
+
 .container {
     text-align: center;
 }
@@ -21,13 +25,57 @@ body {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 40%;
+    margin-left: 30%;
+    height: 35%;
+    background-color: #FFFBF2;
 }
 
 .btn-cancel {
-    color: #8B0000;
+    background-color: #5D4037;
+    color: #FFF8E1;
+    text-decoration: none;
+    width: 40%;
 }
 
 .btn-restore {
-    background-color: #8B0000;
+    background-color: #5E0202;
     color: white;
+}
+
+.d-flex button:hover {
+    background-color: #6E1E1E;
+    color: #FFF8E1;
+}
+
+.d-flex button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #5E0202;
+    color: #FFFFFF;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: 900;
+}
+
+.d-flex {
+    justify-content: space-between;
+    margin-top: 15%;
+    margin-left: 10%;
+}
+
+.mb-3 {
+    text-align: start;
+    margin-left: 10%;
+}
+
+.mb-3 label {
+    font-weight: 900;
+    font-size: 18px;
+}
+
+.mb-3 input {
+    font-weight: 900;
+    font-size: 15px;
 }

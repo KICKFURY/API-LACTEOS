@@ -23,6 +23,7 @@
     margin-bottom: 5px;
     color: var(--blue);
     font-weight: bold;
+    font-size: 18px;
 }
 
 .row input {
@@ -31,6 +32,8 @@
     border-radius: 5px;
     width: 150%;
     box-sizing: border-box;
+    font-weight: 900;
+    font-size: 15px;
 }
 
 .buttons-group {
@@ -49,4 +52,5 @@
     cursor: pointer;
     background: var(--blue);
     color: var(--white);
+    font-weight: 500;
 }

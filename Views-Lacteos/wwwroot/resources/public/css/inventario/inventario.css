@@ -30,6 +30,7 @@ label {
     font-weight: bold;
     color: var(--blue);
     margin-bottom: 5px; 
+    font-size: 18px;
 }
 
 .form-group > div {
@@ -40,6 +41,9 @@ label {
     border: 1px solid #ccc;
     border-radius: 5px;
     height: 30px;
+    font-weight: 900;
+    font-size: 15px;
+    text-align: center;
 }
 
 .form-select {
@@ -50,7 +54,7 @@ label {
 }
 
 #fechaExpiracion {
-    width: 81%;
+    width: 93%;
 }
 
 .buttons {
@@ -67,6 +71,7 @@ label {
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
+    font-weight: 900;
 }
 
 .buttons button:hover {
@@ -90,6 +95,7 @@ label {
     margin-right: 10px;
     color: var(--blue);
     font-weight: bold;
+    font-size: 18px;
 }
 
 .search-container input {
@@ -99,6 +105,8 @@ label {
     border-radius: 5px;
     width: 500px;
     box-sizing: border-box;
+    font-size: 15px;
+    font-weight: 900;
 }
 
 .table-container {
@@ -112,6 +120,7 @@ label {
     cursor: pointer;
     background: var(--blue);
     color: var(--white);
+    font-weight: 900;
 }
 
 .next {

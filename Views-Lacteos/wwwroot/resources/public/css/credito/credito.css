@@ -11,12 +11,15 @@
 .head label {
     color: var(--blue);
     font-weight: bold;
+    font-size: 18px;
 }
 
 .head input {
     width: 45%;
     border: 1px solid #ccc;
     border-radius: 5px;
+    font-size: 15px;
+    font-weight: 900;
 }
 
 .container {
@@ -29,18 +32,25 @@
 
 .container label {
     color: var(--blue);
+    font-weight: 900;
+    font-size: 18px;
 }
 
 .container input {
     border: 1px solid #ccc;
     border-radius: 5px;
+    font-weight: 900;
+    font-size: 15px;
 }
 
-.container select {
+/* .container select {
     border: 1px solid #ccc;
     border-radius: 5px;
-    height: 31px;
-}
+    height: 35%;
+    width: 100%;
+    font-weight: 900;
+    font-size: 15px;
+} */
 
 .body-cliente,
 .body-credito {
@@ -64,14 +74,15 @@
     margin-top: 2%;
 }
 
-.border input {
+/* .border input {
     font-weight: bold;
     margin-right: 15%;
+    font-size: 15px;
 }
 
 .border label {
     font-weight: bold;
-}
+} */
 
 .form-check {
     margin-top: -20px;
@@ -83,10 +94,12 @@
     font-size: 120%;
     text-decoration: underline;
 }
-
+/* 
 .form-select {
     font-weight: bold;
-}
+    font-size: 15px;
+    width: 15%;
+} */
 
 .columns {
     display: flex;
@@ -120,26 +133,29 @@
 
 input {
     height: 30px;
+    text-align: center;
 }
 
 #txtVendedor {
     width: 200px;
+    text-align: center;
 }
 
 #fechaVenta {
     width: 200px;
+    text-align: center;
 }
 
-#txtNumeroFactura {
+/* #txtNumeroFactura {
     flex-basis: 150px; 
     max-width: 150px; 
     margin-left: 5%;
-}
+} */
 
-#cmbEstado {
+/* #cmbEstado {
     flex-basis: 250px; 
     max-width: 250px; 
-}
+} */
 
 .buttones {
     margin-top: 25%;
@@ -156,6 +172,7 @@ input {
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
+    font-weight: 900;
 }
 
 .buttones button:hover {
@@ -174,6 +191,7 @@ input {
     margin-right: 10px;
     color: var(--blue);
     font-weight: bold;
+    font-size: 18px;
 }
 
 .search-container input {
@@ -183,6 +201,8 @@ input {
     border-radius: 5px;
     width: 500px;
     box-sizing: border-box;
+    font-size: 15px;
+    font-weight: 900;
 }
 
 .search-container button {
@@ -192,6 +212,7 @@ input {
     cursor: pointer;
     background: var(--blue);
     color: var(--white);
+    font-weight: 900;
 }
 
 .search-container button:hover {

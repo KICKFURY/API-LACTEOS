@@ -54,6 +54,7 @@ label {
     margin-bottom: 0.25rem;
     font-weight: bold;
     color: var(--blue);
+    font-size: 18px;
 }
 
 .form-control {
@@ -61,6 +62,8 @@ label {
     font-size: 1rem;
     border: 1px solid #dee2e6;
     border-radius: 0.375rem;
+    font-weight: 900;
+    font-size: 15px;
 }
 
 .radio-group {
@@ -81,6 +84,7 @@ label {
 
 .search-container label {
     color: var(--blue);
+    font-size: 18px;
 }
 
 .search-container input {
@@ -91,6 +95,8 @@ label {
     border: 1px solid #ccc;
     border-radius: 5px; 
     box-sizing: border-box; 
+    font-size: 15px;
+    font-weight: 900;
 }
 
 .search-container button {
@@ -100,6 +106,8 @@ label {
     cursor: pointer;
     background: var(--blue);
     color: var(--white);
+    /* font-size: medium; */
+    font-weight: 900;
 }
 
 .search-container button:hover {
@@ -128,6 +136,8 @@ label {
     padding: 10px 30px;
     border-radius: 5px;
     cursor: pointer;
+    font-weight: 900;
+    /* font-size: medium; */
 }
 
 .buttons button:hover {
@@ -158,6 +168,8 @@ label {
     font-size: 1rem;
     border: 1px solid #dee2e6;
     border-radius: 0.375rem;
+    font-size: 15px;
+    font-weight: 900;
 }
 
 .buscadorRUC label {
@@ -165,5 +177,6 @@ label {
     font-weight: bold;
     display: inline-block; 
     width: 100px;
+    font-size: 18px;
 }
 

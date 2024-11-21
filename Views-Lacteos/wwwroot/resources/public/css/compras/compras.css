@@ -13,19 +13,25 @@
 .container label {
     color: var(--blue);
     font-weight: bold;
+    font-size: 18px;
 }
 
 .container input {
     border: 1px solid #ccc;
     border-radius: 5px;
     height: 30px;
+    font-size: 15px;
+    font-weight: 900;
+    text-align: center;
 }
 
 .container select {
     border: 1px solid #ccc;
     border-radius: 5px;
     height: 30px;
-    width: 41%;
+    width: 44%;
+    font-weight: 900;
+    font-size: 15px;
 }
 .body-compra,
 .body-producto {
@@ -77,7 +83,7 @@
 }
 
 #txtFechaCompra {
-    width: 41%;
+    width: 44%;
 }
 
 .buttons {
@@ -88,13 +94,14 @@
     margin-left: 55%;
 }
 
-.buttons button, #btnEditar, #btnEliminar {
+.buttons button, #btnEditar0, #btnEliminar0 {
     background-color: var(--blue);
     color: var(--white);
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
+    font-weight: 900;
 }
 
 .buttons button:hover {

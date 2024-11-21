@@ -4,11 +4,10 @@
 }
 
 .profile-card img {
-    border: 1px solid #ddd;
-    border-radius: 5px;
     padding: 5px;
-    width: 100px;
-    height: 100px;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
 }
 
 .profile-card .name {
@@ -34,6 +33,7 @@
     text-align: center;
     color: var(--blue);
     padding: 10px 0;
+    font-weight: 900;
 }
 
 
