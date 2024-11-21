@@ -23,6 +23,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<LacteosBdContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("CadenaSQL")));
 builder.Services.AddScoped<ServiciosBD>();
+builder.Services.AddScoped<Database>();
 
 var app = builder.Build();
 
