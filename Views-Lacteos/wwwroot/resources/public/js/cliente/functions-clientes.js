@@ -1,6 +1,7 @@
 import { GET_Clientes, GET_Cliente, POST_Cliente, PUT_Cliente, DELETE_Cliente } from "../endpoints.js";
 import { GET, POST, PUT, DELETE } from '../generic-functions.js';
 import { Alerta } from '../components/alert.js'
+import { copyToClipboard } from "../components/CopyToClipboard.js";
 
 function AddEvents() {
     document.getElementById('btnCrear').addEventListener('click', CrearCliente);
@@ -53,15 +54,20 @@ function ObtenerClientes() {
     GET(GET_Clientes, "Error al cargar el listado de clientes", 1, (data) => {
         const clientesTabla = document.getElementById('tablaClientes').getElementsByTagName('tbody')[0];
         clientesTabla.innerHTML = ''; 
-        data.response.forEach(cliente => {
+        data.response.forEach((cliente, index) => {
             let row = clientesTabla.insertRow();
             row.innerHTML = `
                 <td>${cliente.nombreCliente}</td>
                 <td>${cliente.apellidoCliente}</td>
-                <td>${cliente.ruc}</td>
+                <td id="copyRuc${index}">${cliente.ruc}</td>
                 <td>${cliente.direccion}</td>
                 <td>${cliente.telefono}</td>
             `;
+
+            document.getElementById(`copyRuc${index}`).addEventListener('click', (e) => {
+                const text = e.target.innerText;
+                copyToClipboard(text)
+            })
         });
     }, () => {});
 }
@@ -104,7 +110,8 @@ function EditarCliente() {
     var url = `${PUT_Cliente}${nombre}&${apellido}&${ruc}?direccion=${direccion}&telefono=${telefono}`;
 
     PUT(url, "Cliente Editado Exitosamente", "Error al editar el cliente", () => {
-        ObtenerClientes();  
+        ObtenerClientes();
+        Alerta("Confirmado", "Cliente editado correctamente", "success");
         LimpiarControles();
     });
 }
@@ -121,7 +128,8 @@ function EliminarCliente() {
     }
 
     DELETE(url, "Cliente eliminado correctamente", "Error al eliminar el cliente", () => {
-        ObtenerClientes();  
+        ObtenerClientes();
+        Alerta("Confirmado", "Cliente eliminado correctamente", "success");
         LimpiarControles();
     });
 }
@@ -133,6 +141,7 @@ function LimpiarControles() {
     document.getElementById('txtRUC').value = '';
     document.getElementById('txtTelefono').value = '';
     document.getElementById('txtDireccion').value = '';
+    document.getElementById('Busquedacedula').value = '';
 }
 
 function ActualizarClientes(){

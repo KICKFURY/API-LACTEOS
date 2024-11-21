@@ -1,6 +1,7 @@
 import { GET, POST, PUT, DELETE } from '../generic-functions.js'
 import { POST_Proveedor, PUT_Proveedor, DELETE_Proveedor, GET_Proveedores, GET_Proveedor } from '../endpoints.js'
 import { Alerta } from '../components/alert.js'
+import { copyToClipboard } from '../components/CopyToClipboard.js'
 
 function AddEvents() {
     document.getElementById("estado").disabled = true
@@ -140,16 +141,6 @@ function ObtenerProveedores() {
             })
         })
     })
-}
-
-function copyToClipboard(text) {
-    const textarea = document.createElement("textarea");
-    textarea.value = text;
-    document.body.appendChild(textarea);
-    textarea.select();
-    document.execCommand("copy");
-    document.body.removeChild(textarea);
-    Alerta("Confirmado", "Cedula Copiada", "success")
 }
 
 function LimpiarControles() {
