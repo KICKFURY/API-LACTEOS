@@ -49,6 +49,7 @@ var PUT_Credito = `${host}/Pago/Editar/`
 
 // REPORTES
 var REPORTE_Factura = `${host}/Reportes/reporte-pdf/`
+var REPORTE_Credito = `${host}/Reportes/credito/`
 var REPORTE_ArqueoDelDia = `${host}/Reportes/arqueo/`
 var REPORTE_Clientes = `${host}/Reportes/clientes`
 var REPORTE_Productos = `${host}/Reportes/productos`
@@ -88,5 +89,6 @@ export { GET_Login, GET_Usuarios, POST_Usuario, PUT_Usuario, DELETE_Usuario,
         compras_encargado_inventario, inventario_encargado_inventario, proveedor_encargado_inventario,
         acerca_de_admin, clientes_admin, mantenimiento_admin, menu_admin,
         proveedor_admin, reportes_admin, usuarioLista_admin, usuarios_admin,
-        REPORTE_Clientes, REPORTE_Productos, REPORTE_Proveedores, REPORTE_Usuarios
+        REPORTE_Clientes, REPORTE_Productos, REPORTE_Proveedores, REPORTE_Usuarios,
+        REPORTE_Credito
 }

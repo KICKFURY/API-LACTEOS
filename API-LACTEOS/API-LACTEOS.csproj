@@ -10,6 +10,7 @@
   <ItemGroup>
     <None Remove="Reportes\Clientes.rdlc" />
     <None Remove="Reportes\FacturaContado.rdlc" />
+    <None Remove="Reportes\FacturaCredito.rdlc" />
     <None Remove="Reportes\FacturaFecha.rdlc" />
     <None Remove="Reportes\Productos.rdlc" />
     <None Remove="Reportes\Proveedores.rdlc" />
@@ -22,6 +23,7 @@
     <Content Include="Reportes\FacturaContado.rdlc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="Reportes\FacturaCredito.rdlc" />
     <EmbeddedResource Include="Reportes\FacturaFecha.rdlc" />
     <EmbeddedResource Include="Reportes\Productos.rdlc" />
     <EmbeddedResource Include="Reportes\Proveedores.rdlc" />

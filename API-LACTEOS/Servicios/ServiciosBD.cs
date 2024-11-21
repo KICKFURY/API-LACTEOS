@@ -133,6 +133,59 @@ namespace API_LACTEOS.Servicios
             return table;
         }
 
+        public DataTable ObtenerFacturaCreditoPorNumero(string numeroFactura)
+        {
+            DataTable table = new DataTable();
+
+            string query = @"SELECT * FROM FacturaCredito WHERE numeroFactura = @numeroFactura";
+
+            string conexion = _config.GetConnectionString("CadenaSQL");
+
+            using (SqlConnection connection = new SqlConnection(conexion))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@numeroFactura", numeroFactura);
+
+                    connection.Open();
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    {
+                        adapter.Fill(table);
+                    }
+                }
+            }
+
+            return table;
+        }
+
+        public DataTable ObtenerFacturaCreditoPorFecha()
+        {
+            DataTable table = new DataTable();
+
+            DateTime fechaActual = DateTime.Now;
+            string fecha = fechaActual.ToString("yyyy-MM-dd");
+
+            string query = @"SELECT * FROM FacturaCredito WHERE CONVERT(DATE, fechaCompra) = @fecha";
+
+            string conexion = _config.GetConnectionString("CadenaSQL");
+
+            using (SqlConnection connection = new SqlConnection(conexion))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@fecha", fecha);
+
+                    connection.Open();
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    {
+                        adapter.Fill(table);
+                    }
+                }
+            }
+
+            return table;
+        }
+
         public DataTable ObtenerFacturaPorFechas()
         {
             DataTable table = new DataTable();
@@ -141,6 +194,34 @@ namespace API_LACTEOS.Servicios
             string fecha = fechaActual.ToString("yyyy-MM-dd");
 
             string query = @"SELECT * FROM ViewFacturaContado WHERE CONVERT(DATE, fechaVenta) = @fecha";
+
+            string conexion = _config.GetConnectionString("CadenaSQL");
+
+            using (SqlConnection connection = new SqlConnection(conexion))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@fecha", fecha);
+
+                    connection.Open();
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    {
+                        adapter.Fill(table);
+                    }
+                }
+            }
+
+            return table;
+        }
+
+        public DataTable ObtenerFacturaArqueo()
+        {
+            DataTable table = new DataTable();
+
+            DateTime fechaActual = DateTime.Now;
+            string fecha = fechaActual.ToString("yyyy-MM-dd");
+
+            string query = @"SELECT numeroFactura, nombreCliente, fechaVenta, totalVenta FROM ViewFacturaContado WHERE CONVERT(DATE, fechaVenta) = @fecha GROUP BY numeroFactura, nombreCliente, fechaVenta, totalVenta";
 
             string conexion = _config.GetConnectionString("CadenaSQL");
 

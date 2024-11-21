@@ -1,7 +1,7 @@
 import { POST, GET } from "../generic-functions.js";
 import { 
     POST_Factura, POST_DetallesFactura, REPORTE_Factura, GET_Productos, GET_Producto,
-    GET_Cliente, GET_NumeroFactura, POST_Credito, Facturacion_vendedor
+    GET_Cliente, GET_NumeroFactura, POST_Credito, Facturacion_vendedor, REPORTE_Credito
 } from "../endpoints.js";
 import { factura } from './factura-object.js'
 import { Alerta } from '../components/alert.js'
@@ -192,17 +192,21 @@ async function facturar() {
         }
 
         if (factura.tipoPago.value == "Credito") {
+            document.getElementById('reporteFactura').src = REPORTE_Credito+factura.numeroFactura.value
             var t = factura.totalVenta.value.split(".")
-            var url = `${POST_Credito}${t[0]}&${factura.plazo.value}&${factura.fecha.value}`
+            let total = parseInt(t[0]) - (parseInt(t[0]) / parseInt(factura.plazo.value))
+            let fecha = sumarUnMes(factura.fecha.value)
+            var url = `${POST_Credito}${total.toString().split(".")[0]}&${factura.plazo.value}&${fecha}`
             await new Promise((resolve, reject) => {
                 POST(url, "Crédito creado", "Error al crear el crédito", resolve, reject)
             })
+        } else if (factura.tipoPago.value === "Contado") {
+            document.getElementById('reporteFactura').src = REPORTE_Factura+factura.numeroFactura.value
         }
 
         Alerta("Confirmado", "Factura creada exitosamente", "success",)
         limpiarFormulario();
 
-        document.getElementById('reporteFactura').src = REPORTE_Factura+factura.numeroFactura.value
         window.reporte.showModal()
         
         document.getElementById('reporte1').addEventListener('click', () => {
@@ -214,6 +218,23 @@ async function facturar() {
         console.error("Error al crear la factura:", error);
         Alerta("Error", "Error al crear la factura. Por favor, intente de nuevo.", "error")
     }
+}
+
+function sumarUnMes(fechaStr) {
+    let partes = fechaStr.split('-');
+    let año = parseInt(partes[0]);
+    let mes = parseInt(partes[1]) - 1;
+    let dia = parseInt(partes[2]);
+
+    let fecha = new Date(año, mes, dia);
+
+    fecha.setMonth(fecha.getMonth() + 1);
+
+    let nuevoDia = ("0" + fecha.getDate()).slice(-2);
+    let nuevoMes = ("0" + (fecha.getMonth() + 1)).slice(-2);
+    let nuevoAño = fecha.getFullYear();
+
+    return `${nuevoAño}-${nuevoMes}-${nuevoDia}`;
 }
 
 function limpiarFormulario() {

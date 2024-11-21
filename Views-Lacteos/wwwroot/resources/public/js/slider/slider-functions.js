@@ -6,7 +6,7 @@ function AddEvents() {
     toggle.onclick = function () {
         Menutoggle()
     }
-    // preventSourceCode();
+    preventSourceCode();
 }
 
 function Menutoggle() {

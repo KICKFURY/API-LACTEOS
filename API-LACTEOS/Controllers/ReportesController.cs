@@ -102,10 +102,27 @@ namespace API_LACTEOS.Controllers
             return File(result.MainStream, "application/pdf");
         }
 
+        [HttpGet("credito/{numeroFactura}")]
+        public IActionResult GetReporteCreditoPdf(string numeroFactura)
+        {
+            DataTable datos = _dbContext.ObtenerFacturaCreditoPorNumero(numeroFactura);
+
+            string pathRDLC = Path.Combine(Directory.GetCurrentDirectory(), "Reportes", "FacturaCredito.rdlc");
+
+            LocalReport report = new LocalReport(pathRDLC);
+            report.AddDataSource("dsCredito", datos);
+
+            var result = report.Execute(RenderType.Pdf);
+
+            Response.Headers.Add("content-disposition", "inline; filename=Factura.pdf");
+
+            return File(result.MainStream, "application/pdf");
+        }
+
         [HttpGet("arqueo")]
         public IActionResult GetReporteFacturaFecha()
         {
-            DataTable datos = _dbContext.ObtenerFacturaPorFechas();
+            DataTable datos = _dbContext.ObtenerFacturaArqueo();
 
             string pathRDLC = Path.Combine(Directory.GetCurrentDirectory(), "Reportes", "VentasDelDia.rdlc");
 
@@ -115,6 +132,23 @@ namespace API_LACTEOS.Controllers
             var result = report.Execute(RenderType.Pdf);
 
             Response.Headers.Add("content-disposition", "inline; filename=FacturaFecha.pdf");
+
+            return File(result.MainStream, "application/pdf");
+        }
+
+        [HttpGet("compras")]
+        public IActionResult GetReporteFacturaCreditoFecha()
+        {
+            DataTable datos = _dbContext.ObtenerFacturaCreditoPorFecha();
+
+            string pathRDLC = Path.Combine(Directory.GetCurrentDirectory(), "Reportes", "ComprasDelDia.rdlc");
+
+            LocalReport report = new LocalReport(pathRDLC);
+            report.AddDataSource("dsCompra", datos);
+
+            var result = report.Execute(RenderType.Pdf);
+
+            Response.Headers.Add("content-disposition", "inline; filename=Informe-compras-del-dia.pdf");
 
             return File(result.MainStream, "application/pdf");
         }
