@@ -1,5 +1,7 @@
 import { AddEvents, cargarSidebar} from '../slider/slider-functions.js'
-import { loading } from '../components/loading.js'
+import Loader from '../components/loading.js'
+
+const loader = new Loader()
 
 window.onload = function () {
     AddEvents()
@@ -7,5 +9,5 @@ window.onload = function () {
 }
 
 window.addEventListener('DOMContentLoaded', () => {
-    loading()
+    loader.hide()
 })

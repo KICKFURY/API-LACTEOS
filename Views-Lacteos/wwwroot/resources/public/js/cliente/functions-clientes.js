@@ -2,6 +2,9 @@ import { GET_Clientes, GET_Cliente, POST_Cliente, PUT_Cliente, DELETE_Cliente } 
 import { GET, POST, PUT, DELETE } from '../generic-functions.js';
 import { Alerta } from '../components/alert.js'
 import { copyToClipboard } from "../components/CopyToClipboard.js";
+import Loader from "../components/loading.js"; '../components/loading.js'
+
+const loader = new Loader();
 
 function AddEvents() {
     document.getElementById('btnCrear').addEventListener('click', CrearCliente);
@@ -69,6 +72,7 @@ function ObtenerClientes() {
                 copyToClipboard(text)
             })
         });
+        loader.hide();
     }, () => {});
 }
 

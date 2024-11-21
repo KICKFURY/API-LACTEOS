@@ -5,6 +5,9 @@ import {
 } from "../endpoints.js";
 import { factura } from './factura-object.js'
 import { Alerta } from '../components/alert.js'
+import Loader from '../components/loading.js'
+
+const loader = new Loader()
 
 let productos = [];
 let total = 0;
@@ -34,6 +37,7 @@ function AddEvents() {
     CargarProductos()
     factura.vendedor.value = localStorage.getItem('vendedor')
     CargarNumeroUltimaVenta()
+    loader.hide()
 }
 
 function ActivarPlazos() {

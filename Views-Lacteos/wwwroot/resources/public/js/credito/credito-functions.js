@@ -2,6 +2,9 @@ import { GET, PUT } from "../generic-functions.js";
 import { GET_FacturaYDetalles, GET_ClienteById, GET_CreditoByIdVenta, GET_Creditos, GET_VentaById, PUT_Credito } from "../endpoints.js";
 import { Alerta } from "../components/alert.js";
 import { credito, creditoVista } from "./credito-objects.js";
+import Loader from '../components/loading.js'
+
+const loader = new Loader()
 
 function AddEvents() {
     document.getElementById("txtVendedor").value =
@@ -61,6 +64,7 @@ async function GetCreditos() {
         `;
         tbody.appendChild(tr);
         }
+        loader.hide();
     } catch (error) {
         console.error("Error obteniendo los créditos o ventas:", error);
     }

@@ -1,4 +1,3 @@
-
 function RedirectURL() {
     const usuario = localStorage.getItem('UsuarioRole')
     if (usuario == "") {

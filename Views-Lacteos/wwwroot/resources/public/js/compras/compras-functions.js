@@ -1,6 +1,9 @@
 import { POST_COMPRA, POST_DetallesCompra, GET_Producto, GET_Proveedor, GET_NumeroCompra, GET_Productos } from "../endpoints.js";
 import { GET, POST } from "../generic-functions.js"
 import { Alerta } from "../components/alert.js"
+import Loader from '../components/loading.js'
+
+const loader = new Loader()
 
 let productos = [];
 let total = 0;
@@ -23,6 +26,7 @@ function AddEvents() {
     CargarNumeroUltimaCompra()
 
     CargarProductos()
+    loader.hide()
 }
 
 function CargarProductos() {

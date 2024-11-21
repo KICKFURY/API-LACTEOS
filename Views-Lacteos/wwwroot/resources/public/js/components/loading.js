@@ -1,8 +1,20 @@
-function loading() {
-    setTimeout(() => {
-        document.getElementById("loader").style.display = "none";
-        document.getElementById("content").style.display = "block";
-    }, 3000);
+class Loader {
+    constructor() {
+        this.loaderElement = document.getElementById("loader");
+        this.contentElement = document.getElementById("content");
+    }
+
+    show() {
+        this.loaderElement.style.display = "block";
+        this.contentElement.style.display = "none";
+    }
+
+    hide() {
+        setTimeout(() => {
+            this.loaderElement.style.display = "none";
+            this.contentElement.style.display = "block";
+        }, 1000);
+    }
 }
 
-export { loading }
+export default Loader

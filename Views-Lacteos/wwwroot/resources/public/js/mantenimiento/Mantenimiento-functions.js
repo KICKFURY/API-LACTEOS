@@ -1,10 +1,15 @@
 import { POST_Backup, POST_RestoreBackup } from '../endpoints.js'
 import { POST } from '../generic-functions.js'
 import { Alerta } from '../components/alert.js'
+import Loader from '../components/loading.js'
+
+const loader = new Loader()
 
 function AddEvents() {
     document.getElementById('btnRespaldar').addEventListener('click', Backup) 
     document.getElementById('btnRestaurar').addEventListener('click', Restore)
+
+    loader.hide()
 }
 
 function Backup() {

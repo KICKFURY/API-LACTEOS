@@ -1,6 +1,9 @@
 import { GET_Usuarios, GET_Login, POST_Usuario, PUT_Usuario, DELETE_Usuario } from "../endpoints.js"
 import { GET, POST, PUT, DELETE } from "../generic-functions.js"
 import { encriptar } from "../security.js"
+import Loader from '../components/loading.js'
+
+const loader = new Loader()
 
 function AddEvents() {
     document.getElementById('buscarUsername').addEventListener('keyup', () => {
@@ -128,6 +131,7 @@ function AddEventsFirst() {
             document.getElementById('buscarUsername').value = ''
         }
     })
+    loader.hide()
 }
 
 function CargarUsuarioCampos() {
@@ -187,6 +191,7 @@ function ObtenerUsuarios() {
                 <td>${usuario.idEstado == 1 ? 'Activo' : 'Inactivo'}</td>
             `
         })
+        loader.hide()
     })
 }
 

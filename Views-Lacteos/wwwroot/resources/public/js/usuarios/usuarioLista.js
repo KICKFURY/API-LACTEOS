@@ -1,7 +1,5 @@
 import { AddEvents, ObtenerUsuarios } from './usuarios-functios.js'
 import { AddEvents as EventSidebar, cargarSidebar } from '../slider/slider-functions.js'
-import { loading } from '../components/loading.js'
-
 
 window.onload = function () {
     AddEvents()
@@ -12,5 +10,4 @@ window.onload = function () {
 
 window.addEventListener('DOMContentLoaded', () => {
     cargarSidebar()
-    loading()
 })

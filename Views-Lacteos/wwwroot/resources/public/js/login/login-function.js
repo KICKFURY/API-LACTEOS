@@ -1,9 +1,14 @@
 import { GET, GET_SERVIDOR } from "../generic-functions.js" 
 import { encriptar } from "../security.js"
 import { GET_Login } from "../endpoints.js"
+import Loader from '../components/loading.js'
+
+const loader = new Loader()
 
 function AddEvents() {
     document.getElementById('btnIniciar').addEventListener('click', Login)
+
+    loader.hide()
 }
 
 function Login() {
