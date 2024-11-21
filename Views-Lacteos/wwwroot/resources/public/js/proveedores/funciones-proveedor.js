@@ -1,10 +1,18 @@
 import { GET, POST, PUT, DELETE } from '../generic-functions.js'
 import { POST_Proveedor, PUT_Proveedor, DELETE_Proveedor, GET_Proveedores, GET_Proveedor } from '../endpoints.js'
+import { Alerta } from '../components/alert.js'
 
 function AddEvents() {
-    document.getElementById('btnCrear').addEventListener('click', CrearProveedor)
+    document.getElementById("estado").disabled = true
+    document.getElementById('btnCrear').addEventListener('click', () => {
+        CrearProveedor()
+    })
     document.getElementById('btnEliminar').addEventListener('click', EliminarProveedor)
-    document.getElementById('rdaCrear').addEventListener('change', RDACREARINTERNO)
+    document.getElementById('rdaCrear').addEventListener('change', () => {
+        RDACREARINTERNO()
+        document.getElementById("cedula").disabled = false
+        document.getElementById("estado").disabled = true
+    })
     document.getElementById('btnCargar').addEventListener('click', () => {
         ObtenerProveedores()
         document.getElementById('ruc').value = ''
@@ -14,12 +22,16 @@ function AddEvents() {
         document.getElementById('btnCrear').disabled = true
         document.getElementById('btnEditar').disabled = false
         document.getElementById('btnEliminar').disabled = true
+        DesactivarControles(false)
+        document.getElementById("cedula").disabled = true
+        document.getElementById("estado").disabled = false
     })
     document.getElementById('rdaEliminar').addEventListener('change', () => {
         MostrarBuscadorRUC()
         document.getElementById('btnCrear').disabled = true
         document.getElementById('btnEditar').disabled = true
         document.getElementById('btnEliminar').disabled = false
+        DesactivarControles(true)
     })
     document.getElementById('btnEditar').addEventListener('click', () => {
         EditarProveedor()
@@ -61,6 +73,11 @@ function CrearProveedor() {
     var nombre = document.getElementById('nombre').value
     var telefono = document.getElementById('telefono').value
     var cedula = document.getElementById('cedula').value
+
+    if (nombre == '' || telefono == '' || cedula == '') {
+        Alerta("Error", "Rellene los campos obligatorios", "error")
+    }
+
     var url = `${POST_Proveedor}${nombre}&${telefono}&${cedula}`
 
     POST(url, "Proveedor guardado", "Error al guardar el proveedor", () => {
@@ -74,6 +91,11 @@ function EditarProveedor() {
     var telefono = document.getElementById('telefono').value
     var ruc = document.getElementById('cedula').value
     var id = document.getElementById('estado').value
+
+    if (nombre == '' || telefono == '' || cedula == '') {
+        Alerta("Error", "Rellene los campos obligatorios", "error")
+    }
+
     var url = `${PUT_Proveedor}${nombre}&${ruc}&${telefono}&${id == 'Activo' ? 1 : 2}`
 
     PUT(url, "Proveedor editado", "Error al editar el proveedor", () => {
@@ -85,6 +107,11 @@ function EditarProveedor() {
 function EliminarProveedor() {
     var ruc = document.getElementById('Busquedacedula').value
     var url = DELETE_Proveedor+ruc
+
+    if (ruc == '') {
+        Alerta("Error", "La cedula del proveedor es obligatoria", "error")
+        return;
+    }
 
     DELETE(url, "Proveedor Eliminado", "Error al eliminar el proveedor.", () => {
         ObtenerProveedores()
@@ -98,16 +125,31 @@ function ObtenerProveedores() {
     GET(url, "Error al obtener la lista de proveedores", 1, (data) => {
         const proveedoresTabla = document.getElementById('idProveedoresTabla').getElementsByTagName('tbody')[0]
         proveedoresTabla.innerHTML = ''
-        data.response.forEach(proveedor => {
+        data.response.forEach((proveedor, index) => {
             let row = proveedoresTabla.insertRow();
             row.innerHTML = `
                 <td>${proveedor.nombreProveedor}</td>
                 <td>${proveedor.telefonoProveedor}</td>
-                <td>${proveedor.rucProveedor}</td>
+                <td id="copyRuc${index}">${proveedor.rucProveedor}</td>
                 <td>${proveedor.idEstado == 1 ? 'Activo' : 'Inactivo'}</td>
             `
+
+            document.getElementById(`copyRuc${index}`).addEventListener('click', (e) => {
+                const text = e.target.innerText;
+                copyToClipboard(text)
+            })
         })
     })
+}
+
+function copyToClipboard(text) {
+    const textarea = document.createElement("textarea");
+    textarea.value = text;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand("copy");
+    document.body.removeChild(textarea);
+    Alerta("Confirmado", "Cedula Copiada", "success")
 }
 
 function LimpiarControles() {
@@ -165,6 +207,13 @@ function OcultarBuscadorRUC() {
     LimpiarControles()
     document.getElementById('Busquedacedula').style.display = 'none'
     document.getElementById('lbaBuscador').style.display = 'none'
+}
+
+function DesactivarControles(value) {
+    document.getElementById("nombre").disabled = value
+    document.getElementById("cedula").disabled = value
+    document.getElementById("telefono").disabled = value
+    document.getElementById("estado").disabled = value
 }
 
 export { ObtenerProveedores, AddEvents }
