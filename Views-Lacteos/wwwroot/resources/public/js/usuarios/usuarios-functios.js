@@ -297,7 +297,7 @@ function OcultarBuscadorUsername() {
     document.getElementById('buscarUsername').disabled = true
     document.getElementById('buscarUsername').style.display = 'none'
     document.getElementById('lbaBuscador').style.display = 'none'
-    document.querySelector('.form-section').style.marginLeft = '-100px'
+    document.querySelector('.form-section').style.marginLeft = '-88px'
 }
 
 function MostrarBuscadorUsername() {
