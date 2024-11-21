@@ -9,6 +9,7 @@ const factura = {
     numeroFactura: document.getElementById('txtNumeroFactura'),
     plazo: document.getElementById('txtPlazo'),
     fecha: document.getElementById('fechaVenta'),
+    subTotalSinIVA: 0,
 }
 
 export { factura }

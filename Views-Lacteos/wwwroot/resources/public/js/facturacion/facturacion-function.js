@@ -79,14 +79,16 @@ function agregarProducto() {
     const cantidad = parseInt(factura.cantidad.value)
     const precio = parseInt(factura.precio.value)
 
-    const subtotal = cantidad * precio
+    const subtotalIVA = (cantidad * precio) * 1.15
+    const subTotalSinIVA = subtotalIVA - precio * cantidad
+
 
     if (!producto || isNaN(cantidad) || isNaN(precio)) {
         Alerta("Error", "Por favor, complete todos los campos correctamente", "error")
         return;
     }
 
-    productos.push({ producto, cantidad, precio, subtotal });
+    productos.push({ producto, cantidad, precio, subtotalIVA, subTotalSinIVA });
     actualizarTablaProductos();
     calcularTotal();
     limpiarCamposProducto();
@@ -114,8 +116,9 @@ function actualizarTablaProductos() {
         tr.innerHTML = `
             <td>${item.producto}</td>
             <td>${item.cantidad}</td>
-            <td>$${item.precio.toFixed(2)}</td>
-            <td>$${item.subtotal.toFixed(2)}</td>
+            <td>C$${item.precio.toFixed(2)}</td>
+            <td>C$${item.subTotalSinIVA.toFixed(2)}</td>
+            <td>C$${item.subtotalIVA.toFixed(2)}</td>
             <td><button id="btnEditar${index}">Editar</button></td>
             <td><button id="btnEliminar${index}">Eliminar</button></td>
             `;
@@ -130,7 +133,7 @@ function actualizarTablaProductos() {
 }
 
 function calcularTotal() {
-    total = productos.reduce((sum, item) => sum + item.subtotal, 0);
+    total = productos.reduce((sum, item) => sum + item.subtotalIVA, 0);
     document.getElementById('txtTotal').value = total.toFixed(2);
 }
 
@@ -194,6 +197,7 @@ async function facturar() {
         
         document.getElementById('reporte1').addEventListener('click', () => {
             window.reporte.close()
+            document.getElementById('reporteFactura').src = ''
         })
         CargarNumeroUltimaVenta()
     } catch (error) {

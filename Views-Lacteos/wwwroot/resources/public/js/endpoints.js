@@ -49,6 +49,7 @@ var PUT_Credito = `${host}/Pago/Editar/`
 
 // REPORTES
 var REPORTE_Factura = `${host}/Reportes/reporte-pdf/`
+var REPORTE_ArqueoDelDia = `${host}/Reportes/arqueo/`
 
 // MANTENIMIENTO
 var POST_Backup = `${host}/Mantenimiento/Backup/`
@@ -61,5 +62,5 @@ export { GET_Login, GET_Usuarios, POST_Usuario, PUT_Usuario, DELETE_Usuario,
         DELETE_Producto, POST_Factura, POST_DetallesFactura, REPORTE_Factura,
         POST_COMPRA, POST_DetallesCompra, GET_NumeroCompra, GET_FacturaYDetalles,
         GET_NumeroFactura, GET_ClienteById, POST_Credito, GET_CreditoByIdVenta, GET_Creditos,
-        GET_VentaById, PUT_Credito, POST_Backup, POST_RestoreBackup
+        GET_VentaById, PUT_Credito, POST_Backup, POST_RestoreBackup, REPORTE_ArqueoDelDia
 }

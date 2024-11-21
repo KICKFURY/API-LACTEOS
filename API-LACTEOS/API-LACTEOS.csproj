@@ -19,7 +19,9 @@
 
   <ItemGroup>
     <EmbeddedResource Include="Reportes\Clientes.rdlc" />
-    <EmbeddedResource Include="Reportes\FacturaContado.rdlc" />
+    <Content Include="Reportes\FacturaContado.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <EmbeddedResource Include="Reportes\FacturaFecha.rdlc" />
     <EmbeddedResource Include="Reportes\Productos.rdlc" />
     <EmbeddedResource Include="Reportes\Proveedores.rdlc" />
