@@ -2,13 +2,15 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reportes</title>
-    <link rel="shortcut icon" href="../public/img/logo.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/resources/public/css/reportes/reportes.css">
+    <link rel="stylesheet" href="../public/css/components/loading.css">
+    <link rel="shortcut icon" href="../public/img/logo.ico" type="image/x-icon">
 </head>
 <body>
-    <div class="sidebar">
+    <div id="loader" class="loader"></div>
+    <div id="content" class="sidebar" style="display: none;">
         <div id="contents"></div>
         <div class="main">
             <div class="topbar">
@@ -16,23 +18,18 @@
                     <i class="fas fa-bars"></i>
                 </div>
                 <h2>Reportes</h2>
-                <div class="help">
+                <div id="btnManual" class="help">
                     <i class="fas fa-question-circle"></i>
                 </div>
             </div>
-            <!-- <div class="">
-                <center>
-                    <iframe src="http://localhost:5037/api/Reportes/usuarios" height="500px" width="800px"></iframe>
-                </center>
-            </div> -->
             <img src="/resources/public/img/logo.ico" alt="logo">
             <div class="buttons">
                 <div class="reporte-cliente">
-                    <button id="btnGenerarReporte">
+                    <button id="btnReporteCliente">
                         Generar Reporte de Clientes
                     </button>
                     <dialog id="reporte">
-                        <iframe src="http://localhost:5037/api/Reportes/clientes" frameborder="0" width="900px"
+                        <iframe id="rdlc" src="" frameborder="0" width="900px"
                             height="500px"></iframe>
                         <br>
                         <center>
@@ -41,43 +38,19 @@
                     </dialog>
                 </div>
                 <div class="reporte-inventario">
-                    <button id="btnGenerarReporte">
+                    <button id="btnReporteInventario">
                         Generar Reporte de Inventario
                     </button>
-                    <dialog id="reporte">
-                        <iframe src="http://localhost:5037/api/Reportes/productos" frameborder="0" width="900px"
-                            height="500px"></iframe>
-                        <br>
-                        <center>
-                            <button id="reporte1">Cerrar</button>
-                        </center>
-                    </dialog>
                 </div>
                 <div class="reporte-proveedores">
-                    <button id="btnGenerarReporte">
+                    <button id="btnReporteProveedores">
                         Generar Reporte Proveedores
                     </button>
-                    <dialog id="reporte">
-                        <iframe src="http://localhost:5037/api/Reportes/proveedores" frameborder="0" width="900px"
-                            height="500px"></iframe>
-                        <br>
-                        <center>
-                            <button id="reporte1">Cerrar</button>
-                        </center>
-                    </dialog>
                 </div>
                 <div class="reporte-usuarioLista">
-                    <button id="btnGenerarReporte">
+                    <button id="btnReporteUsuario">
                         Generar Reporte Usuarios
                     </button>
-                    <dialog id="reporte">
-                        <iframe src="http://localhost:5037/api/Reportes/usuarios" frameborder="0" width="900px"
-                            height="500px"></iframe>
-                        <br>
-                        <center>
-                            <button id="reporte1">Cerrar</button>
-                        </center>
-                    </dialog>
                 </div>
             </div>
         </div>

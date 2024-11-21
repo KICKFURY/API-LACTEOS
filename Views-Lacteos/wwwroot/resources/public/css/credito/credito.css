@@ -1,4 +1,5 @@
 @import '../components/tabla.css';
+@import '../components/dialog.css';
 
 /*encabezado*/
 .head {
@@ -42,15 +43,6 @@
     font-weight: 900;
     font-size: 15px;
 }
-
-/* .container select {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    height: 35%;
-    width: 100%;
-    font-weight: 900;
-    font-size: 15px;
-} */
 
 .body-cliente,
 .body-credito {
@@ -146,17 +138,6 @@ input {
     text-align: center;
 }
 
-/* #txtNumeroFactura {
-    flex-basis: 150px; 
-    max-width: 150px; 
-    margin-left: 5%;
-} */
-
-/* #cmbEstado {
-    flex-basis: 250px; 
-    max-width: 250px; 
-} */
-
 .buttones {
     margin-top: 25%;
     margin-left: -150%;
@@ -165,7 +146,7 @@ input {
     margin-right: 50%;
 }
 
-.buttones button {
+.buttones button, #manual2 {
     background-color: var(--blue);
     color: var(--white);
     border: none;

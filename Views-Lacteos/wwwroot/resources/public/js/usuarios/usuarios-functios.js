@@ -1,4 +1,4 @@
-import { GET_Usuarios, GET_Login, POST_Usuario, PUT_Usuario, DELETE_Usuario } from "../endpoints.js"
+import { GET_Usuarios, GET_Login, POST_Usuario, PUT_Usuario, DELETE_Usuario, usuarios_admin, usuarioLista_admin } from "../endpoints.js"
 import { GET, POST, PUT, DELETE } from "../generic-functions.js"
 import { encriptar } from "../security.js"
 import Loader from '../components/loading.js'
@@ -35,6 +35,15 @@ function AddEvents() {
     
     document.getElementById('reporte1').addEventListener('click', ()=>{
         window.reporte.close()
+    })
+
+    document.getElementById('btnManual').addEventListener('click', () => {
+        document.getElementById('manual1').src = usuarioLista_admin
+        window.manual.showModal()
+    })
+
+    document.getElementById('manual2').addEventListener('click', () => {
+        window.manual.close()
     })
 }
 
@@ -89,8 +98,6 @@ function AddEventsFirst() {
             LimpiarControles()
             return
         }
-
-        window.dialogPSW.showModal()
     })
 
     document.getElementById('btnEliminar').addEventListener('click', () => {
@@ -131,6 +138,16 @@ function AddEventsFirst() {
             document.getElementById('buscarUsername').value = ''
         }
     })
+
+    document.getElementById('btnManual').addEventListener('click', () => {
+        document.getElementById('manual1').src = usuarios_admin
+        window.manual.showModal()
+    })
+
+    document.getElementById('manual2').addEventListener('click', () => {
+        window.manual.close()
+    })
+
     loader.hide()
 }
 
@@ -141,8 +158,6 @@ function CargarUsuarioCampos() {
     var correo = document.getElementById('txtCorreo')
     var role = document.getElementById('rolGeneral')
     var estado = document.getElementById('estado')
-    // var psw1 = document.getElementById('txtPSW1').value
-    // var psw2 = document.getElementById('txtPSW2').value
     var url = GET_Login+username
 
     GET(url,  "Error al obtener el usuario", 1, (data) => {
@@ -167,7 +182,6 @@ function CargarUsuario() {
         let row = proveedoresTabla.insertRow();
         row.innerHTML = `
                 <td>${data.response.nombreUsuario}</td>
-                <td>${data.response.contra}</td>
                 <td>${data.response.correo}</td>
                 <td>${data.response.idEstado == 1 ? 'Activo' : 'Inactivo'}</td>
             `
@@ -186,7 +200,6 @@ function ObtenerUsuarios() {
             let row = usuariosTabla.insertRow();
             row.innerHTML = `
                 <td>${usuario.nombreUsuario}</td>
-                <td>${usuario.contra}</td>
                 <td>${usuario.correo}</td>
                 <td>${usuario.idEstado == 1 ? 'Activo' : 'Inactivo'}</td>
             `

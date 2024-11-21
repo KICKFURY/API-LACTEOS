@@ -1,5 +1,5 @@
 import { GET, PUT } from "../generic-functions.js";
-import { GET_FacturaYDetalles, GET_ClienteById, GET_CreditoByIdVenta, GET_Creditos, GET_VentaById, PUT_Credito } from "../endpoints.js";
+import { GET_FacturaYDetalles, GET_ClienteById, GET_CreditoByIdVenta, GET_Creditos, GET_VentaById, PUT_Credito, credito_vendedor } from "../endpoints.js";
 import { Alerta } from "../components/alert.js";
 import { credito, creditoVista } from "./credito-objects.js";
 import Loader from '../components/loading.js'
@@ -14,6 +14,16 @@ function AddEvents() {
     });
 
     document.getElementById('btnGuardar').addEventListener("click", ActualizarCredito)
+
+    document.getElementById('btnManual').addEventListener('click', () => {
+        document.getElementById('manual1').src = credito_vendedor
+        window.manual.showModal()
+    })
+
+    document.getElementById('manual2').addEventListener('click', () => {
+        window.manual.close()
+    })
+
 
     GetCreditos();
 }

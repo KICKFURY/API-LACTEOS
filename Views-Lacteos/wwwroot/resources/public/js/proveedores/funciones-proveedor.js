@@ -1,5 +1,5 @@
 import { GET, POST, PUT, DELETE } from '../generic-functions.js'
-import { POST_Proveedor, PUT_Proveedor, DELETE_Proveedor, GET_Proveedores, GET_Proveedor } from '../endpoints.js'
+import { POST_Proveedor, PUT_Proveedor, DELETE_Proveedor, GET_Proveedores, GET_Proveedor, proveedor_admin, proveedor_encargado_inventario } from '../endpoints.js'
 import { Alerta } from '../components/alert.js'
 import { copyToClipboard } from '../components/CopyToClipboard.js'
 import Loader from '../components/loading.js'
@@ -57,10 +57,12 @@ function AddEvents() {
     var role = localStorage.getItem('UsuarioRole');
 
     if (role == 'Admin') {
+        document.getElementById('manual1').src = proveedor_admin
         btn.style.display = ''
     } else if (role == 'Vendedor') {
         btn.style.display = 'none'
     } else if (role == 'Encargado de Inventario') {
+        document.getElementById('manual1').src = proveedor_encargado_inventario
         btn.style.display = 'none'
     }
 
@@ -70,6 +72,15 @@ function AddEvents() {
     
     document.getElementById('reporte1').addEventListener('click', ()=>{
         window.reporte.close()
+    })
+
+    document.getElementById('btnManual').addEventListener('click', () => {
+        
+        window.manual.showModal()
+    })
+
+    document.getElementById('manual2').addEventListener('click', () => {
+        window.manual.close()
     })
 }
 

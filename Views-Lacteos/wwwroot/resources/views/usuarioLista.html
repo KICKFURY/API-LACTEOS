@@ -10,7 +10,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="/resources/public/css/usuarios/usuariosLista.css">
     <link rel="stylesheet" href="../public/css/components/loading.css">
-    <link rel="stylesheet" href="/resources/public/img/logo.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/resources/public/img/logo.ico" type="image/x-icon">
 </head>
 
 <body>
@@ -24,9 +24,16 @@
                         <i class="fas fa-bars"></i>
                     </div>
                     <h2>Gestión de Usuarios</h2>
-                    <div class="help">
+                    <div id="btnManual" class="help">
                         <i class="fas fa-question-circle"></i>
                     </div>
+                    <dialog id="manual">
+                        <iframe id="manual1" src="" frameborder="0" width="1000px", height="600px"></iframe>
+                        <br>
+                        <center>
+                            <button id="manual2">Cerrar</button>
+                        </center>
+                    </dialog>
                 </div>
                 <div class="next">
                     <a href="/resources/views/usuarios.html">
@@ -59,9 +66,6 @@
                             <tr>
                                 <th>
                                     Usuario
-                                </th>
-                                <th>
-                                    Contraseña
                                 </th>
                                 <th>
                                     Correo

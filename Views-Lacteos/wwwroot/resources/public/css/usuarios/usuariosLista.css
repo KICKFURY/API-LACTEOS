@@ -1,5 +1,6 @@
 @import '/resources/public/css/colores.css';
 @import '/resources/public/css/components/tabla.css';
+@import '/resources/public/css/components/dialog.css';
 
 * {
     font-family: "Ubuntu", sans-serif;
@@ -29,7 +30,7 @@
     font-size: 18px;
 }
 
-.search button {
+.search button, #manual2 {
     background-color: var(--blue);
     color: var(--white);
     border: none;
@@ -40,33 +41,6 @@
     font-weight: 900;
 }
 
-/* Tabla */
-/* .table-container {
-    width: 75%;
-    height: auto;
-    overflow-y: auto;
-}
-
-.table-container table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.table-container th, .table-container td {
-    padding: 10px;
-    border: 1px solid var(--blue);
-}
-
-.table-container th {
-    background-color: var(--gray);
-    color: var(--blue);
-}
-
-.table-container table tbody tr:hover {
-    background-color: var(--blue);
-    color: var(--white);
-} */
-
 dialog[open] {
     scale: 1;
     transition: scale 0.3s ease;
@@ -74,44 +48,6 @@ dialog[open] {
     @starting-style {
         scale: 0;
     }
-}
-
-dialog {
-    transition: scale .3s ease, display .3 ease allow-discrete;
-    scale: 0;
-}
-
-dialog {
-    background-color: #1a242f;
-    background-color: var(--background-alt);
-    color: #dbdbdb;
-    color: var(--text-main);
-    border: none;
-    border-radius: 6px;
-    border-color: #526980;
-    border-color: var(--border);
-    padding: 10px 30px;
-}
-
-dialog>header:first-child {
-    background-color: #161f27;
-    background-color: var(--background);
-    border-radius: 6px 6px 0 0;
-    margin: -10px -30px 10px;
-    padding: 10px;
-    text-align: center;
-}
-
-dialog::-webkit-backdrop {
-    background: #0000009c;
-    -webkit-backdrop-filter: blur(4px);
-    backdrop-filter: blur(4px);
-}
-
-dialog::backdrop {
-    background: #0000009c;
-    -webkit-backdrop-filter: blur(4px);
-    backdrop-filter: blur(4px);
 }
 
 .next {
@@ -128,5 +64,3 @@ dialog::backdrop {
     color: var(--blue); 
     font-size: 24px; 
 }
-
-

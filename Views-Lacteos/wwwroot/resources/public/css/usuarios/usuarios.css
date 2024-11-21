@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 @import '/resources/public/css/colores.css';
+@import '/resources/public/css/components/dialog.css';
 /*============= Gobals =============*/
 * {
     font-family: "Ubuntu", sans-serif;
@@ -139,7 +140,7 @@ button:disabled:hover {
     margin-left: 80%;
 }
 
-.button-group button {
+.button-group button, #manual2 {
     background-color: var(--blue);
     color: var(--white);
     border: none;
@@ -198,14 +199,6 @@ button:disabled:hover {
     }
 }
 
-:root {
-    --background-alt: #1a242f;
-    --text-main: #dbdbdb;
-    --border: #526980;
-    --background: #161f27;
-}
-
-
 /* Confirmacion de la contra Admin */
 
 .password-section-confirm {
@@ -254,24 +247,9 @@ button:disabled:hover {
     background-color: #7a2a1e;
 }
 
-dialog[open] {
-    scale: 1;
-    transition: scale 0.3s ease;
-
-    @starting-style {
-        scale: 0;
-    }
-}
-
-dialog {
-    transition: scale .3s ease, display .3 ease allow-discrete;
-    scale: 0;
-}
-
-dialog {
+.content dialog {
     margin: 150px 650px;
     background-color: #591610;
-    /* background-color: var(--background-alt); */
     color: #dbdbdb;
     color: var(--text-main);
     border: none;
@@ -279,25 +257,4 @@ dialog {
     border-color: #526980;
     border-color: var(--border);
     padding: 10px 30px;
-}
-
-dialog>header:first-child {
-    background-color: #161f27;
-    background-color: var(--background);
-    border-radius: 6px 6px 0 0;
-    margin: -10px -30px 10px;
-    padding: 10px;
-    text-align: center;
-}
-
-dialog::-webkit-backdrop {
-    background: #0000009c;
-    -webkit-backdrop-filter: blur(4px);
-    backdrop-filter: blur(4px);
-}
-
-dialog::backdrop {
-    background: #0000009c;
-    -webkit-backdrop-filter: blur(4px);
-    backdrop-filter: blur(4px);
 }

@@ -1,16 +1,9 @@
 import { AddEvents, cargarSidebar } from "../slider/slider-functions.js";
-import { RedirectURL } from "../home/home-functions.js";
-import Loader from '../components/loading.js'
-
-const loader = new Loader()
-
+import { AddEventHome, RedirectURL } from "../home/home-functions.js";
 
 window.onload = function () {
     AddEvents()
+    AddEventHome()
     RedirectURL()
     cargarSidebar()
 }
-
-window.addEventListener('DOMContentLoaded', () => {
-    loader.hide()
-})

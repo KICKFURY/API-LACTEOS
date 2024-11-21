@@ -1,7 +1,7 @@
 import { POST, GET } from "../generic-functions.js";
 import { 
     POST_Factura, POST_DetallesFactura, REPORTE_Factura, GET_Productos, GET_Producto,
-    GET_Cliente, GET_NumeroFactura, POST_Credito
+    GET_Cliente, GET_NumeroFactura, POST_Credito, Facturacion_vendedor
 } from "../endpoints.js";
 import { factura } from './factura-object.js'
 import { Alerta } from '../components/alert.js'
@@ -37,6 +37,16 @@ function AddEvents() {
     CargarProductos()
     factura.vendedor.value = localStorage.getItem('vendedor')
     CargarNumeroUltimaVenta()
+
+    document.getElementById('btnManual').addEventListener('click', () => {
+        document.getElementById('manual1').src = Facturacion_vendedor
+        window.manual.showModal()
+    })
+
+    document.getElementById('manual2').addEventListener('click', () => {
+        window.manual.close()
+    })
+
     loader.hide()
 }
 

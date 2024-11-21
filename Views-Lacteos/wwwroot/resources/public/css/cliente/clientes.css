@@ -2,6 +2,7 @@
 @import '../content.css';
 @import '../colores.css';
 @import '../components/tabla.css';
+@import '../components/dialog.css';
 
 * {
     font-family: "Ubuntu", sans-serif;
@@ -129,7 +130,7 @@ label {
     margin-top: -34px;
 }
 
-.buttons button {
+.buttons button, #manual2 {
     background-color: var(--blue);
     color: var(--white);
     border: none;
@@ -179,4 +180,3 @@ label {
     width: 100px;
     font-size: 18px;
 }
-

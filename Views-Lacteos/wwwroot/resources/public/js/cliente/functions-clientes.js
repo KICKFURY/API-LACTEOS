@@ -1,4 +1,4 @@
-import { GET_Clientes, GET_Cliente, POST_Cliente, PUT_Cliente, DELETE_Cliente } from "../endpoints.js";
+import { GET_Clientes, GET_Cliente, POST_Cliente, PUT_Cliente, DELETE_Cliente, Cliente_vendedor, clientes_admin } from "../endpoints.js";
 import { GET, POST, PUT, DELETE } from '../generic-functions.js';
 import { Alerta } from '../components/alert.js'
 import { copyToClipboard } from "../components/CopyToClipboard.js";
@@ -49,6 +49,26 @@ function AddEvents() {
     
     document.getElementById('reporte1').addEventListener('click', ()=>{
         window.reporte.close()
+    })
+
+    var role = localStorage.getItem('UsuarioRole');
+
+    if (role == 'Admin') {
+        document.getElementById('manual1').src = clientes_admin
+        btn.style.display = ''
+    } else if (role == 'Vendedor') {
+        document.getElementById('manual1').src = Cliente_vendedor
+        btn.style.display = 'none'
+    } else if (role == 'Encargado de Inventario') {
+        btn.style.display = 'none'
+    }
+
+    document.getElementById('btnManual').addEventListener('click', () => {
+        window.manual.showModal()
+    })
+
+    document.getElementById('manual2').addEventListener('click', () => {
+        window.manual.close()
     })
 }
 

@@ -1,3 +1,4 @@
+@import '../components/dialog.css';
 /* ¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡ forms ¡¡¡¡¡¡¡¡¡¡¡¡¡¡*/
 
 
@@ -129,7 +130,7 @@
     gap: 15px;
 }
 
-.buttons button {
+.buttons button, #manual2 {
     background-color: var(--blue);
     color: var(--white);
     border: none;
