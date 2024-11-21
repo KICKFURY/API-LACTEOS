@@ -1,10 +1,12 @@
 import getHTMLLoaderInstance from "../components/singleton.js";
+import { preventSourceCode } from "../security.js"
 
 function AddEvents() {
     let toggle = document.querySelector(".toggle");
     toggle.onclick = function () {
         Menutoggle()
     }
+    preventSourceCode();
 }
 
 function Menutoggle() {
