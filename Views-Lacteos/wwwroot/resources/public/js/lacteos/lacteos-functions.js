@@ -2,6 +2,8 @@ import getHTMLLoaderInstance from "../components/singleton.js";
 import { AddEvents } from "../facturacion/facturacion-function.js"
 import { AddEvents as EventsClientes, ObtenerClientes } from "../cliente/functions-clientes.js"
 import { AddEvents as Eventsproveedores, ObtenerProveedores } from "../proveedores/funciones-proveedor.js"
+import { AddEvents as EventsCredito } from "../credito/credito-functions.js"
+import { AddEvents as EventsAcercaDe } from "../acercaDe/acerca-de-functios.js"
 import { preventSourceCode } from "../security.js"
 import Loader from "../components/loading.js"
 import { Cliente_vendedor, clientes_admin } from "../endpoints.js";
@@ -45,6 +47,21 @@ function AddEvent() {
             var role = localStorage.getItem('UsuarioRole');
 
             document.getElementById('manual1').src = role == 'Admin' ? clientes_admin : Cliente_vendedor
+        })
+    })
+    // Tiene Bugs
+    document.getElementById('btnCreditos').addEventListener('click', () => { 
+        pantalla = "/resources/views/credito.html"
+        title.innerHTML = "Gestión de créditos"
+        CargarPantallas(() => { 
+            EventsCredito()
+        })
+    })
+    document.getElementById('btnAcercaDe').addEventListener('click', () => { 
+        pantalla = "/resources/views/acerca-de.html"
+        title.innerHTML = "Acerca de"
+        CargarPantallas(() => {
+            EventsAcercaDe()
         })
     })
     document.getElementById('btnHome').addEventListener('click', () => { 
