@@ -1,12 +1,79 @@
 import getHTMLLoaderInstance from "../components/singleton.js";
+import { AddEvents } from "../facturacion/facturacion-function.js"
+import { AddEvents as EventsClientes, ObtenerClientes } from "../cliente/functions-clientes.js"
 import { preventSourceCode } from "../security.js"
+import Loader from "../components/loading.js"
+import { Cliente_vendedor, clientes_admin } from "../endpoints.js";
 
-function AddEvents() {
+const loader = new Loader()
+let title = document.getElementById("lbaTituloHeader")
+let pantalla = ""
+
+function AddEvent() {
+    loader.show()
+    camposSlider()
     let toggle = document.querySelector(".toggle");
     toggle.onclick = function () {
         Menutoggle()
     }
-    preventSourceCode();
+
+    // preventSourceCode();
+
+    CargarHome()
+    document.getElementById('btnFacturacion').addEventListener('click', () => { 
+        pantalla = "/resources/views/facturacion.html"
+        title.innerHTML = "Facturación"
+        CargarPantallas(() => { AddEvents() })
+    })
+    document.getElementById('btnClientes').addEventListener('click', () => { 
+        pantalla = "/resources/views/clientes.html"
+        title.innerHTML = "Gestión de clientes"
+        CargarPantallas(() => { 
+            EventsClientes()
+            ObtenerClientes()
+            var role = localStorage.getItem('UsuarioRole');
+
+            document.getElementById('manual1').src = role == 'Admin' ? clientes_admin : Cliente_vendedor
+        })
+    })
+    document.getElementById('btnHome').addEventListener('click', () => { 
+        CargarHome()
+    })
+}
+
+async function CargarHome() {
+    loader.show()
+    title.innerHTML = "Inicio"
+    const content = await new Promise((resolve, reject) => {
+        fetch('/resources/views/home.html')
+            .then((response) => response.text())
+            .then((data => resolve(data)))
+            .catch((error) => reject(error));
+    })
+
+    document.getElementById('content').innerHTML = content
+
+    loader.hide()
+}
+
+async function CargarPantallas(callback) {
+    loader.show()
+    
+    const content = await new Promise((resolve, reject) => {
+        fetch(pantalla)
+            .then((response) => response.text())
+            .then((data => resolve(data)))
+            .catch((error) => reject(error));
+    })
+
+    document.getElementById('content').innerHTML = content
+
+    let toggle = document.querySelector(".toggle");
+    toggle.onclick = function () {
+        Menutoggle()
+    }
+    callback()
+    loader.hide()
 }
 
 function Menutoggle() {
@@ -22,7 +89,7 @@ function Menutoggle() {
 }
 
 async function cargarSidebar() {
-    const content = await getHTMLLoaderInstance('/resources/views/slider.html')
+    const content = await getHTMLLoaderInstance('/resources/views/sidebar.html')
     document.getElementById('contents').innerHTML = content
     camposSlider()
     document.getElementById('btnCerrar').addEventListener('click', () => {
@@ -74,4 +141,4 @@ function camposSlider() {
         }
 }
 
-export { AddEvents, cargarSidebar, camposSlider }
+export { AddEvent, cargarSidebar, camposSlider }

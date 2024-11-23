@@ -3,21 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Slider</title>
+    <title>Lacteos la granja</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../public/css/components/loading.css">
     <link rel="stylesheet" href="/resources/public/css/sidebar/sidebar.css">
+    <link rel="shortcut icon" href="../public/img/logo.ico" type="image/x-icon">
 </head>
 <body>
     <div class="sidebar">
         <div class="navigation">
-            <div class="Logo">
-                <a href="/resources/views/home.html">
+            <div id="btnHome" class="Logo">
+                <a>
                     <img alt="Company Logo" class="logo-icon" src="/resources/public/img/logo.ico" />
                 </a>
             </div>
             <ul>
                 <li id="btnFacturacion">
-                    <a id="aIcon" href="/resources/views/facturacion.html">
+                    <a id="aIcon">
                         <span class="icon">
                             <i class="fas fa-file-invoice"></i>
                         </span>
@@ -26,7 +28,7 @@
                 </li>
 
                 <li id="btnProveedores">
-                    <a id="aIcon" href="/resources/views/Proveedores.html">
+                    <a id="aIcon">
                         <span class="icon">
                             <i class="fas fa-truck"></i>
                         </span>
@@ -35,7 +37,7 @@
                 </li>
 
                 <li id="btnClientes">
-                    <a href="/resources/views/clientes.html">
+                    <a>
                         <span class="icon">
                             <i class="fas fa-users"></i>
                         </span>
@@ -107,6 +109,28 @@
                 </li>
             </ul>
         </div>
-        <script src="/resources/public/js/slider/slider.js"></script>
+    </div>
+    <div class="main">
+        <div class="topbar">
+            <div class="toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <h2 id="lbaTituloHeader"></h2>
+            <div class="help" id="btnManual">
+                <i class="fas fa-question-circle"></i>
+            </div>
+            <dialog id="manual">
+                <iframe id="manual1" src="" frameborder="0" width="1000px", height="600px"></iframe>
+                <br>
+                <center>
+                    <button id="manual2">Cerrar</button>
+                </center>
+            </dialog>
+        </div>
+        <div id="loader" class="loader"></div>
+        <div id="content" style="display: none;"></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="module" src="/resources/public/js/slider/slider.js"></script>
 </body>
 </html>

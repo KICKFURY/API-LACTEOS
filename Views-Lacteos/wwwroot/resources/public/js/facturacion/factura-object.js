@@ -11,5 +11,3 @@ const factura = {
     fecha: document.getElementById('fechaVenta'),
     subTotalSinIVA: 0,
 }
-
-export { factura }

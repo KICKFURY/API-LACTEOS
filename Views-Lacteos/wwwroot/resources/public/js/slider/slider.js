@@ -1,6 +1,5 @@
-import { AddEvents, camposSlider } from "./slider-functions.js";
+import { AddEvent } from "./slider-functions.js";
 
 window.onload = function () {
-    AddEvents()
-    camposSlider()
+    AddEvent()
 }

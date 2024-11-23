@@ -25,7 +25,7 @@ function Login() {
         localStorage.setItem('UserPSW', data.response.contra)
         localStorage.setItem('vendedor', data.response.nombreUsuario)
         if (data.response.nombreUsuario == username && data.response.contra == psw) {
-            window.open('/resources/views/home.html', '_self')
+            window.open('/resources/views/lacteos.html', '_self')
         } else {
             Swal.fire({
                 title: 'Error',

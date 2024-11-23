@@ -2,9 +2,6 @@ import { GET_Clientes, GET_Cliente, POST_Cliente, PUT_Cliente, DELETE_Cliente, C
 import { GET, POST, PUT, DELETE } from '../generic-functions.js';
 import { Alerta } from '../components/alert.js'
 import { copyToClipboard } from "../components/CopyToClipboard.js";
-import Loader from "../components/loading.js"; '../components/loading.js'
-
-const loader = new Loader();
 
 function AddEvents() {
     document.getElementById('btnEditar').disabled = true
@@ -66,10 +63,8 @@ function AddEvents() {
     var role = localStorage.getItem('UsuarioRole');
 
     if (role == 'Admin') {
-        document.getElementById('manual1').src = clientes_admin
         btn.style.display = ''
     } else if (role == 'Vendedor') {
-        document.getElementById('manual1').src = Cliente_vendedor
         btn.style.display = 'none'
     } else if (role == 'Encargado de Inventario') {
         btn.style.display = 'none'
@@ -104,7 +99,6 @@ function ObtenerClientes() {
                 copyToClipboard(text)
             })
         });
-        loader.hide();
     }, () => {});
 }
 
