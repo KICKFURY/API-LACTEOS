@@ -97,6 +97,7 @@ function CrearProveedor() {
 
     POST(url, "Proveedor guardado", "Error al guardar el proveedor", () => {
         ObtenerProveedores()
+        Alerta("Confirmado", "Proveedor guardado con exito", "success")
         LimpiarControles()
     })
 }
@@ -115,6 +116,7 @@ function EditarProveedor() {
 
     PUT(url, "Proveedor editado", "Error al editar el proveedor", () => {
         ObtenerProveedores()
+        Alerta("Confirmado", "Proveedor editado", "success")
         LimpiarControles()
     })
 }
@@ -130,6 +132,7 @@ function EliminarProveedor() {
 
     DELETE(url, "Proveedor Eliminado", "Error al eliminar el proveedor.", () => {
         ObtenerProveedores()
+        Alerta("Confirmado", "El proveedor se elimino con exito", "success")
         LimpiarControles()
     })
 }

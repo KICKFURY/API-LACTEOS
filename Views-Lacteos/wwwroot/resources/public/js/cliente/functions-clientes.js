@@ -7,6 +7,8 @@ import Loader from "../components/loading.js"; '../components/loading.js'
 const loader = new Loader();
 
 function AddEvents() {
+    document.getElementById('btnEditar').disabled = true
+    document.getElementById('btnEliminar').disabled = true
     document.getElementById('btnCrear').addEventListener('click', CrearCliente);
     document.getElementById('btnEditar').addEventListener('click', EditarCliente);
     document.getElementById('btnEliminar').addEventListener('click', EliminarCliente);
@@ -17,14 +19,22 @@ function AddEvents() {
         document.getElementById('btnCrear').disabled = true
         document.getElementById('btnEditar').disabled = false
         document.getElementById('btnEliminar').disabled = true
+        document.getElementById('Busquedacedula').value = '';
+        LimpiarControles()
     })
     document.getElementById('rdaEliminar').addEventListener('change', () => {
         MostrarBuscadorRUC()
         document.getElementById('btnCrear').disabled = true
         document.getElementById('btnEditar').disabled = true
         document.getElementById('btnEliminar').disabled = false
+        document.getElementById('Busquedacedula').value = '';
+        LimpiarControles()
     })
-    document.getElementById('rdaCrear').addEventListener('change', RDACREARINTERNO)
+    document.getElementById('rdaCrear').addEventListener('change', () => {
+        RDACREARINTERNO()
+        document.getElementById('Busquedacedula').value = '';
+        LimpiarControles()
+    })
     document.getElementById('btnEditar').addEventListener('click', () => {
         EditarProveedor()
     })
@@ -32,6 +42,8 @@ function AddEvents() {
         var cedula = document.getElementById('Busquedacedula').value
         if (cedula.length == 14) {
             ActualizarClientes()
+        } else {
+            LimpiarControles()
         }
     })
     document.getElementById('ruc').addEventListener('keyup', () => {
@@ -115,6 +127,7 @@ function CrearCliente() {
         ObtenerClientes(); 
         Alerta("Confirmado", "Cliente creado correctamente", "success");
         LimpiarControles();
+        document.getElementById('Busquedacedula').value = '';
     });
 }
 
@@ -137,6 +150,7 @@ function EditarCliente() {
         ObtenerClientes();
         Alerta("Confirmado", "Cliente editado correctamente", "success");
         LimpiarControles();
+        document.getElementById('Busquedacedula').value = '';
     });
 }
 
@@ -155,6 +169,7 @@ function EliminarCliente() {
         ObtenerClientes();
         Alerta("Confirmado", "Cliente eliminado correctamente", "success");
         LimpiarControles();
+        document.getElementById('Busquedacedula').value = '';
     });
 }
 
@@ -165,7 +180,6 @@ function LimpiarControles() {
     document.getElementById('txtRUC').value = '';
     document.getElementById('txtTelefono').value = '';
     document.getElementById('txtDireccion').value = '';
-    document.getElementById('Busquedacedula').value = '';
 }
 
 function ActualizarClientes(){
@@ -177,7 +191,7 @@ function ActualizarClientes(){
     var direccion = document.getElementById('txtDireccion')
     var url = GET_Cliente+ruc
 
-    GET(url,"Error al Obtener el cliente", 1, (data) =>{
+    GET(url,"Error al Obtener el cliente", 1, (data) => {
         console.log(data)
         nombre.value = data.response.nombreCliente
         apellido.value = data.response.apellidoCliente

@@ -124,6 +124,11 @@ async function Comprar() {
         return;
     }
 
+    if (rucProveedor == '') {
+        Alerta("Error", "No se ha ingresado el RUC del proveedor", "error")
+        return;
+    }
+
     try {
         var urlCompras = `${POST_COMPRA}${rucProveedor}&${vendedor}&${totalCompra}&${numeroFactura}`
         await new Promise((resolve, reject) => {

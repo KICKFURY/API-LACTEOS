@@ -2,6 +2,7 @@ import { GET_Usuarios, GET_Login, POST_Usuario, PUT_Usuario, DELETE_Usuario, usu
 import { GET, POST, PUT, DELETE } from "../generic-functions.js"
 import { encriptar } from "../security.js"
 import Loader from '../components/loading.js'
+import { Alerta } from "../components/alert.js"
 
 const loader = new Loader()
 
@@ -98,6 +99,8 @@ function AddEventsFirst() {
             LimpiarControles()
             return
         }
+
+        EditarUsuario()
     })
 
     document.getElementById('btnEliminar').addEventListener('click', () => {
@@ -232,10 +235,7 @@ function CrearUsuario() {
             text: 'Todos los campos son obligatorios',
             icon: 'error',
             confirmButtonText: 'Aceptar',
-            // showCancelButton: true,
             confirmButtonColor: '#7a2a1e',
-            // cancelButtonColor: '#d33',
-            // cancelButtonText: 'Cancelar'
         });
         return
     }
@@ -244,6 +244,7 @@ function CrearUsuario() {
     const url = `${POST_Usuario}${correo}&${username}&${hash}&${role == 'Vendedor' ? 2 : 3}`
     console.log(url)
     POST(url, "Usuario Creado", "Error al crear el usuario", () => {
+        Alerta("Confirmado", "El usuario se creo correctamente", "success")
         LimpiarControles()
     })
 }
@@ -260,13 +261,7 @@ function EditarUsuario() {
     var url = `${PUT_Usuario}${correo}&${username}&${hash}&${role == 'Vendedor'? 2 : 3}&${estado.value == 'Activo' ? 1 : 2}`
 
     PUT(url, "Usuario Editado", "Error al editar el usuario", () => {
-        Swal.fire({
-            title: 'Confirmado',
-            text: "Usuario Editado",
-            icon: 'success',
-            confirmButtonText: 'Aceptar',
-            confirmButtonColor: '#7a2a1e',
-        });
+        Alerta("Confirmado", "El usuario se edito correctamente", "success")
         LimpiarControles()
         document.getElementById('buscarUsername').value = ''
     })
@@ -278,13 +273,7 @@ function EliminarUsuario() {
     const url = DELETE_Usuario+username
 
     DELETE(url, "Usuario Eliminado", "Error al eliminar el usuario", () => {
-        Swal.fire({
-            title: 'Confirmado',
-            text: "Usuario Eliminado",
-            icon: 'success',
-            confirmButtonText: 'Aceptar',
-            confirmButtonColor: '#7a2a1e',
-        });
+        Alerta("Confirmado", "El usuario se elimino correctamente", "success")
         LimpiarControles()
         document.getElementById('buscarUsername').value = ''
     })
