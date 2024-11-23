@@ -1,6 +1,7 @@
 import getHTMLLoaderInstance from "../components/singleton.js";
 import { AddEvents } from "../facturacion/facturacion-function.js"
 import { AddEvents as EventsClientes, ObtenerClientes } from "../cliente/functions-clientes.js"
+import { AddEvents as Eventsproveedores, ObtenerProveedores } from "../proveedores/funciones-proveedor.js"
 import { preventSourceCode } from "../security.js"
 import Loader from "../components/loading.js"
 import { Cliente_vendedor, clientes_admin } from "../endpoints.js";
@@ -24,6 +25,16 @@ function AddEvent() {
         pantalla = "/resources/views/facturacion.html"
         title.innerHTML = "Facturación"
         CargarPantallas(() => { AddEvents() })
+    })
+    document.getElementById('btnProveedores').addEventListener('click', () => {
+        pantalla = "/resources/views/proveedores.html"
+        title.innerHTML = "Gestión de proveedores"
+        CargarPantallas(() => {
+            Eventsproveedores()
+            ObtenerProveedores()
+            document.getElementById('Busquedacedula').style.display = 'none'
+            document.getElementById('lbaBuscador').style.display = 'none'
+        })
     })
     document.getElementById('btnClientes').addEventListener('click', () => { 
         pantalla = "/resources/views/clientes.html"
