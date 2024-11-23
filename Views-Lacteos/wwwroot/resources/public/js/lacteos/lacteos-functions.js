@@ -4,6 +4,7 @@ import { AddEvents as EventsClientes, ObtenerClientes } from "../cliente/functio
 import { AddEvents as Eventsproveedores, ObtenerProveedores } from "../proveedores/funciones-proveedor.js"
 import { AddEvents as EventsCredito } from "../credito/credito-functions.js"
 import { AddEvents as EventsAcercaDe } from "../acercaDe/acerca-de-functios.js"
+import { AddEvents as EventsCompras } from "../compras/compras-functions.js"
 import { preventSourceCode } from "../security.js"
 import Loader from "../components/loading.js"
 import { Cliente_vendedor, clientes_admin } from "../endpoints.js";
@@ -62,6 +63,13 @@ function AddEvent() {
         title.innerHTML = "Acerca de"
         CargarPantallas(() => {
             EventsAcercaDe()
+        })
+    })
+    document.getElementById('btnCompras').addEventListener('click', () => { 
+        pantalla = "/resources/views/compras.html"
+        title.innerHTML = "Compras e Inventario"
+        CargarPantallas(() => {
+            EventsCompras()
         })
     })
     document.getElementById('btnHome').addEventListener('click', () => { 
