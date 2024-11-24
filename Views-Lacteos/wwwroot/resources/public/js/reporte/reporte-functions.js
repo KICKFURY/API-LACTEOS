@@ -1,8 +1,5 @@
 import { Alerta } from "../components/alert.js";
-import Loader from "../components/loading.js"
 import { REPORTE_Clientes, REPORTE_Productos, REPORTE_Proveedores, REPORTE_Usuarios, reportes_admin, REPORTE_ArqueoDelDia } from "../endpoints.js";
-
-const loader = new Loader()
 
 function AddEvents() {
     document.getElementById('btnManual').addEventListener("click", () => {
@@ -40,7 +37,6 @@ function AddEvents() {
     //     alert('El usuario ha aceptado salir.');
     //     localStorage.setItem("UsuarioRole", "");
     // });
-    loader.hide();
 }
 
 function RedirectURL() {

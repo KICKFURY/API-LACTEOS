@@ -5,6 +5,10 @@ import { AddEvents as Eventsproveedores, ObtenerProveedores } from "../proveedor
 import { AddEvents as EventsCredito } from "../credito/credito-functions.js"
 import { AddEvents as EventsAcercaDe } from "../acercaDe/acerca-de-functios.js"
 import { AddEvents as EventsCompras } from "../compras/compras-functions.js"
+import { AddEvents as EventsInventario } from '../inventario/inventario-funtions.js'
+import { AddEventsFirst, AddEvents as EventsListaUsuario, OcultarBuscadorUsername, ObtenerUsuarios } from '../usuarios/usuarios-functios.js'
+import { AddEvents as EventsReportes, RedirectURL } from '../reporte/reporte-functions.js'
+import { AddEvents as EventsMantenimiento } from '../mantenimiento/Mantenimiento-functions.js'
 import { preventSourceCode } from "../security.js"
 import Loader from "../components/loading.js"
 import { Cliente_vendedor, clientes_admin } from "../endpoints.js";
@@ -70,6 +74,48 @@ function AddEvent() {
         title.innerHTML = "Compras e Inventario"
         CargarPantallas(() => {
             EventsCompras()
+            document.getElementById('btnInventario').addEventListener('click', () => { 
+                pantalla = "/resources/views/inventario.html"
+                title.innerHTML = "Inventario"
+                CargarPantallas(() => {
+                    EventsInventario()
+                    document.getElementById('Busquedacedula').style.display = 'none'
+                    document.getElementById('lbBuscador').style.display = 'none'
+                })
+            })
+        })
+    })
+    
+    document.getElementById('btnUsuarios').addEventListener('click', () => { 
+        pantalla = "/resources/views/usuarios.html"
+        title.innerHTML = "Gestión de Usuarios"
+        CargarPantallas(() => {
+            AddEventsFirst()
+            OcultarBuscadorUsername()
+            document.getElementById('estado').disabled = true
+            document.getElementById('btnUsuarioLista').addEventListener('click', () => {
+                pantalla = "/resources/views/usuarioLista.html"
+                title.innerHTML = "Gestión de Usuarios"
+                CargarPantallas(() => {
+                    EventsListaUsuario()
+                    ObtenerUsuarios()
+                })
+            })
+        })
+    })
+    document.getElementById('btnReportes').addEventListener('click', () => { 
+        pantalla = "/resources/views/reportes.html"
+        title.innerHTML = "Reportes"
+        CargarPantallas(() => {
+            EventsReportes()
+            RedirectURL()
+        })
+    })
+    document.getElementById('btnMantenimiento').addEventListener('click', () => { 
+        pantalla = "/resources/views/mantenimiento.html"
+        title.innerHTML = "Mantenimiento"
+        CargarPantallas(() => {
+            EventsMantenimiento()
         })
     })
     document.getElementById('btnHome').addEventListener('click', () => { 

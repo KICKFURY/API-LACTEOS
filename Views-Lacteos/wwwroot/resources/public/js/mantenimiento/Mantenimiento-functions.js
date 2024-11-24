@@ -1,9 +1,6 @@
 import { POST_Backup, POST_RestoreBackup, mantenimiento_admin } from '../endpoints.js'
 import { POST } from '../generic-functions.js'
 import { Alerta } from '../components/alert.js'
-import Loader from '../components/loading.js'
-
-const loader = new Loader()
 
 function AddEvents() {
     document.getElementById('btnRespaldar').addEventListener('click', Backup) 
@@ -17,8 +14,6 @@ function AddEvents() {
     document.getElementById('manual2').addEventListener('click', () => {
         window.manual.close()
     })
-
-    loader.hide()
 }
 
 function Backup() {
