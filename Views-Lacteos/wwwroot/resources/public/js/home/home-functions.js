@@ -1,7 +1,4 @@
 import { menu_admin } from '../endpoints.js'
-import Loader from '../components/loading.js'
-
-const loader = new Loader()
 
 function AddEventHome() {
     document.getElementById('btnManual').addEventListener('click', () => {
@@ -12,8 +9,6 @@ function AddEventHome() {
     document.getElementById('manual2').addEventListener('click', () => {
         window.manual.close()
     })
-    
-    loader.hide()
 }
 
 function RedirectURL() {

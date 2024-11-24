@@ -7,136 +7,112 @@
     <title>Gestión De Usuarios</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="/resources/public/css/usuarios/usuarios.css">
-    <link rel="stylesheet" href="../public/css/components/loading.css">
     <link rel="shortcut icon" href="../public/img/logo.ico" type="image/x-icon">
 </head>
 
 <body>
-    <div id="loader" class="loader"></div>
-    <div id="content" style="display: none;">
-        <div class="sidebar">
-            <div id="contents"></div>
-            <div class="main">
-                <div class="topbar">
-                    <div class="toggle">
-                        <i class="fas fa-bars"></i>
-                    </div>
-                    <h2> Gestión de Usuarios</h2>
-                    <div id="btnManual" class="help">
-                        <i class="fas fa-question-circle"></i>
-                    </div>
-                    <dialog id="manual">
-                        <iframe id="manual1" src="" frameborder="0" width="1000px", height="600px"></iframe>
-                        <br>
-                        <center>
-                            <button id="manual2">Cerrar</button>
-                        </center>
-                    </dialog>
+    <div class="content">
+        <center>
+            <dialog id="dialogPSW">
+                <div class="password-section-confirm">
+                    <label>
+                        Confirme su Contraseña
+                    </label>
+                    <input id="txtPSWAdmin" type="password" placeholder="******" style="text-align: center;" />
+
+                    <button id="btnConfirmar">
+                        Confirmar
+                    </button>
+                    <button id="dialogPSW1">
+                        Cancelar
+                    </button>
                 </div>
-                <div class="content">
-                    <center>
-                        <dialog id="dialogPSW">
-                            <div class="password-section-confirm">
-                                <label>
-                                    Confirme su Contraseña
-                                </label>
-                                <input id="txtPSWAdmin" type="password" placeholder="******" style="text-align: center;" />
-                                
-                                <button id="btnConfirmar">
-                                    Confirmar
-                                </button>
-                                <button id="dialogPSW1">
-                                    Cancelar
-                                </button>
-                            </div>
-                        </dialog>
-                    </center>
-                    <div class="img-logo">
-                        <img alt="User Icon" src="/resources/public/img/logo.ico" />
-                    </div>
-                    <div class="next">
-                        <a href="./usuarioLista.html">
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                    <div class="radio-group">
-                        <label>
-                            <input id="rdaCrear" checked="" name="action" type="radio" value="crear" />
-                            Crear
-                        </label>
-                        <label>
-                            <input id="rdaEditar" name="action" type="radio" value="editar" />
-                            Editar
-                        </label>
-                        <label>
-                            <input id="rdaEliminar" name="action" type="radio" value="eliminar" />
-                            Eliminar
-                        </label>
-                    </div>
-                    <div class="buscadorRUC">
-                        <label for="buscarUsername" id="lbaBuscador">
-                            Nombre de Usuario:
-                        </label>
-                        <input id="buscarUsername" maxlength="25" placeholder="nombre del usuario" disabled placeholder="user1" name="buscarUsername"
-                            type="text" />
-                    </div>
-                    <div class="form-section">
+            </dialog>
+        </center>
+        <div class="img-logo">
+            <img alt="User Icon" src="/resources/public/img/logo.ico" />
+        </div>
+        <div id="btnUsuarioLista" class="next">
+            <a>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+        <div class="radio-group">
+            <label>
+                <input id="rdaCrear" checked="" name="action" type="radio" value="crear" />
+                Crear
+            </label>
+            <label>
+                <input id="rdaEditar" name="action" type="radio" value="editar" />
+                Editar
+            </label>
+            <label>
+                <input id="rdaEliminar" name="action" type="radio" value="eliminar" />
+                Eliminar
+            </label>
+        </div>
+        <div class="buscadorRUC">
+            <label for="buscarUsername" id="lbaBuscador">
+                Nombre de Usuario:
+            </label>
+            <input id="buscarUsername" maxlength="25" placeholder="nombre del usuario" disabled placeholder="user1"
+                name="buscarUsername" type="text" />
+        </div>
+        <div class="form-section">
 
-                        <div class="form-group">
-                            <label for="fechaRegistro">Fecha de Registro:</label>
-                            <input id="fechaRegistro" type="date" disabled value="2024-11-21" />
-                        </div>
+            <div class="form-group">
+                <label for="fechaRegistro">Fecha de Registro:</label>
+                <input id="fechaRegistro" type="date" disabled value="2024-11-21" />
+            </div>
 
-                        <div class="form-group">
-                            <label for="nombreUsuario">Nombre de Usuario:</label>
-                            <input id="nombreUsuario" placeholder="nombre del usuario" type="text" />
-                        </div>
+            <div class="form-group">
+                <label for="nombreUsuario">Nombre de Usuario:</label>
+                <input id="nombreUsuario" placeholder="nombre del usuario" type="text" />
+            </div>
 
-                        <div class="form-group">
-                            <label for="txtCorreo">Email:</label>
-                            <input id="txtCorreo" placeholder="ejemplo@gmail.com" type="txtCorreo" />
-                        </div>
+            <div class="form-group">
+                <label for="txtCorreo">Email:</label>
+                <input id="txtCorreo" placeholder="ejemplo@gmail.com" type="txtCorreo" />
+            </div>
 
-                        <div class="form-group">
-                            <label for="estado">Estado:</label>
-                            <select id="estado">
-                                <option>Activo</option>
-                                <option>Inactivo</option>
-                            </select>
-                        </div>
+            <div class="form-group">
+                <label for="estado">Estado:</label>
+                <select id="estado">
+                    <option>Activo</option>
+                    <option>Inactivo</option>
+                </select>
+            </div>
 
-                        <div class="form-group">
-                            <label for="rolGeneral">Rol General:</label>
-                            <select id="rolGeneral">
-                                <option>Vendedor</option>
-                                <option>Encargado de Inventario</option>
-                            </select>
-                        </div>
+            <div class="form-group">
+                <label for="rolGeneral">Rol General:</label>
+                <select id="rolGeneral">
+                    <option>Vendedor</option>
+                    <option>Encargado de Inventario</option>
+                </select>
+            </div>
 
-                        <div class="button-group">
-                            <button id="btnEditar">Modificar</button>
-                            <button id="btnCancelar">Cancelar</button>
-                            <button id="btnEliminar">Eliminar</button>
-                        </div>
-                    </div>
-
-                    <div class="password-section">
-                        <label>
-                            Contraseña:
-                        </label>
-                        <input id="txtPSW1" type="password" />
-                        <label>
-                            Repetir Contraseña:
-                        </label>
-                        <input id="txtPSW2" type="password" />
-                        <button id="btnCrear">
-                            Crear
-                        </button>
-                    </div>
-                </div>
+            <div class="button-group">
+                <button id="btnEditar">Modificar</button>
+                <button id="btnCancelar">Cancelar</button>
+                <button id="btnEliminar">Eliminar</button>
             </div>
         </div>
+
+        <div class="password-section">
+            <label>
+                Contraseña:
+            </label>
+            <input id="txtPSW1" type="password" />
+            <label>
+                Repetir Contraseña:
+            </label>
+            <input id="txtPSW2" type="password" />
+            <button id="btnCrear">
+                Crear
+            </button>
+        </div>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="module" src="/resources/public/js/usuarios/usuario.js"></script>

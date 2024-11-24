@@ -2,9 +2,6 @@ import { GET, POST, PUT, DELETE } from '../generic-functions.js'
 import { GET_Productos, POST_Producto, GET_Producto, PUT_Producto, DELETE_Producto } from '../endpoints.js'
 import { Alerta } from '../components/alert.js'
 import { productos } from './productos.js'
-import Loader from '../components/loading.js'
-
-const loader = new Loader()
 
 function AddEvents() {
     document.getElementById('btnCrear').addEventListener('click', Crearproducto)
@@ -144,7 +141,6 @@ function GetProductos() {
             `
             tbody.appendChild(tr)
         })
-        loader.hide()
     }, () => {});
 }
 

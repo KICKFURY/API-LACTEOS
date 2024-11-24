@@ -2,9 +2,6 @@ import { GET, POST, PUT, DELETE } from '../generic-functions.js'
 import { POST_Proveedor, PUT_Proveedor, DELETE_Proveedor, GET_Proveedores, GET_Proveedor, proveedor_admin, proveedor_encargado_inventario } from '../endpoints.js'
 import { Alerta } from '../components/alert.js'
 import { copyToClipboard } from '../components/CopyToClipboard.js'
-import Loader from '../components/loading.js'
-
-const loader = new Loader();
 
 function AddEvents() {
     document.getElementById("estado").disabled = true
@@ -157,7 +154,6 @@ function ObtenerProveedores() {
                 copyToClipboard(text)
             })
         })
-        loader.hide()
     })
 }
 

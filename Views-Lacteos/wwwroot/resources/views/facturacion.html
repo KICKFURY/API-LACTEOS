@@ -5,174 +5,150 @@
     <meta charset="UTF-8">
     <title>Facturación</title>
     <link rel="stylesheet" href="/resources/public/css/facturacion/facturacion.css">
-    <link rel="stylesheet" href="../public/css/components/loading.css">
     <link rel="shortcut icon" href="../public/img/logo.ico" type="image/x-icon">
 </head>
 
 <body>
-    <div id="loader" class="loader"></div>
-    <div id="content" style="display: none;">
-        <div class="sidebar">
-            <div id="contents"></div>
-            <div class="main">
-                <div class="content flex-grow-1">
-                    <div class="topbar">
-                        <div class="toggle">
-                            <i class="fas fa-bars"></i>
-                        </div>
-                        <h2>Facturación</h2>
-                        <div class="help" id="btnManual">
-                            <i class="fas fa-question-circle"></i>
-                        </div>
-                        <dialog id="manual">
-                            <iframe id="manual1" src="" frameborder="0" width="1000px", height="600px"></iframe>
-                            <br>
-                            <center>
-                                <button id="manual2">Cerrar</button>
-                            </center>
-                        </dialog>
+    <div id="content">
+        <div class="content flex-grow-1">
+            <div class="form">
+                <div class="head">
+                    <div class="vendedor">
+                        <label for="txtVendedor">Vendedor:</label>
+                        <input disabled id="txtVendedor" type="text" class="vendedor" />
                     </div>
-                    <div class="form">
-                        <div class="head">
-                            <div class="vendedor">
-                                <label for="txtVendedor">Vendedor:</label>
-                                <input disabled id="txtVendedor" type="text" class="vendedor" />
+                    <div class="fecha">
+                        <label for="fechaVenta">Fecha de Venta:</label>
+                        <input disabled id="fechaVenta" type="date" class="fecha" />
+                    </div>
+                    <div class="numero">
+                        <label for="txtNumeroFactura">No:</label>
+                        <input disabled id="txtNumeroFactura" type="text" class="NoFactura" />
+                    </div>
+                </div>
+
+                <div class="container">
+                    <!-- Sección Cliente -->
+                    <div class="body-cliente">
+                        <div class="border">
+                            <div class="form-check">
+                                <label class="form-check-label" for="cliente">
+                                    Cliente
+                                </label>
                             </div>
-                            <div class="fecha">
-                                <label for="fechaVenta">Fecha de Venta:</label>
-                                <input disabled id="fechaVenta" type="date" class="fecha" />
-                            </div>
-                            <div class="numero">
-                                <label for="txtNumeroFactura">No:</label>
-                                <input disabled id="txtNumeroFactura" type="text" class="NoFactura" />
-                            </div>
-                        </div>
-    
-                        <div class="container">
-                            <!-- Sección Cliente -->
-                            <div class="body-cliente">
-                                <div class="border">
-                                    <div class="form-check">
-                                        <label class="form-check-label" for="cliente">
-                                            Cliente
-                                        </label>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="form-row">
-                                            <label class="form-label" for="txtCedulaCliente">
-                                                Cédula del Cliente:
-                                            </label>
-                                            <input maxlength="14" class="form-control" id="txtCedulaCliente" type="text" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="form-row">
-                                            <label class="form-label" for="nombreCliente">
-                                                Nombre del Cliente:
-                                            </label>
-                                            <input disabled class="form-control" id="nombreCliente" type="text" />
-                                        </div>
-                                    </div>
+                            <div class="form-group">
+                                <div class="form-row">
+                                    <label class="form-label" for="txtCedulaCliente">
+                                        Cédula del Cliente:
+                                    </label>
+                                    <input maxlength="14" class="form-control" id="txtCedulaCliente" type="text" />
                                 </div>
                             </div>
-    
-                            <!-- Sección Producto -->
-                            <div class="body-producto">
-                                <div class="border">
-                                    <div class="form-check">
-                                        <label class="form-check-label" for="producto">
-                                            Producto
-                                        </label>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="form-row">
-                                            <label class="form-label" for="cmbProductos">
-                                                Producto:
-                                            </label>
-                                            <Select class="form-control" id="cmbProductos"></Select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="form-row">
-                                            <label class="form-label" for="txtPrecio">
-                                                Precio:
-                                            </label>
-                                            <input disabled class="form-control" id="txtPrecio" type="text" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="form-row">
-                                            <label class="form-label" for="cmbTipoPago">
-                                                Tipo de Pago:
-                                            </label>
-                                            <select class="form-select" id="cmbTipoPago">
-                                                <option value="Contado">Contado</option>
-                                                <option value="Credito">Crédito</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <label class="form-label" for="txtPlazo">
-                                            Plazo de pago:
-                                        </label>
-                                        <select disabled class="form-control" name="txtPlazo" id="txtPlazo">
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="form-row">
-                                            <label class="form-label" for="txtCantidad">
-                                                Cantidad:
-                                            </label>
-                                            <input class="form-control" id="txtCantidad" type="text" />
-                                        </div>
-                                    </div>
+                            <div class="form-group">
+                                <div class="form-row">
+                                    <label class="form-label" for="nombreCliente">
+                                        Nombre del Cliente:
+                                    </label>
+                                    <input disabled class="form-control" id="nombreCliente" type="text" />
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="buttons">
-                        <button id="btnAgregar" class="btnAgregar" type="button">Agregar</button>
-                        <button id="btnFacturar" class="btnFacturar" type="button">Facturar</button>
-                        <button class="btnCancelar" id="btnCancelar" type="button">Cancelar</button>
-                        <dialog id="reporte">
-                            <iframe src="" id="reporteFactura" frameborder="0" width="900px"
-                                height="500px"></iframe>
-                            <br>
-                            <center>
-                                <button id="reporte1">Cerrar</button>
-                            </center>
-                        </dialog>
-                    </div>
-                    <div class="table-container">
-                        <table id="tablaProductos">
-                            <thead>
-                                <tr>
-                                    <th>Producto</th>
-                                    <th>Cantidad</th>
-                                    <th>Precio</th>
-                                    <th>IVA Facturado</th>
-                                    <th>Subtotal</th>
-                                    <th>Editar</th>
-                                    <th>Eliminar</th>
-                                </tr>
-                            </thead>
-                            <tbody></tbody>
-                        </table>
-                    </div>
-                    <div class="total">
-                        <label class="form-label" for="txtTotal">Total:</label>
-                        <input disabled class="form-control d-inline-block" id="txtTotal" style="width: 100px;" type="text" />
+
+                    <!-- Sección Producto -->
+                    <div class="body-producto">
+                        <div class="border">
+                            <div class="form-check">
+                                <label class="form-check-label" for="producto">
+                                    Producto
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-row">
+                                    <label class="form-label" for="cmbProductos">
+                                        Producto:
+                                    </label>
+                                    <Select class="form-control" id="cmbProductos"></Select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                            </div>
+                            <div class="form-group">
+                                <div class="form-row">
+                                    <label class="form-label" for="txtPrecio">
+                                        Precio:
+                                    </label>
+                                    <input disabled class="form-control" id="txtPrecio" type="text" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-row">
+                                    <label class="form-label" for="cmbTipoPago">
+                                        Tipo de Pago:
+                                    </label>
+                                    <select class="form-select" id="cmbTipoPago">
+                                        <option value="Contado">Contado</option>
+                                        <option value="Credito">Crédito</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <label class="form-label" for="txtPlazo">
+                                    Plazo de pago:
+                                </label>
+                                <select disabled class="form-control" name="txtPlazo" id="txtPlazo">
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-row">
+                                    <label class="form-label" for="txtCantidad">
+                                        Cantidad:
+                                    </label>
+                                    <input class="form-control" id="txtCantidad" type="text" />
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class="buttons">
+                <button id="btnAgregar" class="btnAgregar" type="button">Agregar</button>
+                <button id="btnFacturar" class="btnFacturar" type="button">Facturar</button>
+                <button class="btnCancelar" id="btnCancelar" type="button">Cancelar</button>
+                <dialog id="reporte">
+                    <iframe src="" id="reporteFactura" frameborder="0" width="900px"
+                        height="500px"></iframe>
+                    <br>
+                    <center>
+                        <button id="reporte1">Cerrar</button>
+                    </center>
+                </dialog>
+            </div>
+            <div class="table-container">
+                <table id="tablaProductos">
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                            <th>Precio</th>
+                            <th>IVA Facturado</th>
+                            <th>Subtotal</th>
+                            <th>Editar</th>
+                            <th>Eliminar</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <div class="total">
+                <label class="form-label" for="txtTotal">Total:</label>
+                <input disabled class="form-control d-inline-block" id="txtTotal" style="width: 100px;" type="text" />
+            </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="module" src="/resources/public/js/facturacion/facturacion.js"></script>
 </body>
 

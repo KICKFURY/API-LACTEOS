@@ -5,27 +5,13 @@
     <title>Compras e Inventario</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/resources/public/css/compras/compras.css">
-    <link rel="stylesheet" href="../public/css/components/loading.css">
     <link rel="shortcut icon" href="../public/img/logo.ico" type="image/x-icon">
 </head>
 <body>
-    <div id="loader" class="loader"></div>
-    <div id="content" class="sidebar" style="display: none;">
-        <div id="contents"></div>
-        <div class="main">
-            <div class="topbar">
-                <div class="toggle">
-                    <i class="fas fa-bars"></i>
-                </div>
-                <h2> Compras</h2>
-                <div class="help">
-                    <i class="fas fa-question-circle"></i>
-                </div>
-            </div>
-
+    <div id="content">
             <div class="form">
-                <div class="next">
-                    <a href="/resources/views/inventario.html">
+                <div id="btnInventario" class="next">
+                    <a>
                         <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
@@ -87,13 +73,6 @@
                                         Producto:
                                     </label>
                                     <select style="text-align: center; font-weight: bolder;" class="form-select" id="cmbProducto">
-                                        <!-- <option value="Leche">Leche</option>
-                                        <option value="Crema">Crema</option>
-                                        <option value="Yogurt">Yogurt</option>
-                                        <option value="Queso Cheddar">Queso Cheddar</option>
-                                        <option value="Cuajada">Cuajada</option>
-                                        <option value="Pastilla de cuajo">Pastilla de cuajo</option>
-                                        <option value="Empaque">Empaque</option> -->
                                     </select>
                                 </div>
                             </div>
@@ -151,7 +130,6 @@
                 <label class="form-label" for="txtTotal">Total:</label>
                 <input class="form-control d-inline-block" id="txtTotal" style="width: 100px;" type="text" />
             </div>
-        </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="module" src="/resources/public/js/compras/compras.js"></script>

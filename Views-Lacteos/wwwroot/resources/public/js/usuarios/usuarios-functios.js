@@ -1,10 +1,8 @@
 import { GET_Usuarios, GET_Login, POST_Usuario, PUT_Usuario, DELETE_Usuario, usuarios_admin, usuarioLista_admin } from "../endpoints.js"
 import { GET, POST, PUT, DELETE } from "../generic-functions.js"
 import { encriptar } from "../security.js"
-import Loader from '../components/loading.js'
 import { Alerta } from "../components/alert.js"
 
-const loader = new Loader()
 
 function AddEvents() {
     document.getElementById('buscarUsername').addEventListener('keyup', () => {
@@ -150,8 +148,6 @@ function AddEventsFirst() {
     document.getElementById('manual2').addEventListener('click', () => {
         window.manual.close()
     })
-
-    loader.hide()
 }
 
 function CargarUsuarioCampos() {

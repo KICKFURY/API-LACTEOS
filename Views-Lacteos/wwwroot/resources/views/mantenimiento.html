@@ -8,54 +8,31 @@
     </title>
     <link rel="stylesheet" href="/resources/public/css/mantenimiento/mantenimiento.css">
     <link rel="stylesheet" href="/resources/public/img/logo.ico" type="image/x-icon">
-    <link rel="stylesheet" href="../public/css/components/loading.css">
     <link rel="shortcut icon" href="../public/img/logo.ico" type="image/x-icon">
 </head>
 <body>
-    <div id="loader" class="loader"></div>
-    <div id="content" class="sidebar" style="display: none;">
-        <div id="contents"></div>
-        <div class="main">
-            <div class="topbar">
-                <div class="toggle">
-                    <i class="fas fa-bars"></i>
-                </div>
-                <h2> Mantenimiento</h2>
-                <div id="btnManual" class="help">
-                    <i class="fas fa-question-circle"></i>
-                </div>
-                <dialog id="manual">
-                    <iframe id="manual1" src="" frameborder="0" width="1000px", height="600px"></iframe>
-                    <br>
-                    <center>
-                        <button id="manual2">Cerrar</button>
-                    </center>
-                </dialog>
-            </div>
-            <div class="cards">
-                <div class="card1">
-                    <div class="row">
-                        <label for="title">Respaldo de la Base de Datos</label>
-                        <input disabled class="form-control" id="txtBackup" placeholder="Ruta de respaldo" type="text" value="C:\backup\backup.bak" />
-                        <div class="buttons-group">
-                            <button id="btnRespaldar" style="margin-top: 27.5px; margin-right: 40px;">Respaldar</button>
-                        </div>
-                    </div>
-                </div>
-            
-                <div class="card2">
-                    <div class="row">
-                        <label for="title">Restaurar Base de Datos</label>
-                        <input disabled class="form-control" id="txtRestore" placeholder="Ruta de restauración" type="text" value="C:\backup\backup.bak" />
-                        <div class="buttons-group">
-                            <button id="btnRestaurar" style="margin-top: 27.5px; margin-right: 40px;">Restaurar</button>
-                        </div>
+    <div id="content">
+        <div class="cards">
+            <div class="card1">
+                <div class="row">
+                    <label for="title">Respaldo de la Base de Datos</label>
+                    <input disabled class="form-control" id="txtBackup" placeholder="Ruta de respaldo" type="text" value="C:\backup\backup.bak" />
+                    <div class="buttons-group">
+                        <button id="btnRespaldar" style="margin-top: 27.5px; margin-right: 40px;">Respaldar</button>
                     </div>
                 </div>
             </div>
-            
+        
+            <div class="card2">
+                <div class="row">
+                    <label for="title">Restaurar Base de Datos</label>
+                    <input disabled class="form-control" id="txtRestore" placeholder="Ruta de restauración" type="text" value="C:\backup\backup.bak" />
+                    <div class="buttons-group">
+                        <button id="btnRestaurar" style="margin-top: 27.5px; margin-right: 40px;">Restaurar</button>
+                    </div>
+                </div>
+            </div>
         </div>
-
     </div>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="module" src="/resources/public/js/mantenimiento/mantenimiento.js"></script>
