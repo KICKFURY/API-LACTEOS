@@ -18,8 +18,8 @@ function AddEvents() {
     document.getElementById('rdaEditar').addEventListener('change', () => {
         MostrarBuscadorRUC()
         DesactivarControles(false)
-        productos.nombreProducto.disabled = true
-        productos.cantidad.disabled = true
+        document.getElementById('txtProducto').disabled = true
+        document.getElementById('txtCantidad').disabled = true
         document.getElementById('btnCrear').disabled = true
         document.getElementById('btnEditar').disabled = false
         document.getElementById('btnEliminar').disabled = true
@@ -77,23 +77,23 @@ function CargarProducto() {
     var producto = document.getElementById('Busquedacedula').value
 
     GET(GET_Producto+producto, "Error al cargar el producto", 1, (data) => {
-        productos.nombreProducto.value = data.response.nombreProducto
-        productos.descripcion.value = data.response.descripcionProducto
-        productos.precio.value = data.response.precioProducto
-        productos.cantidad.value = data.response.cantidadProducto
-        productos.minimoStock.value = data.response.minimoStockProducto
-        productos.expiracion.value = data.response.fechaExpiracionProducto
+        document.getElementById('txtProducto').value = data.response.nombreProducto
+        document.getElementById('txtDescripción').value = data.response.descripcionProducto
+        document.getElementById('txtPrecio').value = data.response.precioProducto
+        document.getElementById('txtCantidad').value = data.response.cantidadProducto
+        document.getElementById('txtMínimoStock').value = data.response.minimoStockProducto
+        document.getElementById('fechaExpiracion').value = data.response.fechaExpiracionProducto
     })
 }
 
 function Crearproducto() {
-    const url = `${POST_Producto}${productos.nombreProducto.value}&${productos.descripcion.value}&${productos.precio.value}&${productos.cantidad.value}&${productos.minimoStock.value}&${productos.expiracion.value}`
+    const url = `${POST_Producto}${document.getElementById('txtProducto').value}&${document.getElementById('txtDescripción').value}&${document.getElementById('txtPrecio').value}&${document.getElementById('txtCantidad').value}&${document.getElementById('txtMínimoStock').value}&${document.getElementById('fechaExpiracion').value}`
 
-    if (productos.nombreProducto.value === '' || productos.descripcion.value === '' || productos.precio.value === '' || productos.cantidad.value === '' || productos.minimoStock.value === '' || productos.expiracion.value === '') {
+    if (document.getElementById('txtProducto').value === '' || document.getElementById('txtDescripción').value === '' || document.getElementById('txtPrecio').value === '' || document.getElementById('txtCantidad').value === '' || document.getElementById('txtMínimoStock').value === '' || document.getElementById('fechaExpiracion').value === '') {
         Alerta("Error", "Todos los campos son requeridos", "error")
         return
     }
-    if (isNaN(productos.precio.value) || isNaN(productos.cantidad.value) || isNaN(productos.minimoStock.value)) {
+    if (isNaN(document.getElementById('txtPrecio').value) || isNaN(document.getElementById('txtCantidad').value) || isNaN(document.getElementById('txtMínimoStock').value)) {
         Alerta("Error", "Los valores ingresados deben ser numéricos", "error")
         return
     }
@@ -107,7 +107,17 @@ function Crearproducto() {
 }
 
 function Editar() {
-    const url = `${PUT_Producto}${productos.nombreProducto.value}&${productos.descripcion.value}&${productos.precio.value}&${productos.cantidad.value}&${productos.minimoStock.value}&${productos.expiracion.value}`
+    const url = `${PUT_Producto}${document.getElementById('txtProducto').value}&${document.getElementById('txtDescripción').value}&${document.getElementById('txtPrecio').value}&${document.getElementById('txtCantidad').value}&${document.getElementById('txtMínimoStock').value}&${document.getElementById('fechaExpiracion').value}`
+    
+    if (document.getElementById('txtProducto').value === '' || document.getElementById('txtDescripción').value === '' || document.getElementById('txtPrecio').value === '' || document.getElementById('txtCantidad').value === '' || document.getElementById('txtMínimoStock').value === '' || document.getElementById('fechaExpiracion').value === '') {
+        Alerta("Error", "Todos los campos son requeridos", "error")
+        return
+    }
+    if (isNaN(document.getElementById('txtPrecio').value) || isNaN(document.getElementById('txtCantidad').value) || isNaN(document.getElementById('txtMínimoStock').value)) {
+        Alerta("Error", "Los valores ingresados deben ser numéricos", "error")
+        return
+    }
+
     PUT(url, "Producto editado correctamente", "Error al editar el producto", () => {
         GetProductos()
         LimpiarControles()
@@ -117,7 +127,7 @@ function Editar() {
 }
 
 function Eliminar() {
-    const url = `${DELETE_Producto}${productos.nombreProducto.value}`
+    const url = `${DELETE_Producto}${document.getElementById('txtProducto').value}`
     DELETE(url, "Producto eliminado correctamente", "Error al eliminar el producto", () => {
         GetProductos()
         LimpiarControles()
@@ -162,21 +172,21 @@ function GetProducto() {
 }
 
 function LimpiarControles() {
-    productos.nombreProducto.value = ""
-    productos.descripcion.value = ""
-    productos.precio.value = ""
-    productos.cantidad.value = ""
-    productos.minimoStock.value = ""
-    productos.expiracion.value = ""
+    document.getElementById('txtProducto').value = ""
+    document.getElementById('txtDescripción').value = ""
+    document.getElementById('txtPrecio').value = ""
+    document.getElementById('txtCantidad').value = ""
+    document.getElementById('txtMínimoStock').value = ""
+    document.getElementById('fechaExpiracion').value = ""
 }
 
 function DesactivarControles(value) {
-    productos.nombreProducto.disabled = value
-    productos.descripcion.disabled = value
-    productos.precio.disabled = value
-    productos.cantidad.disabled = value
-    productos.minimoStock.disabled = value
-    productos.expiracion.disabled = value
+    document.getElementById('txtProducto').disabled = value
+    document.getElementById('txtDescripción').disabled = value
+    document.getElementById('txtPrecio').disabled = value
+    document.getElementById('txtCantidad').disabled = value
+    document.getElementById('txtMínimoStock').disabled = value
+    document.getElementById('fechaExpiracion').disabled = value
 }
 
 function RDACREARINTERNO() {

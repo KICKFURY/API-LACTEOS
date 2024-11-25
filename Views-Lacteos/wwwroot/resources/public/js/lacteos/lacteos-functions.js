@@ -16,6 +16,7 @@ import { Cliente_vendedor, clientes_admin } from "../endpoints.js";
 const loader = new Loader()
 let title = document.getElementById("lbaTituloHeader")
 let pantalla = ""
+let cargarHome = true
 
 function AddEvent() {
     loader.show()
@@ -27,7 +28,10 @@ function AddEvent() {
 
     // preventSourceCode();
 
-    CargarHome()
+    if(cargarHome) {
+        CargarHome()
+        cargarHome = false
+    }
     document.getElementById('btnFacturacion').addEventListener('click', () => { 
         pantalla = "/resources/views/facturacion.html"
         title.innerHTML = "Facturación"
@@ -49,12 +53,15 @@ function AddEvent() {
         CargarPantallas(() => { 
             EventsClientes()
             ObtenerClientes()
+            document.getElementById('Busquedacedula').style.display ='none'
+            document.getElementById('lbBuscador').style.display = 'none'
+            document.querySelector('.buttons').style.marginTop = '40px'
+
             var role = localStorage.getItem('UsuarioRole');
 
             document.getElementById('manual1').src = role == 'Admin' ? clientes_admin : Cliente_vendedor
         })
     })
-    // Tiene Bugs
     document.getElementById('btnCreditos').addEventListener('click', () => { 
         pantalla = "/resources/views/credito.html"
         title.innerHTML = "Gestión de créditos"
@@ -81,6 +88,14 @@ function AddEvent() {
                     EventsInventario()
                     document.getElementById('Busquedacedula').style.display = 'none'
                     document.getElementById('lbBuscador').style.display = 'none'
+                    document.getElementById('btnCompra').addEventListener('click', () => {
+                        pantalla = "/resources/views/compras.html"
+                        title.innerHTML = "Compras e Inventario"
+                        CargarPantallas(() => {
+                            EventsCompras()
+                            AddEvent()
+                        })
+                    })
                 })
             })
         })
@@ -119,7 +134,7 @@ function AddEvent() {
         })
     })
     document.getElementById('btnHome').addEventListener('click', () => { 
-        CargarHome()
+        cargarHome()
     })
 }
 
@@ -144,7 +159,7 @@ async function CargarPantallas(callback) {
     const content = await new Promise((resolve, reject) => {
         fetch(pantalla)
             .then((response) => response.text())
-            .then((data => resolve(data)))
+            .then((data => resolve(data))) 
             .catch((error) => reject(error));
     })
 
