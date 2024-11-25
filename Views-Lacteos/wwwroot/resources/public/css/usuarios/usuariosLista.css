@@ -52,11 +52,11 @@ dialog[open] {
 
 .next {
     position: relative; 
+    right: 10%;
 }
 
 .next a {
     position: absolute; 
-    right: 550px; 
     top: -30px; 
 }
 
