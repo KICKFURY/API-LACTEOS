@@ -17,8 +17,9 @@
     display: flex;
     justify-content: space-between;
     margin-top: 55px;
-    width: 90%;
+    width: 150%;
     height: 600px;
+    margin-left: -25%;
 }
 
 .password-section {
@@ -78,7 +79,7 @@ button:disabled:hover {
 .form-section {
     display: flex;
     flex-direction: column;
-    width: 40%; 
+    width: 45%; 
     margin: 0 auto; 
     margin-top: 250px;
     margin-left: -420px;
@@ -177,13 +178,13 @@ button:disabled:hover {
 
 .next {
     position: relative; 
+    right: 10%;
 }
 
 .next i {
     color: var(--blue);
     font-size: 24px;
     position: absolute; 
-    left: 920px;
     top: -30px; 
 }
 
