@@ -3,6 +3,15 @@ import { GET_FacturaYDetalles, GET_ClienteById, GET_CreditoByIdVenta, GET_Credit
 import { Alerta } from "../components/alert.js";
 import { credito, creditoVista } from "./credito-objects.js";
 
+let idVenta = 0
+let totalVenta = 0
+let cliente = 0
+let saldoPendiente = 0
+let plazo = 0
+let realizarcambio = false 
+let fechaPago = ""
+
+
 function AddEvents() {
     document.getElementById("txtVendedor").value =
         localStorage.getItem("vendedor");
@@ -28,9 +37,10 @@ function GetFacturaCredito() {
     const numeroFactura = document.getElementById("txtNumeroFactura").value;
     GET(GET_FacturaYDetalles + numeroFactura, "Error al traer la factura", 1, (data) => {
         if (data.response.tipoVenta == "Credito") {
-            credito.cliente = parseInt(data.response.idCliente);
-            credito.totalVenta = data.response.totalVenta;
-            credito.idVenta = data.response.id;
+            console.log(data.response.idCliente)
+            cliente = parseInt(data.response.idCliente);
+            totalVenta = data.response.totalVenta;
+            idVenta = data.response.id;
             GetDetallesCredito();
             GetCliente();
         }
@@ -38,19 +48,20 @@ function GetFacturaCredito() {
     );
 }
 function GetCliente() {
-    GET(GET_ClienteById + credito.cliente, "Error al traer el cliente", 1, (data) => {
-        creditoVista.cliente.value = `${data.response.nombreCliente} ${data.response.apellidoCliente}`;
+    GET(GET_ClienteById + cliente, "Error al traer el cliente", 1, (data) => {
+        document.getElementById("txtCliente").value = `${data.response.nombreCliente} ${data.response.apellidoCliente}`;
     }, () => {});
 }
 function GetDetallesCredito() {
-    GET(GET_CreditoByIdVenta + credito.idVenta, "Error al cargar credito", 1, (data) => {
-        credito.plazo = data.response.plazo;
-        credito.saldoPendiente = data.response.totalPago;
-        creditoVista.total.value = credito.totalVenta;
-        creditoVista.plazo.value = credito.plazo;
-        creditoVista.cancelar.value = parseInt(credito.totalVenta) / parseInt(credito.plazo);
-        creditoVista.saldo.value = credito.saldoPendiente == 0 ? credito.saldoPendiente : credito.saldoPendiente - parseInt(credito.totalVenta) / parseInt(credito.plazo);
-        },() => {});
+    GET(GET_CreditoByIdVenta + idVenta, "Error al cargar credito", 1, (data) => {
+        plazo = data.response.plazo;
+        saldoPendiente = data.response.totalPago;
+        document.getElementById("txtTotal").value = totalVenta;
+        document.getElementById("txtPlazo").value = plazo;
+        document.getElementById("txtCancelar").value = parseInt(totalVenta) / parseInt(plazo);
+        document.getElementById("txtSaldo").value = saldoPendiente == 0 ? saldoPendiente : saldoPendiente - parseInt(totalVenta) / parseInt(plazo);
+        realizarcambio = true    
+    },() => {});
 }
 async function GetCreditos() {
     const tbody = document.querySelector("table tbody");
@@ -94,19 +105,25 @@ async function GetVentas(idVenta) {
     });
 }
 function ActualizarCredito() {
-    PUT(`${PUT_Credito}${credito.idVenta}&${parseFloat(creditoVista.saldo.value)}&${creditoVista.fecha.value}`, "Credito Editado", "Error al editar el credito", () => {
+
+    if (!realizarcambio) {
+        Alerta("Error", "Ingrese el numero de factura", "error");
+    }
+
+    PUT(`${PUT_Credito}${idVenta}&${parseFloat(document.getElementById("txtSaldo").value)}&${document.getElementById("fechaDiaPago").value}`, "Credito Editado", "Error al editar el credito", () => {
         GetCreditos();
         Alerta("Éxito", "El crédito ha sido editado", "success");
+        realizarcambio = false
         LimpiarCampos();
     })
 }
 function LimpiarCampos (){
-    creditoVista.cliente.value = ''
-    creditoVista.numeroFactura.value = ''
-    creditoVista.total.value = ''
-    creditoVista.saldo.value = ''
-    creditoVista.plazo.value = ''
-    creditoVista.cancelar.value = ''
+    document.getElementById("txtCliente").value = ''
+    document.getElementById("txtNumeroFactura").value = ''
+    document.getElementById("txtTotal").value = ''
+    document.getElementById("txtSaldo").value = ''
+    document.getElementById("txtPlazo").value = ''
+    document.getElementById("txtCancelar").value = ''
 }
 
 export { AddEvents };
